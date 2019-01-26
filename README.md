@@ -10,9 +10,14 @@
 #1. Run `php artisan passport:install`
 1. Copy output and paste it in `.env` file in a comment block
 8. Create Magic 
+## Dependencies
+* Node.js
+* Composer
+* Git
 
-### Mac
+## Mac
 #### Set file permissions
+You will get permission errors, so for development we will set them to allow all from all.
 ```sh
 sudo chmod -R 777 /Applications/XAMPP/xamppfiles/htdocs
 ```
@@ -31,7 +36,7 @@ sudo mv composer.phar /usr/local/bin/
 sudo nano ~/.bash_profile
 ```
 
-If you get an error saying the directory doesn't exist create a bin directory at that path.
+*If you get an error saying the directory doesn't exist create a bin directory at that path.
 
 Add this to your .bash_profile. It may be empty or non-existent, so go ahead and create it:
 
