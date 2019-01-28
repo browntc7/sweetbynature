@@ -18,7 +18,7 @@ Route::get('/user', function (Request $request) {
         return $request->user();
     });
 Route::get('/test','ApiController@getTest');
-
-
 });
 
+
+//Class put your API routes below this comment
