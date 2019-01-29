@@ -17,8 +17,9 @@ Route::group(['middleware' => ['auth:api']], function () {
 Route::get('/user', function (Request $request) {
         return $request->user();
     });
-Route::get('/test','ApiController@getTest');
+
 });
 
 
 //Class put your API routes below this comment
+Route::get('/raw/json','ApiController@getThings');

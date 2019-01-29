@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Class put your Web routes below this comment
+Route::view('/table','table');
