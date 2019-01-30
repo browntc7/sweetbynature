@@ -11,6 +11,6 @@ class ApiController extends Controller
     public function getThings(){
         $things = App\Test::all();
         $things = array('data' => $things);
-        return response(json_encode($things),200);
+        return $things;
     }
 }
