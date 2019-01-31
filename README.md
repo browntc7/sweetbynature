@@ -7,8 +7,6 @@
 4. Configure the ```.env``` file for the application environment ex. set the local database.
 5. Run ```php artisan key:generate``` to generate a new application key (written to .env file)
 5. Run `npm install` at the app root
-#1. Run `php artisan passport:install`
-1. Copy output and paste it in `.env` file in a comment block
 8. Create Magic 
 ## Dependencies
 * Node.js
