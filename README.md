@@ -2,7 +2,7 @@
 
 
 1. Clone the source from the SCM Server or perform git pull if already on your pc.
-2. Run ```Composer install``` from a terminal window at the root of the application.
+2. Run ```Composer install``` from a terminal window at the root of the application (C:/xampp/htdocs/sweetbynature/).
 5. Run `npm install` from a terminal window at the root of the application.
 3. Copy the ```.env.example``` file to ```.env```.
 5. Run ```php artisan key:generate``` to generate a new application key (written to .env file)
