@@ -23,3 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/table','table');
 Route::view('/purchaseOrdersView','purchaseOrdersView');
 Route::view('/purchaseOrdersCreate','purchaseOrdersCreate');
+Route::view('/invoicesView','invoicesView');
