@@ -1,13 +1,19 @@
 # So you want to start development on the Sweet By Nature application
 
 
-1. Clone the source from the SCM Server
-2. Run ```Composer install``` from a terminal window at the root of the application.
+1. Clone the source from the SCM Server or perform git pull if already on your pc.
+2. Run ```Composer install``` from a terminal window at the root of the application (C:/xampp/htdocs/sweetbynature/).
+5. Run `npm install` from a terminal window at the root of the application.
 3. Copy the ```.env.example``` file to ```.env```.
-4. Configure the ```.env``` file for the application environment ex. set the local database.
 5. Run ```php artisan key:generate``` to generate a new application key (written to .env file)
-5. Run `npm install` at the app root
+1. Create a new user in your mysql database ``` http://localhost/phpmyadmin ``` with xampp running
+    * UserName: sweet
+    * Password: bynature
+    * Privilages all
+1. Create a database named sweetbynature
+1. Run ```php artisan migrate:fresh --seed``` to create your database tables and add users.  
 8. Create Magic 
+
 ## Dependencies
 * Node.js
 * Composer
