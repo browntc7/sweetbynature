@@ -1,11 +1,9 @@
 @extends('layouts.app')
-@section('moreCSS')
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
-@endsection
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+<h1>Purchase Order VIews</h1>
+<div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
@@ -45,10 +43,10 @@
     
     $('#myTable').DataTable({
         ajax: {
-        url:"api/raw/json",
+        url:"api/raw/json",//change to appropriate data call
         dataSrc:"data"
     },
-        columns:[
+        columns:[ //change to data model
                     { 'data': 'key' },
                     { 'data': 'registerName' },
                     { 'data': 'Value2' },
