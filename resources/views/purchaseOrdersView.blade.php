@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<h1>Purchase Order VIews</h1>
+<h1>Purchase Orders View</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
@@ -35,8 +35,7 @@
 @endsection
 
 @section('footScripts')
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
 
 <script>
@@ -47,8 +46,8 @@
         dataSrc:"data"
     },
         columns:[ //change to data model
-                    { 'data': 'key' },
-                    { 'data': 'registerName' },
+                    { 'data': 'id' },
+                    { 'data': 'Value1' },
                     { 'data': 'Value2' },
                     { 'data': 'Value3' },
                     { 'data': 'Value4' },
