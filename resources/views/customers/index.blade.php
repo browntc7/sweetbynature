@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <h1>Customers</h1>
-<div class="row justify-content-center">
+<!-- <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
@@ -30,7 +30,9 @@
                 </tfoot>
             </table>
         </div>
-    </div>
+    </div> -->
+    <customer-componet-test></customer-componet-test>
+    <example-component></example-component>
 </div>
 @endsection
 
