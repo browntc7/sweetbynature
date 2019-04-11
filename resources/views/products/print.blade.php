@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
-<h1>Purchase Orders View</h1>
+<h1>Products Print</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
@@ -46,8 +46,8 @@
         dataSrc:"data"
     },
         columns:[ //change to data model
-                    { 'data': 'id' },
-                    { 'data': 'Value1' },
+                    { 'data': 'key' },
+                    { 'data': 'registerName' },
                     { 'data': 'Value2' },
                     { 'data': 'Value3' },
                     { 'data': 'Value4' },

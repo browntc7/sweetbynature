@@ -54,7 +54,7 @@
                             <a href="home" class="nav-link">Home</a>
                         </li>
                         <li>
-                            <a href="purchaseOrdersView" class="nav-link">Purchase Orders</a>
+                            <a href="purchaseOrders" class="nav-link">Purchase Orders</a>
                         </li>
                         <li>
                             <a href="productionOrdersView" class="nav-link">Production Orders</a>

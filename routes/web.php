@@ -21,9 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Class put your Web routes below this comment
 Route::view('/table','table');
-Route::view('/purchaseOrdersView','purchaseOrdersView');
-Route::view('/purchaseOrdersCreate','purchaseOrdersCreate');
-Route::view('/productionOrdersView','productionOrdersView');
-Route::view('/productionOrdersCreate','productionOrdersCreate');
-Route::view('/invoicesView','invoicesView');
-Route::view('/productsPrint','productsPrint');
+Route::view('/purchaseOrders','purchaseOrders/index');
+Route::view('/purchaseOrders/create','purchaseOrders/create');
+Route::view('/productionOrders','productionOrders/index');
+Route::view('/productionOrders/create','productionOrders/create');
+Route::view('/invoices','invoices/index');
+Route::view('/invoices/print','invoices/print');
+Route::view('/products','products/index');
+Route::view('/products/print','products/print');
+Route::view('/customers','customers/index');
+Route::view('/customers/print','customers/print');
