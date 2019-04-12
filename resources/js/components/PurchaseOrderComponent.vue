@@ -1,32 +1,20 @@
 <template>
   <form>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="customerName">Customer Name</label>
+    <input type="text" class="form-control" id="customerName" placeholder="customerName">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
+    <label for="customerNum">Customer #</label>
+    <input type="int" class="form-control" id="customerNum" placeholder="customerNum">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
+    <label for="item">Item</label>
+    <input type="string" class="form-control" id="item" placeholder="item">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="quantity">QTY</label>
+    <input type="int" class="form-control" id="quantity" placeholder="quantity">
   </div>
 </form>
 

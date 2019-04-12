@@ -31,8 +31,8 @@
             </table>
         </div>
     </div> -->
-    <customer-componet-test></customer-componet-test>
-    <example-component></example-component>
+    <new-customer-component></new-customer-component>
+
 </div>
 @endsection
 
