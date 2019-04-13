@@ -27,6 +27,10 @@ Vue.component('new-customer-component', require('./components/NewCustomerCompone
 Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
 // create invoices view component
 Vue.component('invoices-view-component', require('./components/InvoicesViewComponent.vue').default)
+// register invoices print component
+Vue.component('invoices-print-component', require('./components/InvoicesPrintComponent.vue').default)
+// register purchase order index component
+Vue.component('purchase-index-component', require('./components/PurchaseIndexComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
