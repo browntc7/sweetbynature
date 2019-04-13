@@ -16,8 +16,8 @@
     <label for="quantity">QTY</label>
     <input type="int" class="form-control" id="quantity" placeholder="quantity">
   </div>
-   <button type="button">Cancel</button> 
-   <button type="button">Submit</button> 
+     <button type="reset">Cancel</button>
+     <button type="submit">Submit</button>
 </form>
 
 </template>

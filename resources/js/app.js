@@ -25,6 +25,8 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 Vue.component('new-customer-component', require('./components/NewCustomerComponent.vue').default)
 /* create purchase order form component */
 Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
+// create invoices view component
+Vue.component('invoices-view-component', require('./components/InvoicesViewComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
