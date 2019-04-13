@@ -21,9 +21,9 @@ window.Vue = require('vue')
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-peanut', require('./components/ExampleComponent.vue').default)
-
+// add new customer form component - convert to modal?
 Vue.component('new-customer-component', require('./components/NewCustomerComponent.vue').default)
+/* create purchase order form component */
 Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
 
 /**

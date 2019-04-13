@@ -1851,18 +1851,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -36777,14 +36765,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
+              _vm._v("Add New Customer")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an customer component.\n                "
-              )
-            ])
+            _c("div", { staticClass: "card-body" })
           ])
         ])
       ])
@@ -36821,78 +36805,44 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("form", [
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlInput1" } }, [
-          _vm._v("Email address")
+        _c("label", { attrs: { for: "customerName" } }, [
+          _vm._v("Customer Name")
         ]),
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control",
           attrs: {
-            type: "email",
-            id: "exampleFormControlInput1",
-            placeholder: "name@example.com"
+            type: "text",
+            id: "customerName",
+            placeholder: "customerName"
           }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-          _vm._v("Example select")
-        ]),
+        _c("label", { attrs: { for: "customerNum" } }, [_vm._v("Customer #")]),
         _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "exampleFormControlSelect1" }
-          },
-          [
-            _c("option", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("2")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("4")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("5")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect2" } }, [
-          _vm._v("Example multiple select")
-        ]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { multiple: "", id: "exampleFormControlSelect2" }
-          },
-          [
-            _c("option", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("2")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("4")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("5")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-          _vm._v("Example textarea")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
+        _c("input", {
           staticClass: "form-control",
-          attrs: { id: "exampleFormControlTextarea1", rows: "3" }
+          attrs: { type: "int", id: "customerNum", placeholder: "customerNum" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "string", id: "item", placeholder: "item" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "quantity" } }, [_vm._v("QTY")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "int", id: "quantity", placeholder: "quantity" }
         })
       ])
     ])
@@ -49108,6 +49058,7 @@ files.keys().map(function (key) {
 }); // Vue.component('example-peanut', require('./components/ExampleComponent.vue').default)
 
 Vue.component('new-customer-component', __webpack_require__(/*! ./components/NewCustomerComponent.vue */ "./resources/js/components/NewCustomerComponent.vue").default);
+Vue.component('purchase-order-component', __webpack_require__(/*! ./components/PurchaseOrderComponent.vue */ "./resources/js/components/PurchaseOrderComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
