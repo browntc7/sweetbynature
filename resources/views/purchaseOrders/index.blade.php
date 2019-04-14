@@ -6,9 +6,6 @@
 @section('content')
 <div class="container">
 <h1>Purchase Orders</h1>
-<<<<<<< HEAD
-<purchase-index-component></purchase-index-component>
-=======
 <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="purchaseOrderTable" class="table table-striped" style="width:100%">
@@ -39,7 +36,6 @@
             </table>
         </div>
     </div>
->>>>>>> 10832de71c4b8440b0f4dd68299bfa9f8c373046
 </div>
 @endsection
 
