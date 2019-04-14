@@ -33,6 +33,8 @@ Vue.component('invoices-print-component', require('./components/InvoicesPrintCom
 Vue.component('purchase-index-component', require('./components/PurchaseIndexComponent.vue').default)
 // register customer index component
 Vue.component('customer-index-component', require('./components/CustomerIndexComponent.vue').default)
+// register customer print component
+Vue.component('customer-print-component', require('./components/CustomerPrintComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
