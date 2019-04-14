@@ -8,13 +8,21 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//font-awesome
+@import '~font-awesome/scss/font-awesome';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.redbox{
-  float:left;
+.fa-pencil-square-o{
+  font-size: 1.5em;
+  color: rgb(255, 0, 212);
+}
+
+.fa-pencil-square-o:hover{
+  cursor: pointer;
 }
 
 
