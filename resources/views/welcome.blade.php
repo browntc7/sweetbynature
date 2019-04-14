@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Sweet By Nature
+                    <img src="{{ asset('images/sweet-by-nature-main-logo.png') }}" alt="Sweet by Nature">
                 </div>
 
                 <!-- <div class="links">

@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::view('/','welcome');
+
+//automatically defines the authentication routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+//put all route to be protected by login here:
+Route::group(['middleware' => ['auth']], function () {
 
 //Class put your Web routes below this comment
 Route::view('/table','table');
@@ -31,3 +33,5 @@ Route::view('/products','products/index');
 Route::view('/products/print','products/print');
 Route::view('/customers','customers/index');
 Route::view('/customers/print','customers/print');
+Route::view('/home', 'home')->name('home');
+});
