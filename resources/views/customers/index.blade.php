@@ -4,8 +4,7 @@
 <div class="container">
 <h1>Customers</h1>
 
-    <customer-componet-test></customer-componet-test>
-    <example-component></example-component>
+    <customer-index-component></customer-index-component>
 </div>
 @endsection
 

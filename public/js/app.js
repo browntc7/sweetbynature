@@ -1754,6 +1754,56 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -36844,6 +36894,85 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c(
+            "table",
+            {
+              staticClass: "table table-striped",
+              staticStyle: { width: "100%" },
+              attrs: { id: "myTable" }
+            },
+            [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Customer Number")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Customer Name")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Billing Address")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Shipping Address")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Phone Number")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("E-mail")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tfoot", [
+                _c("tr", [
+                  _c("th", [_vm._v("ID")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Value 1")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Value 2")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Value 3")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Value 4")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Created At")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Updated At")])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -49398,6 +49527,7 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./components/CustomerIndexComponent.vue": "./resources/js/components/CustomerIndexComponent.vue",
 	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
 	"./components/InvoicesPrintComponent.vue": "./resources/js/components/InvoicesPrintComponent.vue",
 	"./components/InvoicesViewComponent.vue": "./resources/js/components/InvoicesViewComponent.vue",
@@ -49469,7 +49599,9 @@ Vue.component('invoices-view-component', __webpack_require__(/*! ./components/In
 
 Vue.component('invoices-print-component', __webpack_require__(/*! ./components/InvoicesPrintComponent.vue */ "./resources/js/components/InvoicesPrintComponent.vue").default); // register purchase order index component
 
-Vue.component('purchase-index-component', __webpack_require__(/*! ./components/PurchaseIndexComponent.vue */ "./resources/js/components/PurchaseIndexComponent.vue").default);
+Vue.component('purchase-index-component', __webpack_require__(/*! ./components/PurchaseIndexComponent.vue */ "./resources/js/components/PurchaseIndexComponent.vue").default); // register customer index component
+
+Vue.component('customer-index-component', __webpack_require__(/*! ./components/CustomerIndexComponent.vue */ "./resources/js/components/CustomerIndexComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49538,6 +49670,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerIndexComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/CustomerIndexComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomerIndexComponent.vue?vue&type=template&id=d979a918& */ "./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918&");
+/* harmony import */ var _CustomerIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerIndexComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CustomerIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CustomerIndexComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomerIndexComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomerIndexComponent.vue?vue&type=template&id=d979a918& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerIndexComponent.vue?vue&type=template&id=d979a918&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerIndexComponent_vue_vue_type_template_id_d979a918___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -49962,7 +50163,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\r\n@import '~font-awesome/scss/font-awesome';\r\n       ^\r\n      Can't find stylesheet to import.\n@import '~font-awesome/scss/font-awesome';\r\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  stdin 12:9  root stylesheet\r\n      in C:\\xampp\\htdocs\\sweetbynature\\resources\\sass\\app.scss (line 12, column 9)\n    at runLoaders (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at C:\\xampp\\htdocs\\sweetbynature\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\xampp\\htdocs\\sweetbynature\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at render (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass-loader\\lib\\loader.js:52:13)\n    at Function.$2 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:24245:48)\n    at vC.$2 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:15409:16)\n    at tz.vc (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8916:42)\n    at tz.vb (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8918:32)\n    at ie.ul (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8224:46)\n    at t6.$0 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8369:7)\n    at Object.ey (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:1532:80)\n    at ah.ba (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8287:3)\n    at iu.ba (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8217:25)\n    at iu.cD (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8204:6)\n    at oy.cD (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:7994:35)\n    at Object.m (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:1405:19)\n    at C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:5042:51\n    at w1.a (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:1416:71)\n    at w1.$2 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8009:23)\n    at uC.$2 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8004:25)\n    at tz.vc (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8916:42)\n    at tz.vb (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8918:32)\n    at ie.ul (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8224:46)\n    at t6.$0 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8369:7)\n    at Object.ey (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:1532:80)\n    at ah.ba (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8287:3)\n    at iu.ba (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8217:25)\n    at iu.cD (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8204:6)\n    at Object.eval (eval at Bj (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:651:15), <anonymous>:3:37)\n    at tz.vc (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8916:42)\n    at tz.vb (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8918:32)\n    at ie.ul (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8224:46)\n    at t6.$0 (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8369:7)\n    at Object.ey (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:1532:80)\n    at ah.ba (C:\\xampp\\htdocs\\sweetbynature\\node_modules\\sass\\sass.dart.js:8287:3)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
