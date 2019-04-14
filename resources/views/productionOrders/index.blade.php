@@ -45,9 +45,9 @@
         url:"api/raw/json",//change to appropriate data call
         dataSrc:"data"
     },
-        columns:[ //change to data model
-                    { 'data': 'key' },
-                    { 'data': 'registerName' },
+        columns:[ 
+                    { 'data': 'id' },
+                    { 'data': 'Value1' },
                     { 'data': 'Value2' },
                     { 'data': 'Value3' },
                     { 'data': 'Value4' },

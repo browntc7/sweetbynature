@@ -59,13 +59,13 @@
                             <a href="purchaseOrders" class="nav-link">Purchase Orders</a>
                         </li>
                         <li>
-                            <a href="productionOrdersView" class="nav-link">Production Orders</a>
+                            <a href="productionOrders" class="nav-link">Production Orders</a>
                         </li>
                         <li>
-                            <a href="customersView" class="nav-link">Customers</a>
+                            <a href="customers" class="nav-link">Customers</a>
                         </li>
                         <li>
-                            <a href="invoicesView" class="nav-link">Invoices</a>
+                            <a href="invoices" class="nav-link">Invoices</a>
                         </li>                    
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

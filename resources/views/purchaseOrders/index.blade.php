@@ -5,7 +5,7 @@
 <h1>Purchase Orders</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <table id="myTable" class="table table-striped" style="width:100%">
+            <table id="purchaseOrderTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -15,6 +15,7 @@
                         <th>Value 4</th>
                         <th>Created At</th>
                         <th>Updated At</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -26,6 +27,7 @@
                         <th>Value 4</th>
                         <th>Created At</th>
                         <th>Updated At</th>
+                        <th>Edit</th>
                     </tr>
                 </tfoot>
             </table>
@@ -40,7 +42,7 @@
 
 <script>
     
-    $('#myTable').DataTable({
+    var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         ajax: {
         url:"api/raw/json",//change to appropriate data call
         dataSrc:"data"
@@ -52,10 +54,29 @@
                     { 'data': 'Value3' },
                     { 'data': 'Value4' },
                     { 'data': 'created_at' },
-                    { 'data': 'updated_at' }
-                ]
+                    { 'data': 'updated_at' },
+                    null
+                ],
+                "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+                },
+                "targets": 7
+            }
+        ]
+
     
     });
+
+    //edit the row
+    $('#purchaseOrderTable tbody').on('click', 'i', function () {
+        var data = purchaseOrderTable.row( $(this).parents('tr') ).data();
+        alert( 'You clicked on id '+data['id']+'\'s edit button' );
+    } );
 
 </script>
 @endsection
