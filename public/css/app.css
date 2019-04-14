@@ -13556,5 +13556,6 @@ a.text-dark:focus {
 
 .fa-pencil-square-o:hover {
   cursor: pointer;
+  color: black;
 }
 
