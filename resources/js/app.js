@@ -35,7 +35,8 @@ Vue.component('purchase-index-component', require('./components/PurchaseIndexCom
 Vue.component('customer-index-component', require('./components/CustomerIndexComponent.vue').default)
 // register customer print component
 Vue.component('customer-print-component', require('./components/CustomerPrintComponent.vue').default)
-
+// register production order component
+Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

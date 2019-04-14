@@ -8,10 +8,10 @@
                         <th>ID</th>
                         <th>Value 1</th>
                         <th>Value 2</th>
+                        <th>Value 3</th>
                         <th>Value 4</th>
                         <th>Created At</th>
                         <th>Updated At</th>
-                        
                     </tr>
                 </thead>
                 <tfoot>
@@ -37,4 +37,5 @@
             console.log('Component mounted.')
         }
     }
+
 </script>

@@ -32,6 +32,7 @@
         </div>
     </div>
 </div>
+<customer-print-component></customer-print-component>
 @endsection
 
 @section('footScripts')
