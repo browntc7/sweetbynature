@@ -2,20 +2,8 @@
 
 @section('content')
 <div class="container">
-<h1>Products Print</h1>
-<template>
-    <div class="container">
-    <p>
-       Item #<input type="text" value="123456"><br> <br>
-       Description  <input type="text" value="extract"><br><br>
-       Location <input type="text" value="B5"><br><br>
-       Qty <input type="text" value="999"><br><br>
-       Unit Cost <input type="text" value="$9.99"><br><br>       
-    </p>
-    </div>    
-</template>
-     <button type="reset">Cancel</button>
-     <button type="submit">Submit</button>
+<h1>Create Production Order</h1>
+<production-order-component></production-order-component>
 </div>
 @endsection
 
@@ -30,9 +18,9 @@
         url:"api/raw/json",//change to appropriate data call
         dataSrc:"data"
     },
-        columns:[ //change to data model
-                    { 'data': 'key' },
-                    { 'data': 'registerName' },
+        columns:[ 
+                    { 'data': 'id' },
+                    { 'data': 'Value1' },
                     { 'data': 'Value2' },
                     { 'data': 'Value3' },
                     { 'data': 'Value4' },
