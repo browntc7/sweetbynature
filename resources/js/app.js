@@ -25,17 +25,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 Vue.component('new-customer-component', require('./components/NewCustomerComponent.vue').default)
 /* create purchase order form component */
 Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
-// create invoices view component
-Vue.component('invoices-view-component', require('./components/InvoicesViewComponent.vue').default)
-// register invoices print component
-Vue.component('invoices-print-component', require('./components/InvoicesPrintComponent.vue').default)
-// register purchase order index component
-Vue.component('purchase-index-component', require('./components/PurchaseIndexComponent.vue').default)
-// register customer index component
-Vue.component('customer-index-component', require('./components/CustomerIndexComponent.vue').default)
-// register customer print component
-Vue.component('customer-print-component', require('./components/CustomerPrintComponent.vue').default)
-// register production order component
+// create production order form component
 Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
 /**
  * Next, we will create a fresh Vue application instance and attach it to

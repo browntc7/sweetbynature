@@ -9,25 +9,25 @@
                 <thead>
                     <tr>
                         <th>Customer Number</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
+                        <th>Customer Name</th>
+                        <th>Billing Address</th>
+                        <th>Shipping Address</th>
+                        <th>Phone Number</th>
+                        <th>E-mail Address</th>
                         <th>Created At</th>
-                        <th>Cats</th>
                         <th>Updated At</th>
-                        <th>Pizza</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
+                    <th>Customer Number</th>
+                        <th>Customer Name</th>
+                        <th>Billing Address</th>
+                        <th>Shipping Address</th>
+                        <th>Phone Number</th>
+                        <th>E-mail Address</th>
                         <th>Created At</th>
-                        <th>Updated At</th>
                         <th>Updated At</th>
                         <th>Edit</th>
                     </tr>
