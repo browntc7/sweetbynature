@@ -2,30 +2,32 @@
 
 @section('content')
 <div class="container">
-<h1>Production orders</h1>
+<h1>Production Orders</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                     </tr>
                 </tfoot>
             </table>
