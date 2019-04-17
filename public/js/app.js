@@ -1837,9 +1837,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      clicks: 1
+    };
+  },
+  methods: {
+    addToLoop: function addToLoop(number) {
+      this.clicks += number;
+    }
   }
 });
 
@@ -36776,97 +36787,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.clicks, function(item) {
+        return _c("div", [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)])
+      }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-plus-square-o addIcon",
+        attrs: { "aria-hidden": "true" },
+        on: {
+          click: function($event) {
+            return _vm.addToLoop(1)
+          }
+        }
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "date", placeholder: "date" }
-        })
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "customerNum" } }, [
+        _vm._v("Customer Number")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "productionOrderNum" } }, [
-          _vm._v("Production Order Number")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "string",
-            id: "productionOrderNum",
-            placeholder: "productionOrderNum"
-          }
-        })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "customerNum", placeholder: "customerNum" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "customerNum" } }, [
-          _vm._v("Customer Number")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "customerNum", placeholder: "customerNum" }
-        })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "item", placeholder: "item" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "lotNumID" } }, [_vm._v("Lot Number ID")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "lotNumID", placeholder: "lotNumID" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "status" } }, [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "status", placeholder: "status" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "item", placeholder: "item" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Input Qty")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "inputQty", placeholder: "inputQty" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "outputQty" } }, [_vm._v("Output Qty")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "outputQty", placeholder: "outputQty" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "reset" } }, [_vm._v("Cancel")]),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Submit")])
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "inputQty", placeholder: "inputQty" }
+      })
     ])
   }
 ]
