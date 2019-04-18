@@ -2,20 +2,51 @@
 
 @section('content')
 <div class="container">
-<h1>Production Orders Print</h1>
-<template>
-    <div class="container">
-    <p>
-       Production Order<input type="text" value="123456"><br> <br>
-       Customer Number  <input type="text" value="123456"><br><br>
-       Lot Number ID  <input type="text" value="123456"><br><br>
-       Status  <input type="text" value="Open/Closed"><br><br>
-       Item <input type="text" value="321"><br><br>
-       Input Qty <input type="text" value="100"><br><br>
-       Output Qty <input type="text" value="250"><br><br>
-    </p>
-    </div>    
-</template>
+<h1>Production Orders</h1>
+<form> 	
+  <div class="form-group row">
+    <label for="productionOrder" class="col-sm-2 col-form-label">Production Order</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="productionOrder" placeholder="productionOrder">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="customerNumber" class="col-sm-2 col-form-label">Customer Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="customerNumber" placeholder="customerNumber">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="lotNumID" class="col-sm-2 col-form-label">Lot Number ID</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="lotNumID" placeholder="lotNumID">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="status" class="col-sm-2 col-form-label">Status</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="status" placeholder="status">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="item" class="col-sm-2 col-form-label">Item</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="item" placeholder="item">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputQty" class="col-sm-2 col-form-label">Input Qty</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputQty" placeholder="inputQty">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="outputQty" class="col-sm-2 col-form-label">Output Qty</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="outputQty" placeholder="outputQty">
+    </div>
+  </div>
+</form>
      <button type="reset">Cancel</button>
      <button type="submit">Submit</button>
 </div>
