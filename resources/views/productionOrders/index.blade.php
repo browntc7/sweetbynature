@@ -16,6 +16,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -28,6 +29,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
+                        <th>Edit</th>
                     </tr>
                 </tfoot>
             </table>
@@ -45,7 +47,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+            <production-order-component></production-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

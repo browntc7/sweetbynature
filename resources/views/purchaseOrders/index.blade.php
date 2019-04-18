@@ -6,28 +6,30 @@
 <h1>Purchase Orders</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <table id="purchaseOrderTable" class="table table-striped" style="width:100%">
+            <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </tfoot>
@@ -46,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <production-order-component></production-order-component>
+            <purchase-order-component></purchase-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
