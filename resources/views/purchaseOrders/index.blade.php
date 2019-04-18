@@ -119,11 +119,11 @@
         colReorder: true
     });
 
-//edit the row
-$('#purchaseOrderTable tbody').on('click', 'i', function () {
-    var data = purchaseOrderTable.row($(this).parents('tr')).data();
-    alert('You clicked on id ' + data['id'] + '\'s edit button');
-});
+    //edit the row
+    $('#purchaseOrderTable tbody').on('click', 'i', function () {
+        var data = purchaseOrderTable.row($(this).parents('tr')).data();
+        alert('You clicked on id ' + data['id'] + '\'s edit button');
+    });
 
 </script>
 @endsection
