@@ -5,50 +5,50 @@
 <h1>Production Orders</h1>
 <form> 	
   <div class="form-group row">
-    <label for="productionOrder" class="col-sm-2 col-form-label">Production Order</label>
-    <div class="col-sm-10">
+    <label for="productionOrder" class="col-sm-offset-2 col-sm-2 col-form-label">Production Order</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="productionOrder" placeholder="productionOrder">
     </div>
   </div>
   <div class="form-group row">
-    <label for="customerNumber" class="col-sm-2 col-form-label">Customer Number</label>
-    <div class="col-sm-10">
+    <label for="customerNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Customer Number</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="customerNumber" placeholder="customerNumber">
     </div>
   </div>
   <div class="form-group row">
-    <label for="lotNumID" class="col-sm-2 col-form-label">Lot Number ID</label>
-    <div class="col-sm-10">
+    <label for="lotNumID" class="col-sm-offset-2 col-sm-2 col-form-label">Lot Number ID</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="lotNumID" placeholder="lotNumID">
     </div>
   </div>
   <div class="form-group row">
-    <label for="status" class="col-sm-2 col-form-label">Status</label>
-    <div class="col-sm-10">
+    <label for="status" class="col-sm-offset-2 col-sm-2 col-form-label">Status</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="status" placeholder="status">
     </div>
   </div>
   <div class="form-group row">
-    <label for="item" class="col-sm-2 col-form-label">Item</label>
-    <div class="col-sm-10">
+    <label for="item" class="col-sm-offset-2 col-sm-2 col-form-label">Item</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="item" placeholder="item">
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputQty" class="col-sm-2 col-form-label">Input Qty</label>
-    <div class="col-sm-10">
+    <label for="inputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Input Qty</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="inputQty" placeholder="inputQty">
     </div>
   </div>
   <div class="form-group row">
-    <label for="outputQty" class="col-sm-2 col-form-label">Output Qty</label>
-    <div class="col-sm-10">
+    <label for="outputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Output Qty</label>
+    <div class="col\-sm\-6">
       <input type="text" class="form-control" id="outputQty" placeholder="outputQty">
     </div>
   </div>
 </form>
-     <button type="reset">Cancel</button>
-     <button type="submit">Submit</button>
+     <button class="btn btn-primary" type="reset">Cancel</button>
+     <button class="btn btn-primary"type="submit">Submit</button>
 </div>
 @endsection
 
