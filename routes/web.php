@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
 //Class put your Web routes below this comment
 Route::view('/table','table');
 Route::view('/purchaseOrders','purchaseOrders/index');
+Route::view('/purchaseOrders/print','purchaseOrders/print');
 Route::view('/purchaseOrders/create','purchaseOrders/create');
 Route::view('/productionOrders','productionOrders/index');
 Route::view('/productionOrders/create','productionOrders/create');
