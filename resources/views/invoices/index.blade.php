@@ -10,6 +10,7 @@
             <table id="myTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
+                        <th>Date</th>        
                         <th>Invoice Number</th>
                         <th>PO#</th>
                         <th>Status</th>      
@@ -18,6 +19,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>Date</th>    
                         <th>Invoice Number</th>
                         <th>PO#</th>
                         <th>Status</th>   
