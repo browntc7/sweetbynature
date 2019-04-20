@@ -79,7 +79,7 @@
 
     var customerTable = $('#customerTable').DataTable({
         ajax: {
-            url: "js/tempData.json", //change to appropriate data call
+            url: "api/customers", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
