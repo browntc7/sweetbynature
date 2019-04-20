@@ -99,10 +99,6 @@
                 'data': 'shipping_address',
                 "defaultContent": ""
             },
-            {
-                'data': 'email',
-                "defaultContent": ""
-            },
             // {
             //     'data': 'created_at',
             //     "defaultContent": ""
@@ -113,6 +109,10 @@
             // },
             {
                 'data': 'phone',
+                "defaultContent": ""
+            },
+            {
+                'data': 'email',
                 "defaultContent": ""
             },
             null,
