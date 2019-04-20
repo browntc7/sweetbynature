@@ -17,6 +17,7 @@
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Edit</th>
+                        <th>Create PO</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -30,6 +31,7 @@
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Edit</th>
+                        <th>Create PO</th>
                     </tr>
                 </tfoot>
             </table>
