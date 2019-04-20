@@ -16,8 +16,9 @@
                         <th>E-mail Address</th>
                         <th>Created At</th>
                         <th>Updated At</th>
-                        <th>Edit</th>
                         <th>Create PO</th>
+                        <th>Edit</th>
+                       
                     </tr>
                 </thead>
                 <tfoot>
@@ -29,9 +30,10 @@
                         <th>Phone Number</th>
                         <th>E-mail Address</th>
                         <th>Created At</th>
-                        <th>Updated At</th>
-                        <th>Edit</th>
+                        <th>Updated At</th> 
                         <th>Create PO</th>
+                        <th>Edit</th>
+                       
                     </tr>
                 </tfoot>
             </table>
