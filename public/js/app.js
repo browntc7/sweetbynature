@@ -1900,9 +1900,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      clicks: 1
+    };
+  },
+  methods: {
+    addToLoop: function addToLoop(number) {
+      this.clicks += number;
+    }
   }
 });
 
@@ -36943,59 +36959,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._l(_vm.clicks, function(item) {
+        return _c("div", [_vm._m(2, true), _vm._v(" "), _vm._m(3, true)])
+      }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-plus-square-o addIcon",
+        attrs: { "aria-hidden": "true" },
+        on: {
+          click: function($event) {
+            return _vm.addToLoop(1)
+          }
+        }
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "customerName" } }, [
-          _vm._v("Customer Name")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "customerName",
-            placeholder: "customerName"
-          }
-        })
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "customerName" } }, [
+        _vm._v("Customer Name")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "customerNum" } }, [_vm._v("Customer #")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "customerNum", placeholder: "customerNum" }
-        })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "customerName",
+          placeholder: "Customer Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "customerNum" } }, [_vm._v("Customer #")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "string", id: "item", placeholder: "item" }
-        })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "customerNum", placeholder: "Customer #" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "quantity" } }, [_vm._v("QTY")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "quantity", placeholder: "quantity" }
-        })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "item", placeholder: "Item" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
       _vm._v(" "),
-      _c("button", { attrs: { type: "reset" } }, [_vm._v("Cancel")]),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Submit")])
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "int", id: "inputQty", placeholder: "Qty" }
+      })
     ])
   }
 ]

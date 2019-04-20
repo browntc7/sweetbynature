@@ -7,6 +7,7 @@ use App;
 
 class ApiController extends Controller
 {
+   
     //get some test thingys
     public function getThings(){
         $things = App\Test::all();
@@ -15,8 +16,14 @@ class ApiController extends Controller
     }
 
     //get some test thingys
+    public function getCustomers(){
+        $things = App\Test::all();
+        $things = "{\"mytestKey\" : 4589}";
+        return $things;
+    }
+
+    //get some test thingys
     public function addCustomer(){
         //Code to add customer
-    
     }
 }

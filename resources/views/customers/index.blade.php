@@ -12,12 +12,13 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Shipping Address</th>
-                        <th>Phone Number</th>
-                        <th>E-mail Address</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                        <th>Edit</th>
+                        <th>Phone</th>
+                        <th>E-mail</th>
+                        <!-- <th>Created At</th>
+                        <th>Updated At</th> -->
                         <th>Create PO</th>
+                        <th>Edit</th>
+                        
                     </tr>
                 </thead>
                 <tfoot>
@@ -26,12 +27,13 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Shipping Address</th>
-                        <th>Phone Number</th>
-                        <th>E-mail Address</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                        <th>Edit</th>
+                        <th>Phone</th>
+                        <th>E-mail</th>
+                        <!-- <th>Created At</th>
+                        <th>Updated At</th> -->
                         <th>Create PO</th>
+                        <th>Edit</th>
+                        
                     </tr>
                 </tfoot>
             </table>
@@ -73,50 +75,61 @@
         },
         columns: [ //change to data model
             {
-                'data': 'id',
+                'data': 'customer_number',
                 "defaultContent": ""
             },
             {
-                'data': 'Value1',
+                'data': 'customer_name',
                 "defaultContent": ""
             },
             {
-                'data': 'Value2',
+                'data': 'billing_address',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'shipping_address',
                 "defaultContent": ""
             },
             {
-                'data': 'Value4',
+                'data': 'email',
                 "defaultContent": ""
             },
+            // {
+            //     'data': 'created_at',
+            //     "defaultContent": ""
+            // },
+            // {
+            //     'data': 'updated_at',
+            //     "defaultContent": ""
+            // },
             {
-                'data': 'created_at',
+                'data': 'phone',
                 "defaultContent": ""
             },
-            {
-                'data': 'updated_at',
-                "defaultContent": ""
-            },
-            {
-                'data': 'updated_at',
-                "defaultContent": ""
-            },
+            null,
             null
         ],
-        "columnDefs": [{
+        "columnDefs": [
+            {
+            // The `data` parameter refers to the data for the cell (defined by the
+            // `data` option, which defaults to the column being worked with, in
+            // this case `data: 0`.
+            "render": function (data, type, row) {
+                return "<i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>";
+            },
+            "targets": 6
+        },
+            {
             // The `data` parameter refers to the data for the cell (defined by the
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 8
+            "targets": 7
         },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 8 }
+        { responsivePriority: 2, targets: 7 }
     ],
         dom: 'Bfrtip',
         buttons: [
