@@ -17,8 +17,8 @@ class ApiController extends Controller
 
     //get some test thingys
     public function getCustomers(){
-        $things = App\Test::all();
-        $things = "{\"mytestKey\" : 4589}";
+        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = array('data' => $things);
         return $things;
     }
 
