@@ -10,7 +10,7 @@
   </div> -->
   <div class="form-group">
     <label for="customerNum">Customer Number</label>
-    <input type="int" class="form-control" id="customerNum" placeholder="customerNum">
+    <input type="int" class="form-control" id="customerNum" placeholder="Customer Number">
   </div>
   <!-- <div class="form-group">
     <label for="lotNumID">Lot Number ID</label>
@@ -23,11 +23,11 @@
  <div v-for="item in clicks">
     <div class="form-group">
       <label for="item">Item</label>
-      <input type="int" class="form-control" id="item" placeholder="item">
+      <input type="int" class="form-control" id="item" placeholder="Item<">
     </div>
     <div class="form-group">
       <label for="inputQty">Qty</label>
-      <input type="int" class="form-control" id="inputQty" placeholder="inputQty">
+      <input type="int" class="form-control" id="inputQty" placeholder="Input Qty">
     </div>
  </div>
   <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true"></i>

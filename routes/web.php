@@ -29,6 +29,8 @@ Route::view('/purchaseOrders/create','purchaseOrders/create');
 Route::view('/productionOrders','productionOrders/index');
 Route::view('/productionOrders/create','productionOrders/create');
 Route::view('/productionOrders/print','productionOrders/print');
+Route::view('/products','products/index');
+Route::view('/products/print','products/print');
 Route::view('/invoices','invoices/index');
 Route::view('/invoices/print','invoices/print');
 Route::view('/products','products/index');

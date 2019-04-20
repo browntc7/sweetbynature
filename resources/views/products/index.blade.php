@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1>Products</h1>
+  <h1>Inventory</h1>
   <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">

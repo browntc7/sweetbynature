@@ -2,20 +2,41 @@
 
 @section('content')
 <div class="container">
-<h1>Products Print</h1>
-<template>
-    <div class="container">
-    <p>
-       Item #<input type="text" value="123456"><br> <br>
-       Description  <input type="text" value="extract"><br><br>
-       Location <input type="text" value="B5"><br><br>
-       Qty <input type="text" value="999"><br><br>
-       Unit Cost <input type="text" value="$9.99"><br><br>       
-    </p>
-    </div>    
-</template>
-     <button type="reset">Cancel</button>
-     <button type="submit">Submit</button>
+<h1>Inventory Edit</h1>
+<form> 	
+  <div class="form-group row">
+    <label for="itemNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Item #</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="itemNumber" placeholder="Item #">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="itemDescription" class="col-sm-offset-2 col-sm-2 col-form-label">Item Description</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="itemDescription" placeholder="Item Description">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="location" class="col-sm-offset-2 col-sm-2 col-form-label">Location</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="location" placeholder="Location">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="qty" class="col-sm-offset-2 col-sm-2 col-form-label">Qty</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="qty" placeholder="Qty">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="unitCost" class="col-sm-offset-2 col-sm-2 col-form-label">Unit Cost</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="unitCost" placeholder="Unit Cost">
+    </div>
+  </div>
+</form>
+     <button class="btn btn-primary" type="reset">Cancel</button>
+     <button class="btn btn-primary"type="submit">Submit</button>
 </div>
 @endsection
 

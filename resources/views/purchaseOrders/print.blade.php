@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<h1>Purchase Orders</h1>
+<h1>Purchase Order Edit</h1>
 <form> 	
   <div class="form-group row">
     <label for="Date" class="col-sm-offset-2 col-sm-2 col-form-label">Date</label>
