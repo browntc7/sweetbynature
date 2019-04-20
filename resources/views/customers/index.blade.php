@@ -63,9 +63,10 @@
 </div>
     <footer class="footer">
       <div class="container">
-        <span class="text-muted">      
-        <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;float:right;" aria-hidden="true"></i></a>
+        <span class="text-muted" style="float:right;">      
+        <a href="#" data-toggle="help" title="Need Help?" data-content="Click 'Create Customer' to add a new customer profile. 
+            Use the 'Search' Bar to search the customer database. Click 'Edit' to change a customer record."> 
+        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
        </span>
       </div>
     </footer>
@@ -160,10 +161,9 @@
         var data = customerTable.row($(this).parents('tr')).data();
         alert('You clicked on id ' + data['id'] + '\'s edit button');
     });
-    //popover
- 
+    //popover 
     $(document).ready(function(){
-        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="help"]').popover();
     });
    
 

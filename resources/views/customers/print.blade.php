@@ -34,9 +34,19 @@
                 </tfoot>
             </table>
         </div>
-    </div>
-</div>
-<customer-print-component></customer-print-component>
+    </div> 
+</div> 
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted" style="float:right;">      
+        <a href="#" data-toggle="help" title="Need Help?" data-content="Use the 'Search' Bar to search the customer database. 
+                Click 'Edit' to change a customer record."> 
+        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
+       </span>
+      </div>
+    </footer>
+
+
 @endsection
 
 @section('footScripts')
@@ -60,5 +70,9 @@
     
     });
 
+     //popover 
+     $(document).ready(function(){
+        $('[data-toggle="help"]').popover();
+    });
 </script>
 @endsection

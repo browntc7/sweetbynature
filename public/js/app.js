@@ -36789,7 +36789,7 @@ var staticRenderFns = [
           attrs: {
             type: "text",
             id: "customerName",
-            placeholder: "customerName"
+            placeholder: "Customer Name"
           }
         })
       ]),
@@ -36799,7 +36799,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control",
-          attrs: { type: "int", id: "address", placeholder: "address" }
+          attrs: { type: "int", id: "address", placeholder: "Address" }
         })
       ]),
       _vm._v(" "),
@@ -36834,7 +36834,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("input", {
           staticClass: "form-control",
-          attrs: { type: "int", id: "sameAddress", placeholder: "sameAddress" }
+          attrs: {
+            type: "int",
+            id: "sameAddress",
+            placeholder: "Set Shipping As Billing"
+          }
         })
       ]),
       _vm._v(" "),
@@ -36907,7 +36911,11 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
-        attrs: { type: "int", id: "customerNum", placeholder: "customerNum" }
+        attrs: {
+          type: "int",
+          id: "customerNum",
+          placeholder: "Customer Number"
+        }
       })
     ])
   },
@@ -36920,7 +36928,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
-        attrs: { type: "int", id: "item", placeholder: "item" }
+        attrs: { type: "int", id: "item", placeholder: "Item<" }
       })
     ])
   },
@@ -36933,7 +36941,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
-        attrs: { type: "int", id: "inputQty", placeholder: "inputQty" }
+        attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" }
       })
     ])
   }
