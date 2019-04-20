@@ -57,17 +57,17 @@
                             <a href="home" class="nav-link">Home</a>
                         </li>
                         <li>
-                            <a href="purchaseOrders" class="nav-link">Purchase Orders</a>
-                        </li>
-                        <li>
-                            <a href="productionOrders" class="nav-link">Production Orders</a>
-                        </li>
-                        <li>
                             <a href="customers" class="nav-link">Customers</a>
                         </li>
                         <li>
+                            <a href="purchaseOrders" class="nav-link">Purchase Orders</a>
+                        </li>
+                        <li>
                             <a href="invoices" class="nav-link">Invoices</a>
-                        </li>                    
+                        </li>  
+                        <li>
+                            <a href="productionOrders" class="nav-link">Production Orders</a>
+                        </li>                 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -2,24 +2,24 @@
 
 @section('content')
 <div class="container">
-<h1>Production Orders</h1>
+<h1>Purchase Orders</h1>
 <form> 	
   <div class="form-group row">
-    <label for="productionOrder" class="col-sm-offset-2 col-sm-2 col-form-label">Production Order</label>
+    <label for="Date" class="col-sm-offset-2 col-sm-2 col-form-label">Date</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="productionOrder" placeholder="productionOrder">
+      <input type="text" class="form-control" id="Date" placeholder="Date">
     </div>
   </div>
   <div class="form-group row">
-    <label for="customerNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Customer Number</label>
+    <label for="purchaseOrder" class="col-sm-offset-2 col-sm-2 col-form-label">Purchase Order #</label>
+    <div class="col\-sm\-6">
+      <input type="text" class="form-control" id="purchaseOrder" placeholder="purchaseOrder">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="customerNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Customer #</label>
     <div class="col\-sm\-6">
       <input type="text" class="form-control" id="customerNumber" placeholder="customerNumber">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="lotNumID" class="col-sm-offset-2 col-sm-2 col-form-label">Lot Number ID</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="lotNumID" placeholder="lotNumID">
     </div>
   </div>
   <div class="form-group row">
@@ -35,15 +35,9 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Input Qty</label>
+    <label for="Qty" class="col-sm-offset-2 col-sm-2 col-form-label">Qty</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="inputQty" placeholder="inputQty">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="outputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Output Qty</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="outputQty" placeholder="outputQty">
+      <input type="text" class="form-control" id="Qty" placeholder="Qty">
     </div>
   </div>
 </form>

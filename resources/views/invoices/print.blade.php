@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-  <h1>Invoices Print View</h1>
-  <template>
+  <h1>Invoice</h1>
     <div class="container">
     <p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p>
     </div>
+    <button class="btn btn-primary"type="submit">Release To Production</button><br>
     <div class="container">
-    <p>Invoice Number
+    <p><br>Invoice Number
     <input type="text" value="123456">
     <br> 
        Created Date  <input type="text" value="MMDDYYYY"><br>
@@ -55,6 +55,5 @@
         </div>
     </div>
 </div>
-</template>
 </div>
 @endsection

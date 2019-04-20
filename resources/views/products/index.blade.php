@@ -15,6 +15,7 @@
                         <th>Unit Cost</th>
                         <th>Date Created</th>
                         <th>Date Updated</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -26,6 +27,7 @@
                         <th>Unit Cost</th>
                         <th>Date Created</th>
                         <th>Date Updated</th>
+                        <th>Edit</th>
                     </tr>
                 </tfoot>
             </table>

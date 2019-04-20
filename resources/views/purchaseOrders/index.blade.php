@@ -9,25 +9,27 @@
             <table id="purchaseOrderTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Value 1</th>
-                        <th>Value 2</th>
-                        <th>Value 3</th>
-                        <th>Value 4</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Date</th>
+                        <th>Production Order Number</th>
+                        <th>Customer Number</th>
+                        <th>Lot Number ID</th>
+                        <th>Status</th>
+                        <th>Item</th>
+                        <th>Input Qty</th>
+                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </tfoot>
@@ -46,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <production-order-component></production-order-component>
+            <purchase-order-component></purchase-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,30 +66,41 @@
 
     var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         ajax: {
-            url: "api/raw/json", //change to appropriate data call
+            url: "js/tempData.json", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
             {
-                'data': 'id'
+                'data': 'id',
+                "defaultContent": ""
             },
             {
-                'data': 'Value1'
+                'data': 'Value1',
+                "defaultContent": ""
             },
             {
-                'data': 'Value2'
+                'data': 'Value2',
+                "defaultContent": ""
             },
             {
-                'data': 'Value3'
+                'data': 'Value3',
+                "defaultContent": ""
             },
             {
-                'data': 'Value4'
+                'data': 'Value4',
+                "defaultContent": ""
             },
             {
-                'data': 'created_at'
+                'data': 'created_at',
+                "defaultContent": ""
             },
             {
-                'data': 'updated_at'
+                'data': 'updated_at',
+                "defaultContent": ""
+            },
+            {
+                'data': 'updated_at',
+                "defaultContent": ""
             },
             null
         ],
@@ -98,10 +111,10 @@
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 7
+            "targets": 8
         },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 7 }
+        { responsivePriority: 2, targets: 8 }
     ],
         dom: 'Bfrtip',
         buttons: [
@@ -119,11 +132,11 @@
         colReorder: true
     });
 
-//edit the row
-$('#purchaseOrderTable tbody').on('click', 'i', function () {
-    var data = purchaseOrderTable.row($(this).parents('tr')).data();
-    alert('You clicked on id ' + data['id'] + '\'s edit button');
-});
+    //edit the row
+    $('#purchaseOrderTable tbody').on('click', 'i', function () {
+        var data = purchaseOrderTable.row($(this).parents('tr')).data();
+        alert('You clicked on id ' + data['id'] + '\'s edit button');
+    });
 
 </script>
 @endsection
