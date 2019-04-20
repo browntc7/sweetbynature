@@ -6,7 +6,7 @@
 <h1>Purchase Orders</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
-            <table id="myTable" class="table table-striped" style="width:100%">
+            <table id="purchaseOrderTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -66,30 +66,41 @@
 
     var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         ajax: {
-            url: "api/raw/json", //change to appropriate data call
+            url: "js/tempData.json", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
             {
-                'data': 'id'
+                'data': 'id',
+                "defaultContent": ""
             },
             {
-                'data': 'Value1'
+                'data': 'Value1',
+                "defaultContent": ""
             },
             {
-                'data': 'Value2'
+                'data': 'Value2',
+                "defaultContent": ""
             },
             {
-                'data': 'Value3'
+                'data': 'Value3',
+                "defaultContent": ""
             },
             {
-                'data': 'Value4'
+                'data': 'Value4',
+                "defaultContent": ""
             },
             {
-                'data': 'created_at'
+                'data': 'created_at',
+                "defaultContent": ""
             },
             {
-                'data': 'updated_at'
+                'data': 'updated_at',
+                "defaultContent": ""
+            },
+            {
+                'data': 'updated_at',
+                "defaultContent": ""
             },
             null
         ],
@@ -100,10 +111,10 @@
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 7
+            "targets": 8
         },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 7 }
+        { responsivePriority: 2, targets: 8 }
     ],
         dom: 'Bfrtip',
         buttons: [
