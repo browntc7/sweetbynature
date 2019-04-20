@@ -61,6 +61,14 @@
         </div>
     </div>
 </div>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">      
+        <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover"> 
+        <i class="fa fa-question-circle" style="font-size:24px;color:red;float:right;" aria-hidden="true"></i></a>
+       </span>
+      </div>
+    </footer>
 @endsection
 
 @section('footScripts')
@@ -152,6 +160,12 @@
         var data = customerTable.row($(this).parents('tr')).data();
         alert('You clicked on id ' + data['id'] + '\'s edit button');
     });
+    //popover
+ 
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+   
 
 </script>
 @endsection
