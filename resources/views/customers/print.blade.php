@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<h1>Customers Print</h1>
+<h1>Customers Edit</h1>
 <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="myTable" class="table table-striped" style="width:100%">
@@ -14,8 +14,8 @@
                         <th>Shipping Address</th>
                         <th>Phone Number</th>
                         <th>E-mail Address</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <!-- <th>Created At</th>
+                        <th>Updated At</th> -->
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -27,8 +27,8 @@
                         <th>Shipping Address</th>
                         <th>Phone Number</th>
                         <th>E-mail Address</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <!-- <th>Created At</th>
+                        <th>Updated At</th> -->
                         <th>Edit</th>
                     </tr>
                 </tfoot>
@@ -55,9 +55,7 @@
                     { 'data': 'registerName' },
                     { 'data': 'Value2' },
                     { 'data': 'Value3' },
-                    { 'data': 'Value4' },
-                    { 'data': 'created_at' },
-                    { 'data': 'updated_at' }
+                    { 'data': 'Value4' }
                 ]
     
     });

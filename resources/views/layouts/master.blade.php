@@ -68,6 +68,9 @@
                         <li>
                             <a href="productionOrders" class="nav-link">Production Orders</a>
                         </li>                 
+                        <li>
+                            <a href="products" class="nav-link">Inventory</a>
+                        </li>                 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
