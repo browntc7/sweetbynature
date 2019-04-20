@@ -84,7 +84,7 @@
         },
         columns: [ //change to data model
             {
-                'data': 'customer_number',
+                'data': 'customer_id',
                 "defaultContent": ""
             },
             {
@@ -124,7 +124,7 @@
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
             "render": function (data, type, row) {
-                return "<i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>";
+                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
             "targets": 6
         },
