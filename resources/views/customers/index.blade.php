@@ -127,11 +127,6 @@
                 text: 'Create Customer',
                 action: function ( e, dt, node, config ) {
                     $("#purchaseOrderModal").modal("show");
-<<<<<<< HEAD
-                    // reset modal vue data
-                    // app.clicks=1;
-=======
->>>>>>> 9d784c8ee0eabd00b45ec69b9a485eb7a9acae83
                 }
             }
         ],
