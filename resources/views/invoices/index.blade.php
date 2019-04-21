@@ -39,24 +39,24 @@ $('#infoMessage').load('info/invoice.html');
 
     var invoicesTable = $('#invoicesTable').DataTable({
         ajax: {
-            url: "js/tempData.json", //change to appropriate data call
+            url: "api/invoices", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
             {
-                'data': 'id',
+                'data': 'created_at',
                 "defaultContent": ""
             },
             {
-                'data': 'Value1',
+                'data': 'invoice_id',
                 "defaultContent": ""
             },
             {
-                'data': 'Value2',
+                'data': 'purchase_order.purchase_order_id',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'status',
                 "defaultContent": ""
             },
             null
@@ -68,6 +68,7 @@ $('#infoMessage').load('info/invoice.html');
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
+            "className" : "text-center",
             "targets": 4
         },
         { responsivePriority: 1, targets: 0 },
