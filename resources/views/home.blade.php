@@ -21,3 +21,14 @@
     </div>
 </div>
 @endsection
+
+
+@section('footScripts')
+
+
+<script>
+    //load info message html
+    $('#infoMessage').load('info/home.html');
+
+</script>
+@endsection

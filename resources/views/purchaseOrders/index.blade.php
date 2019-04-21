@@ -39,7 +39,7 @@
 </div>
 <!-- modal -->
 <div class="modal fade" id="purchaseOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Create Purchase Order</h5>
@@ -48,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <purchase-order-component></purchase-order-component>
+            <purchase-order-component ref="poRef"></purchase-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -57,62 +57,79 @@
         </div>
     </div>
 </div>
-<footer class="footer">
-      <div class="container">
-        <span class="text-muted" style="float:right;">      
-        <a href="#" data-toggle="help" title="Need Help?" data-content=""> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
-       </span>
-      </div>
-    </footer>
+
 @endsection
 
 @section('footScripts')
 
 
 <script>
+//function to get URL parameters
+function getURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}
+//check for url params
+var customerName = getURLParameter('custName');
+var customerID = getURLParameter('custID');
+//show modal if params and fill in input
+if(customerName && customerID){
+$("#purchaseOrderModal").modal("show");
+$("#customerName").val(decodeURIComponent(customerName));
+$("#customerNum").val(decodeURIComponent(customerID));
+}
 
-    var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
-        ajax: {
-            url: "js/tempData.json", //change to appropriate data call
-            dataSrc: "data"
+//load info message html
+$('#infoMessage').load('info/purchaseOrder.html');
+
+// create purchase order table
+var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
+    ajax: {
+        url: "js/tempData.json", //change to appropriate data call
+        dataSrc: "data"
+    },
+    columns: [ //change to data model
+        {
+            'data': 'id',
+            "defaultContent": ""
         },
-        columns: [ //change to data model
-            {
-                'data': 'id',
-                "defaultContent": ""
-            },
-            {
-                'data': 'Value1',
-                "defaultContent": ""
-            },
-            {
-                'data': 'Value2',
-                "defaultContent": ""
-            },
-            {
-                'data': 'Value3',
-                "defaultContent": ""
-            },
-            {
-                'data': 'Value4',
-                "defaultContent": ""
-            },
-            {
-                'data': 'created_at',
-                "defaultContent": ""
-            },
-            {
-                'data': 'updated_at',
-                "defaultContent": ""
-            },
-            {
-                'data': 'updated_at',
-                "defaultContent": ""
-            },
-            null
-        ],
-        "columnDefs": [{
+        {
+            'data': 'Value1',
+            "defaultContent": ""
+        },
+        {
+            'data': 'Value2',
+            "defaultContent": ""
+        },
+        {
+            'data': 'Value3',
+            "defaultContent": ""
+        },
+        {
+            'data': 'Value4',
+            "defaultContent": ""
+        },
+        {
+            'data': 'created_at',
+            "defaultContent": ""
+        },
+        {
+            'data': 'updated_at',
+            "defaultContent": ""
+        },
+        {
+            'data': 'updated_at',
+            "defaultContent": ""
+        },
+        null
+    ],
+    "columnDefs": [{
             // The `data` parameter refers to the data for the cell (defined by the
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
@@ -121,33 +138,35 @@
             },
             "targets": 8
         },
-        { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 8 }
+        {
+            responsivePriority: 1,
+            targets: 0
+        },
+        {
+            responsivePriority: 2,
+            targets: 8
+        }
     ],
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                text: 'Create PO',
-                action: function ( e, dt, node, config ) {
-                    $("#purchaseOrderModal").modal("show");
-                    // reset modal vue data
-                    console.log(clicks);
-                    app.clicks=1;
-                }
-            }
-        ],
-        responsive: true,
-        colReorder: true
-    });
+    dom: 'Bfrtip',
+    buttons: [{
+        text: 'Create PO',
+        attr:  {
+                id: 'purchaseButton'
+            },
+        action: function (e, dt, node, config) {
+            $("#purchaseOrderModal").modal("show");
+            // reset modal vue data
+            app.$refs.poRef.resetWindow();
+        }
+    }],
+    responsive: true,
+    colReorder: true
+});
 
-    //edit the row
-    $('#purchaseOrderTable tbody').on('click', 'i', function () {
-        var data = purchaseOrderTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
-    });
-    //popover 
-    $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
-    });
+//edit the row
+$('#purchaseOrderTable tbody').on('click', 'i', function () {
+    var data = purchaseOrderTable.row($(this).parents('tr')).data();
+    alert('You clicked on id ' + data['id'] + '\'s edit button');
+});
 </script>
 @endsection

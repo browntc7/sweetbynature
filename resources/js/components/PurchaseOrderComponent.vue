@@ -32,13 +32,22 @@
 
 
 <script>
+//fuction to set click count for vue component
+function initialClick() {
+    return {
+        clicks:1
+    }
+}
     export default {
-        data: function(){
-            return {clicks: 1}
+        data: function () {
+            return initialClick();
         },
         methods: {
             addToLoop: function (number) {
                 this.clicks += number
+            },
+            resetWindow: function () {
+                Object.assign(this.$data, initialClick());
             }
         }
     }

@@ -15,7 +15,7 @@ class ApiController extends Controller
         return $things;
     }
 
-    //get some test thingys
+    //get customers
     public function getCustomers(){
         $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
 
@@ -29,10 +29,12 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
-
-    //get some test thingys
-    public function addCustomer(){
-        //Code to add customer
+    //set customer
+    public function setCustomer(Request $request){
+        $test = $request->all();
+        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = array('data' => $things);
+        return $things;
     }
 
     public function getPurchaseOrders(){
@@ -68,7 +70,4 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
-
-
-
 }

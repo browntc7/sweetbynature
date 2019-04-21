@@ -18,10 +18,19 @@
 
 .fa-pencil-square-o{
   font-size: 1.5em;
-  color: rgb(255, 0, 212);
+  color:rgb(0, 38, 255) ;
 }
 
 .fa-pencil-square-o:hover{
+  cursor: pointer;
+  color: black;
+}
+.fa-file-text{
+  font-size: 1.5em;
+  color: rgb(255, 0, 212);
+}
+
+.fa-file-text:hover{
   cursor: pointer;
   color: black;
 }
@@ -34,6 +43,15 @@
   cursor: pointer;
   color: black;
 }
-
-
+.fa-question-circle{
+  font-size: 1.5em;
+  color: rgb(255, 0, 0);
+}
+.fa-question-circle:hover{
+  cursor: pointer;
+  color: black;
+}
+.footer {
+  background-color: white;
+}
 

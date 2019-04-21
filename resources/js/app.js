@@ -22,11 +22,11 @@ const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // add new customer form component - convert to modal?
-Vue.component('new-customer-component', require('./components/NewCustomerComponent.vue').default)
+// Vue.component('new-customer-component', require('./components/NewCustomerComponent.vue').default)
 /* create purchase order form component */
-Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
+// Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
 // create production order form component
-Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
+// Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,3 +37,5 @@ Vue.component('production-order-component', require('./components/ProductionOrde
 const app = new Vue({
   el: '#app'
 })
+
+window.app = app

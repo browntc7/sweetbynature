@@ -2,33 +2,31 @@
 
 @section('content')
 <div class="container">
-    <h1>Production Orders</h1>
-    <div class="row justify-content-center">
+  <h1>Inventory</h1>
+  <div class="row justify-content-center">
         <div class="col-md-12">
-            <table id="productionOrdersTable" class="table table-striped" style="width:100%">
+            <table id="inventoryTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Production Order Number</th>
-                        <th>Customer Number</th>
-                        <th>Lot Number ID</th>
-                        <th>Status</th>
-                        <th>Item</th>
-                        <th>Input Qty</th>
-                        <th>Output Qty</th>
+                        <th>Item Number</th>
+                        <th>Item Description</th>
+                        <th>Location</th>
+                        <th>Qty</th>
+                        <th>Unit Cost</th>
+                        <th>Date Created</th>
+                        <th>Date Updated</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Date</th>
-                        <th>Production Order Number</th>
-                        <th>Customer Number</th>
-                        <th>Lot Number ID</th>
-                        <th>Status</th>
-                        <th>Item</th>
-                        <th>Input Qty</th>
-                        <th>Output Qty</th>
+                    <th>Item Number</th>
+                        <th>Item Description</th>
+                        <th>Location</th>
+                        <th>Qty</th>
+                        <th>Unit Cost</th>
+                        <th>Date Created</th>
+                        <th>Date Updated</th>
                         <th>Edit</th>
                     </tr>
                 </tfoot>
@@ -36,18 +34,18 @@
         </div>
     </div>
 </div>
-
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<!-- modal -->
+<div class="modal fade" id="inventoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Create New Lot</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <production-order-component></production-order-component>
+            <purchase-order-component ref="poRef"></purchase-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -60,12 +58,13 @@
 
 @section('footScripts')
 
+
 <script>
 
     //load info message html
-$('#infoMessage').load('info/productionOrder.html');
+$('#infoMessage').load('info/inventory.html');
 
-    var productionOrdersTable = $('#productionOrdersTable').DataTable({
+    var inventoryTable = $('#inventoryTable').DataTable({
         ajax: {
             url: "js/tempData.json", //change to appropriate data call
             dataSrc: "data"
@@ -88,19 +87,15 @@ $('#infoMessage').load('info/productionOrder.html');
                 "defaultContent": ""
             },
             {
-                'data': 'Value4',
+                'data': 'Value3',
                 "defaultContent": ""
             },
             {
-                'data': 'created_at',
+                'data': 'Value3',
                 "defaultContent": ""
             },
             {
-                'data': 'updated_at',
-                "defaultContent": ""
-            },
-            {
-                'data': 'updated_at',
+                'data': 'Value3',
                 "defaultContent": ""
             },
             null
@@ -112,30 +107,27 @@ $('#infoMessage').load('info/productionOrder.html');
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 8
+            "targets": 7
         },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 8 }
+        { responsivePriority: 2, targets: 7 }
     ],
-        // dom: 'Bfrtip',
-        // buttons: [
-        //     {
-        //         text: 'Create PO',
-        //         action: function ( e, dt, node, config ) {
-        //             $("#purchaseOrderModal").modal("show");
-        //             // reset modal vue data
-        //             console.log(clicks);
-        //             app.clicks=1;
-        //         }
-        //     }
-        // ],
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                text: 'Create Lot',
+                action: function ( e, dt, node, config ) {
+                    $("#inventoryModal").modal("show");
+                }
+            }
+        ],
         responsive: true,
         colReorder: true
     });
 
     //edit the row
-    $('#productionOrdersTable tbody').on('click', 'i', function () {
-        var data = productionOrdersTable.row($(this).parents('tr')).data();
+    $('#inventoryTable tbody').on('click', 'i', function () {
+        var data = inventoryTable.row($(this).parents('tr')).data();
         alert('You clicked on id ' + data['id'] + '\'s edit button');
     });
 

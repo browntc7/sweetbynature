@@ -13551,10 +13551,20 @@ a.text-dark:focus {
 
 .fa-pencil-square-o {
   font-size: 1.5em;
-  color: #ff00d4;
+  color: #0026ff;
 }
 
 .fa-pencil-square-o:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.fa-file-text {
+  font-size: 1.5em;
+  color: #ff00d4;
+}
+
+.fa-file-text:hover {
   cursor: pointer;
   color: black;
 }
@@ -13567,5 +13577,19 @@ a.text-dark:focus {
 .addIcon:hover {
   cursor: pointer;
   color: black;
+}
+
+.fa-question-circle {
+  font-size: 1.5em;
+  color: red;
+}
+
+.fa-question-circle:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.footer {
+  background-color: white;
 }
 
