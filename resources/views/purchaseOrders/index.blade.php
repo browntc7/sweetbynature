@@ -12,11 +12,9 @@
                         <th>Date</th>
                         <th>Production Order Number</th>
                         <th>Customer Number</th>
-                        <th>Lot Number ID</th>
+                        <th>Customer Name</th>
+                        <th>Billing Address</th>
                         <th>Status</th>
-                        <th>Item</th>
-                        <th>Input Qty</th>
-                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -25,11 +23,9 @@
                         <th>Date</th>
                         <th>Production Order Number</th>
                         <th>Customer Number</th>
-                        <th>Lot Number ID</th>
+                        <th>Customer Name</th>
+                        <th>Billing Address</th>
                         <th>Status</th>
-                        <th>Item</th>
-                        <th>Input Qty</th>
-                        <th>Output Qty</th>
                         <th>Edit</th>
                     </tr>
                 </tfoot>
@@ -91,40 +87,32 @@ $('#infoMessage').load('info/purchaseOrder.html');
 // create purchase order table
 var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
     ajax: {
-        url: "js/tempData.json", //change to appropriate data call
+        url: "api/purchaseOrders", //change to appropriate data call
         dataSrc: "data"
     },
     columns: [ //change to data model
-        {
-            'data': 'id',
-            "defaultContent": ""
-        },
-        {
-            'data': 'Value1',
-            "defaultContent": ""
-        },
-        {
-            'data': 'Value2',
-            "defaultContent": ""
-        },
-        {
-            'data': 'Value3',
-            "defaultContent": ""
-        },
-        {
-            'data': 'Value4',
-            "defaultContent": ""
-        },
         {
             'data': 'created_at',
             "defaultContent": ""
         },
         {
-            'data': 'updated_at',
+            'data': 'purchase_order_id',
             "defaultContent": ""
         },
         {
-            'data': 'updated_at',
+            'data': 'customer.customer_id',
+            "defaultContent": ""
+        },
+        {
+            'data': 'customer.customer_name',
+            "defaultContent": ""
+        },
+        {
+            'data': 'customer.billing_address',
+            "defaultContent": ""
+        },
+        {
+            'data': 'status',
             "defaultContent": ""
         },
         null
@@ -136,7 +124,7 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 8
+            "targets": 6
         },
         {
             responsivePriority: 1,
@@ -144,7 +132,7 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         },
         {
             responsivePriority: 2,
-            targets: 8
+            targets: 6
         }
     ],
     dom: 'Bfrtip',
@@ -166,7 +154,7 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
 //edit the row
 $('#purchaseOrderTable tbody').on('click', 'i', function () {
     var data = purchaseOrderTable.row($(this).parents('tr')).data();
-    alert('You clicked on id ' + data['id'] + '\'s edit button');
+    alert('You clicked on id ' + data['purchase_order_id'] + '\'s edit button');
 });
 </script>
 @endsection
