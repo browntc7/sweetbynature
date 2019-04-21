@@ -11,6 +11,7 @@
     * Password: bynature
     * Privilages all
 1. Create a database named sweetbynature
+1. You may need to run composer dumpautoload to get new migration classes
 1. Run ```php artisan migrate:fresh --seed``` to create your database tables and add users.  
 8. Create Magic 
 
