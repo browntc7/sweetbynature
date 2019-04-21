@@ -13551,10 +13551,20 @@ a.text-dark:focus {
 
 .fa-pencil-square-o {
   font-size: 1.5em;
-  color: #ff00d4;
+  color: #0026ff;
 }
 
 .fa-pencil-square-o:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.fa-file-text {
+  font-size: 1.5em;
+  color: #ff00d4;
+}
+
+.fa-file-text:hover {
   cursor: pointer;
   color: black;
 }

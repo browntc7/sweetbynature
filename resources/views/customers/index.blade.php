@@ -2,8 +2,8 @@
  
 @section('content')
 <div class="container">
-<h1>Customers</h1>
-<div class="row justify-content-center">
+    <h1>Customers</h1>
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <table id="customerTable" class="table table-striped" style="width:100%">
                 <thead>
@@ -14,36 +14,29 @@
                         <th>Shipping Address</th>
                         <th>Phone</th>
                         <th>E-mail</th>
-                        <!-- <th>Created At</th>
-                        <th>Updated At</th> -->
                         <th>Create PO</th>
                         <th>Edit</th>
-                        
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                    <th>Customer Number</th>
+                        <th>Customer Number</th>
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Shipping Address</th>
                         <th>Phone</th>
                         <th>E-mail</th>
-                        <!-- <th>Created At</th>
-                        <th>Updated At</th> -->
                         <th>Create PO</th>
                         <th>Edit</th>
-                        
                     </tr>
                 </tfoot>
             </table>
         </div>
     </div>
 </div>
-</div>
 <!-- modal -->
 <div class="modal fade" id="purchaseOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Create New Customer</h5>
@@ -52,11 +45,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <new-customer-component></new-customer-component>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            <customer-component></customer-component>
             </div>
         </div>
     </div>
@@ -116,7 +105,7 @@
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
             "render": function (data, type, row) {
-                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+                return "<i class=\"fa fa-file-text\" aria-hidden=\"true\"></i>";
             },
             "targets": 6
         },
@@ -138,8 +127,11 @@
                 text: 'Create Customer',
                 action: function ( e, dt, node, config ) {
                     $("#purchaseOrderModal").modal("show");
+<<<<<<< HEAD
                     // reset modal vue data
                     // app.clicks=1;
+=======
+>>>>>>> 9d784c8ee0eabd00b45ec69b9a485eb7a9acae83
                 }
             }
         ],
