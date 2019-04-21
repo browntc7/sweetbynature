@@ -25,3 +25,7 @@ Route::get('/user', function (Request $request) {
 Route::get('/raw/json','ApiController@getThings');
 Route::post('/addCustomer','ApiController@addCustomer');
 Route::get('/customers', 'ApiController@getCustomers');
+Route::get('/purchaseOrders', 'ApiController@getPurchaseOrders');
+Route::get('/invoices', 'ApiController@getInvoices');
+Route::get('/productionOrders', 'ApiController@getProductionOrders');
+Route::get('/products', 'ApiController@getProducts');
