@@ -27,21 +27,15 @@
             </table>
         </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted" style="float:right;">      
-        <a href="#" data-toggle="help" title="Need Help?" data-content="Use the 'Search' Bar to search the customer database.
-        Click 'View/Edit' to change an invoice."> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
-       </span>
-      </div>
-    </footer>
 @endsection
 
 @section('footScripts')
 
 
 <script>
+
+    //load info message html
+$('#infoMessage').load('info/invoice.html');
 
     var invoicesTable = $('#invoicesTable').DataTable({
         ajax: {
@@ -99,11 +93,6 @@
     $('#invoicesTable tbody').on('click', 'i', function () {
         var data = invoicesTable.row($(this).parents('tr')).data();
         alert('You clicked on id ' + data['id'] + '\'s edit button');
-    });
-
-     //popover 
-     $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
     });
 
 </script>

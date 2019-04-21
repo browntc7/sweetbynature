@@ -75,10 +75,10 @@ function getURLParameter(sParam) {
         }
     }
 }
-
+//check for url params
 var customerName = getURLParameter('custName');
 var customerID = getURLParameter('custID');
-
+//show modal if params and fill in input
 if(customerName && customerID){
 $("#purchaseOrderModal").modal("show");
 $("#customerName").val(decodeURIComponent(customerName));
