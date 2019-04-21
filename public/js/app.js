@@ -1946,15 +1946,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//fuction to set click count for vue component
+function initialClick() {
+  return {
+    clicks: 1
+  };
+}
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      clicks: 1
-    };
+    return initialClick();
   },
   methods: {
     addToLoop: function addToLoop(number) {
       this.clicks += number;
+    },
+    resetWindow: function resetWindow() {
+      Object.assign(this.$data, initialClick());
     }
   }
 });
@@ -49453,6 +49461,7 @@ files.keys().map(function (key) {
 var app = new Vue({
   el: '#app'
 });
+window.app = app;
 
 /***/ }),
 
