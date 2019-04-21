@@ -99,14 +99,6 @@
                 'data': 'shipping_address',
                 "defaultContent": ""
             },
-            // {
-            //     'data': 'created_at',
-            //     "defaultContent": ""
-            // },
-            // {
-            //     'data': 'updated_at',
-            //     "defaultContent": ""
-            // },
             {
                 'data': 'phone',
                 "defaultContent": ""
@@ -147,8 +139,7 @@
                 action: function ( e, dt, node, config ) {
                     $("#purchaseOrderModal").modal("show");
                     // reset modal vue data
-                    console.log(clicks);
-                    app.clicks=1;
+                    // app.clicks=1;
                 }
             }
         ],
@@ -159,7 +150,7 @@
     //edit the row
     $('#customerTable tbody').on('click', 'i', function () {
         var data = customerTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
+        alert('You clicked on id ' + data['customer_id'] + '\'s edit button');
     });
     //popover 
     $(document).ready(function(){
