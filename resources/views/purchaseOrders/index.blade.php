@@ -64,6 +64,26 @@
 
 
 <script>
+//function to get URL parameters
+function getURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}
+
+var customerName = getURLParameter('custName');
+var customerID = getURLParameter('custID');
+
+if(customerName && customerID){
+$("#purchaseOrderModal").modal("show");
+$("#customerName").val(decodeURIComponent(customerName));
+$("#customerNum").val(decodeURIComponent(customerID));
+}
 
 //load info message html
 $('#infoMessage').load('info/purchaseOrder.html');
