@@ -23,5 +23,9 @@ Route::get('/user', function (Request $request) {
 
 //Class put your API routes below this comment
 Route::get('/raw/json','ApiController@getThings');
-Route::post('/addCustomer','ApiController@setCustomer');
+Route::post('/addCustomer','ApiController@addCustomer');
 Route::get('/customers', 'ApiController@getCustomers');
+Route::get('/purchaseOrders', 'ApiController@getPurchaseOrders');
+Route::get('/invoices', 'ApiController@getInvoices');
+Route::get('/productionOrders', 'ApiController@getProductionOrders');
+Route::get('/products', 'ApiController@getProducts');
