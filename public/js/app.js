@@ -1807,9 +1807,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      fields: {},
+      errors: {}
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.errors = {};
+      axios.post('/api/addCustomer', this.fields).then(function (response) {
+        alert('Message sent!');
+      }).catch(function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors || {};
+        }
+      });
+    }
   }
 });
 
@@ -36788,66 +36808,190 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.submit($event)
+        }
+      }
+    },
+    [
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "customerName" } }, [
           _vm._v("Customer Name")
         ]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.customerName,
+              expression: "fields.customerName"
+            }
+          ],
           staticClass: "form-control",
           attrs: {
             type: "text",
+            name: "customerName",
             id: "customerName",
             placeholder: "Customer Name"
+          },
+          domProps: { value: _vm.fields.customerName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "customerName", $event.target.value)
+            }
           }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "address" } }, [
+        _c("label", { attrs: { for: "shippingStreet" } }, [
           _vm._v("Street - Billing Address")
         ]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.shippingStreet,
+              expression: "fields.shippingStreet"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { type: "int", id: "address", placeholder: "Street" }
+          attrs: {
+            type: "int",
+            name: "shippingStreet",
+            id: "shippingStreet",
+            placeholder: "Street"
+          },
+          domProps: { value: _vm.fields.shippingStreet },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "shippingStreet", $event.target.value)
+            }
+          }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "address" } }, [
+        _c("label", { attrs: { for: "shippingCity" } }, [
           _vm._v("City - Billing Address")
         ]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.shippingCity,
+              expression: "fields.shippingCity"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { type: "int", id: "address", placeholder: "City" }
+          attrs: {
+            type: "int",
+            name: "shippingCity",
+            id: "shippingCity",
+            placeholder: "City"
+          },
+          domProps: { value: _vm.fields.shippingCity },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "shippingCity", $event.target.value)
+            }
+          }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "address" } }, [
+        _c("label", { attrs: { for: "shippingZip" } }, [
           _vm._v("Zip - Billing Address")
         ]),
         _vm._v(" "),
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.shippingZip,
+              expression: "fields.shippingZip"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { type: "int", id: "address", placeholder: "Zip" }
+          attrs: {
+            type: "int",
+            name: "shippingZip",
+            id: "shippingZip",
+            placeholder: "Zip"
+          },
+          domProps: { value: _vm.fields.shippingZip },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "shippingZip", $event.target.value)
+            }
+          }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group form-check" }, [
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.copyShipping,
+              expression: "fields.copyShipping"
+            }
+          ],
           staticClass: "form-check-input",
-          attrs: { type: "checkbox", id: "sameAddress" }
+          attrs: { type: "checkbox", name: "copyShipping", id: "copyShipping" },
+          domProps: {
+            checked: Array.isArray(_vm.fields.copyShipping)
+              ? _vm._i(_vm.fields.copyShipping, null) > -1
+              : _vm.fields.copyShipping
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.fields.copyShipping,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 &&
+                    _vm.$set(_vm.fields, "copyShipping", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.fields,
+                      "copyShipping",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.fields, "copyShipping", $$c)
+              }
+            }
+          }
         }),
         _vm._v(" "),
         _c(
@@ -36857,59 +37001,30 @@ var staticRenderFns = [
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Shipping Address" } }, [
-          _vm._v("Street - Shipping Address")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "int",
-            id: "Shipping Address",
-            placeholder: "Shipping Address"
-          }
-        })
-      ]),
+      _vm._m(0)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Shipping Address" } }, [
-          _vm._v("Street - Shipping Address")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "int",
-            id: "Shipping Address",
-            placeholder: "Shipping Address"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Shipping Address" } }, [
-          _vm._v("Street - Shipping Address")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "int",
-            id: "Shipping Address",
-            placeholder: "Shipping Address"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Phone #" } }, [_vm._v("Phone #")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "string", id: "Phone #", placeholder: "Phone #" }
-        })
-      ])
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save changes")]
+      )
     ])
   }
 ]
