@@ -50,57 +50,50 @@
         </div>
     </div>
 </div>
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted" style="float:right;">      
-        <a href="#" data-toggle="help" title="Need Help?" data-content="Click 'Create Customer' to add a new customer profile. 
-            Use the 'Search' Bar to search the customer database. Click 'Edit' to change a customer record."> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
-       </span>
-      </div>
-    </footer>
 @endsection
 
 @section('footScripts')
 
 
 <script>
+    //load info message html
+    $('#infoMessage').load('info/customer.html');
 
-    var customerTable = $('#customerTable').DataTable({
-        ajax: {
-            url: "api/customers", //change to appropriate data call
-            dataSrc: "data"
+//create customer table
+var customerTable = $('#customerTable').DataTable({
+    ajax: {
+        url: "api/customers", //change to appropriate data call
+        dataSrc: "data"
+    },
+    columns: [ //change to data model
+        {
+            'data': 'customer_id',
+            "defaultContent": ""
         },
-        columns: [ //change to data model
-            {
-                'data': 'customer_id',
-                "defaultContent": ""
-            },
-            {
-                'data': 'customer_name',
-                "defaultContent": ""
-            },
-            {
-                'data': 'billing_address',
-                "defaultContent": ""
-            },
-            {
-                'data': 'shipping_address',
-                "defaultContent": ""
-            },
-            {
-                'data': 'phone',
-                "defaultContent": ""
-            },
-            {
-                'data': 'email',
-                "defaultContent": ""
-            },
-            null,
-            null
-        ],
-        "columnDefs": [
-            {
+        {
+            'data': 'customer_name',
+            "defaultContent": ""
+        },
+        {
+            'data': 'billing_address',
+            "defaultContent": ""
+        },
+        {
+            'data': 'shipping_address',
+            "defaultContent": ""
+        },
+        {
+            'data': 'phone',
+            "defaultContent": ""
+        },
+        {
+            'data': 'email',
+            "defaultContent": ""
+        },
+        null,
+        null
+    ],
+    "columnDefs": [{
             // The `data` parameter refers to the data for the cell (defined by the
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
@@ -109,7 +102,7 @@
             },
             "targets": 6
         },
-            {
+        {
             // The `data` parameter refers to the data for the cell (defined by the
             // `data` option, which defaults to the column being worked with, in
             // this case `data: 0`.
@@ -118,32 +111,32 @@
             },
             "targets": 7
         },
-        { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 7 }
+        {
+            responsivePriority: 1,
+            targets: 0
+        },
+        {
+            responsivePriority: 2,
+            targets: 7
+        }
     ],
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                text: 'Create Customer',
-                action: function ( e, dt, node, config ) {
-                    $("#purchaseOrderModal").modal("show");
-                }
-            }
-        ],
-        responsive: true,
-        colReorder: true
-    });
+    dom: 'Bfrtip',
+    buttons: [{
+        text: 'Create Customer',
+        action: function (e, dt, node, config) {
+            $("#purchaseOrderModal").modal("show");
+        }
+    }],
+    responsive: true,
+    colReorder: true
+});
 
-    //edit the row
-    $('#customerTable tbody').on('click', 'i', function () {
-        var data = customerTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['customer_id'] + '\'s edit button');
-    });
-    //popover 
-    $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
-    });
-   
+//edit the row
+$('#customerTable tbody').on('click', 'i', function () {
+    var data = customerTable.row($(this).parents('tr')).data();
+    alert('You clicked on id ' + data['customer_id'] + '\'s edit button');
+});
+
 
 </script>
 @endsection
