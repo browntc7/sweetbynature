@@ -132,9 +132,14 @@ var customerTable = $('#customerTable').DataTable({
 });
 
 //edit the row
-$('#customerTable tbody').on('click', 'i', function () {
+$('#customerTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
     var data = customerTable.row($(this).parents('tr')).data();
     alert('You clicked on id ' + data['customer_id'] + '\'s edit button');
+});
+//link to purchase order
+$('#customerTable tbody').on('click', 'i.fa.fa-file-text', function () {
+    var data = customerTable.row($(this).parents('tr')).data();
+    window.location = "/purchaseOrders?custID=" + data.customer_id + "&custName=" + data.customer_name;
 });
 
 

@@ -57,20 +57,16 @@
         </div>
     </div>
 </div>
-<footer class="footer">
-      <div class="container">
-        <span class="text-muted" style="float:right;">      
-        <a href="#" data-toggle="help" title="Need Help?" data-content=""> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
-       </span>
-      </div>
-    </footer>
+
 @endsection
 
 @section('footScripts')
 
 
 <script>
+
+ //load info message html
+ $('#infoMessage').load('info/purchaseOrder.html');
 
     var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         ajax: {
@@ -131,7 +127,7 @@
                 action: function ( e, dt, node, config ) {
                     $("#purchaseOrderModal").modal("show");
                     // reset modal vue data
-                    console.log(clicks);
+                    console.log(app.$refs.clicks);
                     app.clicks=1;
                 }
             }
@@ -144,10 +140,6 @@
     $('#purchaseOrderTable tbody').on('click', 'i', function () {
         var data = purchaseOrderTable.row($(this).parents('tr')).data();
         alert('You clicked on id ' + data['id'] + '\'s edit button');
-    });
-    //popover 
-    $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
     });
 </script>
 @endsection

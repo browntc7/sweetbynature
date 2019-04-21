@@ -36962,7 +36962,12 @@ var render = function() {
             }
           ],
           staticClass: "form-check-input",
-          attrs: { type: "checkbox", name: "copyShipping", id: "copyShipping" },
+          attrs: {
+            type: "checkbox",
+            name: "copyShipping",
+            id: "copyShipping",
+            checked: ""
+          },
           domProps: {
             checked: Array.isArray(_vm.fields.copyShipping)
               ? _vm._i(_vm.fields.copyShipping, null) > -1

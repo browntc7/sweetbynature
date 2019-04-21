@@ -18,7 +18,7 @@
             <input type="int" class="form-control" name="shippingZip" id="shippingZip" v-model="fields.shippingZip" placeholder="Zip">
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copyShipping">
+            <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copyShipping" checked>
             <label class="form-check-label" for="sameAddress">Set Shipping As Billing</label>
         </div>
         <!-- <div class="form-group">
