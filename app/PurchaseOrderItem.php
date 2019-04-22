@@ -8,7 +8,7 @@ class PurchaseOrderItem extends Model
 {
     // explictly defining table name
     protected $table = 'purchase_order_items';
-    protected $primaryKey = null;
+    #protected $primaryKey = null; #removed having an issue with seeding db
     public $timestamps = false;
 
     public function purchaseOrder(){
@@ -19,5 +19,5 @@ class PurchaseOrderItem extends Model
         return $this->belongsTo('App\Inventory', 'inventory_id', 'inventory_id');
     }
 
-    
+
 }

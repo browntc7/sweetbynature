@@ -8,8 +8,9 @@ class ProductionOrderItem extends Model
 {
     // explictly defining table name
     protected $table = 'production_order_items';
-    protected $primaryKey = null;
     public $timestamps = false;
+
+    #protected $primaryKey = null; #removed having an issue with seeding db
 
     public function productionOrder(){
         return $this->belongsTo('App\ProductionOrder', 'production_order_id', 'production_order_id');
