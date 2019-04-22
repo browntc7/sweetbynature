@@ -83,6 +83,7 @@ class ApiController extends Controller
             $customer = App\Customer::create($request->all());
             return response()->json($customer, 201);
         }catch(\Exception $e){
+            // send 400 / abort(code,string)
             return abort(400);
         }
     }
