@@ -28,5 +28,7 @@ Route::get('/customers', 'ApiController@getCustomers');
 Route::get('/purchaseOrders', 'ApiController@getPurchaseOrders');
 Route::get('/invoices', 'ApiController@getInvoices');
 Route::get('/invoices/{id}', 'ApiController@getInvoiceDetail');
+Route::get('/inventory', 'ApiController@getInventory');
+Route::get('/inventory/{id}', 'ApiController@getInventoryDetail');
 Route::get('/productionOrders', 'ApiController@getProductionOrders');
 Route::get('/products', 'ApiController@getProducts');

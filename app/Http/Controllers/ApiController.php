@@ -71,6 +71,18 @@ class ApiController extends Controller
         return $things;
     }
 
+    public function getInventory(){
+        $things = App\Inventory::with(['product'])->get();
+        $things = array('data' => $things);
+        return $things;
+    }
+
+    public function getInventoryDetail($id){
+        $things = App\Inventory::with(['product'])->find($id);
+        $things = array('data' => $things);
+        return $things;
+    }
+
     public function getProducts(){
         $things = App\Product::all();
         $things = array('data' => $things);
