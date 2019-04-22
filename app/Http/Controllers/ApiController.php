@@ -66,7 +66,14 @@ class ApiController extends Controller
 
     public function getProductionOrders(){
         #$things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
-
+        $things = App\ProductionOrder::with(['invoice' => function($query){
+            $query->select('invoice_id', 'purchase_order_id');
+        }, 'invoice.purchaseOrder' => function($query){
+            $query->select('purchase_order_id', 'customer_id');
+        }, 'invoice.purchaseOrder.customer' => function($query){
+            $query->select('customer_id', 'customer_name');
+        }])->
+        select('production_order_id', 'invoice_id', 'status', 'quantity', 'created_at')->get();
         $things = array('data' => $things);
         return $things;
     }

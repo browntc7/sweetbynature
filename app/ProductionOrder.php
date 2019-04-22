@@ -13,10 +13,10 @@ class ProductionOrder extends Model
 
 
     public function productionOrderItems(){
-        return $this->hasMany('App\ProductionOrderItems', 'production_order_id', 'production_order_id');
+        return $this->hasMany('App\ProductionOrderItem', 'production_order_id', 'production_order_id');
     }
 
-    public function invoices(){
-        return $this->hasMany('App\Invoices', 'invoice_id', 'invoice_id');
+    public function invoice(){
+        return $this->belongsTo('App\Invoice', 'invoice_id', 'invoice_id');
     }
 }
