@@ -1822,10 +1822,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      fields: {},
+      fields: {
+        copy_shipping: true
+      },
       errors: {}
     };
   },
@@ -37081,12 +37085,7 @@ var render = function() {
             }
           ],
           staticClass: "form-check-input",
-          attrs: {
-            type: "checkbox",
-            name: "copyShipping",
-            id: "copyShipping",
-            checked: ""
-          },
+          attrs: { type: "checkbox", name: "copyShipping", id: "copyShipping" },
           domProps: {
             checked: Array.isArray(_vm.fields.copy_shipping)
               ? _vm._i(_vm.fields.copy_shipping, null) > -1
@@ -37124,6 +37123,134 @@ var render = function() {
           [_vm._v("Set Shipping As Billing")]
         )
       ]),
+      _vm._v(" "),
+      !_vm.fields.copy_shipping
+        ? _c("div", [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "shippingAddress" } }, [
+                _vm._v("Street - Shipping Address")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.shipping_address,
+                    expression: "fields.shipping_address"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "int",
+                  id: "shippingAddress",
+                  placeholder: "Shipping Address"
+                },
+                domProps: { value: _vm.fields.shipping_address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields,
+                      "shipping_address",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "shippingCity" } }, [
+                _vm._v("City - Shipping Address")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.shipping_city,
+                    expression: "fields.shipping_city"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "int", id: "shippingCity", placeholder: "City" },
+                domProps: { value: _vm.fields.shipping_city },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "shipping_city", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "shippingState" } }, [
+                _vm._v("State - Shipping Address")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.shipping_state,
+                    expression: "fields.shipping_state"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "int",
+                  id: "shippingState",
+                  placeholder: "State"
+                },
+                domProps: { value: _vm.fields.shipping_state },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "shipping_state", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "shippingZip" } }, [
+                _vm._v("Zip - Shipping Address")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.shipping_zip,
+                    expression: "fields.shipping_zip"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "int", id: "shippingZip", placeholder: "Zip" },
+                domProps: { value: _vm.fields.shipping_zip },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "shipping_zip", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm._m(0)
     ]
@@ -49638,14 +49765,15 @@ if (token) {
 /*!*******************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue ***!
   \*******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CustomerComponent_vue_vue_type_template_id_9097e738___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=template&id=9097e738& */ "./resources/js/components/CustomerComponent.vue?vue&type=template&id=9097e738&");
 /* harmony import */ var _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -49675,7 +49803,7 @@ component.options.__file = "resources/js/components/CustomerComponent.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

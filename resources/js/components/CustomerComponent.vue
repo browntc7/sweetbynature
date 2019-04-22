@@ -30,25 +30,27 @@
             <input type="int" class="form-control" name="billingZip" id="billingZip" v-model="fields.billing_zip" placeholder="Zip">
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copy_shipping" checked>
+            <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copy_shipping">
             <label class="form-check-label" for="sameAddress">Set Shipping As Billing</label>
         </div>
-        <!-- <div class="form-group">
-            <label for="Shipping Address">Street - Shipping Address</label>
-            <input type="int" class="form-control" id="Shipping Address" placeholder="Shipping Address">
-        </div>
-        <div class="form-group">
-            <label for="Shipping Address">Street - Shipping Address</label>
-            <input type="int" class="form-control" id="Shipping Address" placeholder="Shipping Address">
-        </div>
-        <div class="form-group">
-            <label for="Shipping Address">Street - Shipping Address</label>
-            <input type="int" class="form-control" id="Shipping Address" placeholder="Shipping Address">
-        </div>
-        <div class="form-group">
-            <label for="Phone #">Phone #</label>
-            <input type="string" class="form-control" id="Phone #" placeholder="Phone #">
-        </div> -->
+      <div v-if="!fields.copy_shipping">
+          <div class="form-group">
+              <label for="shippingAddress">Street - Shipping Address</label>
+              <input   type="int" class="form-control" id="shippingAddress" placeholder="Shipping Address" v-model="fields.shipping_address">
+          </div>
+          <div class="form-group">
+              <label for="shippingCity">City - Shipping Address</label>
+              <input type="int" class="form-control" id="shippingCity" placeholder="City" v-model="fields.shipping_city" >
+          </div>
+          <div class="form-group">
+              <label for="shippingState">State - Shipping Address</label>
+              <input type="int" class="form-control" id="shippingState" placeholder="State" v-model="fields.shipping_state" >
+          </div>
+          <div class="form-group">
+              <label for="shippingZip">Zip - Shipping Address</label>
+              <input type="int" class="form-control" id="shippingZip" placeholder="Zip" v-model="fields.shipping_zip" >
+          </div>
+      </div>
         <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -61,7 +63,7 @@
 export default {
   data() {
     return {
-      fields: {},
+      fields: {copy_shipping:true},
       errors: {},
     }
   },
