@@ -83,4 +83,9 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
+
+    public function addCustomer(Request $request){
+        $customer = App\Customer::create($request->all());
+        return response()->json($customer, 201);
+    }
 }
