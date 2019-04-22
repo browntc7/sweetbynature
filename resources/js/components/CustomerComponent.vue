@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label for="billingStreet">Street - Billing Address</label>
-            <input type="int" class="form-control" name="billingStreet" id="billingStreet" v-model="fields.billing_street" placeholder="Street">
+            <input type="int" class="form-control" name="billingStreet" id="billingStreet" v-model="fields.billing_address" placeholder="Street">
         </div>
         <div class="form-group">
             <label for="billingCity">City - Billing Address</label>

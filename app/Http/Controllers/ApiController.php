@@ -84,7 +84,7 @@ class ApiController extends Controller
         //if good send 201 update if bad send 400
         try{
             if ($customer['copy_shipping']){ //copy shipping address into billing address.
-                $customer['shipping_street'] = $customer['billing_street'];
+                $customer['shipping_address'] = $customer['billing_address'];
                 $customer['shipping_city'] = $customer['billing_city'];
                 $customer['shipping_state'] = $customer['billing_state'];
                 $customer['shipping_zip'] = $customer['billing_zip'];

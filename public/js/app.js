@@ -36948,8 +36948,8 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.billing_street,
-              expression: "fields.billing_street"
+              value: _vm.fields.billing_address,
+              expression: "fields.billing_address"
             }
           ],
           staticClass: "form-control",
@@ -36959,13 +36959,13 @@ var render = function() {
             id: "billingStreet",
             placeholder: "Street"
           },
-          domProps: { value: _vm.fields.billing_street },
+          domProps: { value: _vm.fields.billing_address },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "billing_street", $event.target.value)
+              _vm.$set(_vm.fields, "billing_address", $event.target.value)
             }
           }
         })
