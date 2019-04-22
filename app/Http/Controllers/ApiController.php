@@ -29,13 +29,6 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
-    //set customer
-    public function setCustomer(Request $request){
-        $test = $request->all();
-        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
-        $things = array('data' => $things);
-        return $things;
-    }
 
     public function getPurchaseOrders(){
         $things = App\PurchaseOrder::with([
@@ -85,8 +78,13 @@ class ApiController extends Controller
     }
 
     public function addCustomer(Request $request){
-        $customer = App\Customer::create($request->all());
-        return response()->json($customer, 201);
+        //if good send 201 update if bad send 400
+        try{
+            $customer = App\Customer::create($request->all());
+            return response()->json($customer, 201);
+        }catch(\Exception $e){
+            return abort(400);
+        }
     }
 
     public function customerName(){
