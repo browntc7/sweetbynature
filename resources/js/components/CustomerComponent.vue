@@ -64,6 +64,7 @@ export default {
   //data for the vue instance 
   data() {
     return {
+      //set copy_shipping to true so its checked other views need only fields:{}
       fields: {copy_shipping:true},
       errors: {},
     }
@@ -72,12 +73,12 @@ export default {
     submit() {
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(response => {
+        //hide the modal on the view
       $("#purchaseOrderModal").modal("hide");
+      //reload table data and sort using the table name variable
        customerTable.ajax.reload().order([0,"desc"]);
       }).catch(error => {
-        if (error.response.status === 422) {
-          this.errors = error.response.data.errors || {};
-        }
+        alert("The Transaction Failed on the Server")
       });
     },
   },

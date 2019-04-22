@@ -1828,6 +1828,7 @@ __webpack_require__.r(__webpack_exports__);
   //data for the vue instance 
   data: function data() {
     return {
+      //set copy_shipping to true so its checked other views need only fields:{}
       fields: {
         copy_shipping: true
       },
@@ -1836,16 +1837,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      var _this = this;
-
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(function (response) {
-        $("#purchaseOrderModal").modal("hide");
+        //hide the modal on the view
+        $("#purchaseOrderModal").modal("hide"); //reload table data and sort using the table name variable
+
         customerTable.ajax.reload().order([0, "desc"]);
       }).catch(function (error) {
-        if (error.response.status === 422) {
-          _this.errors = error.response.data.errors || {};
-        }
+        alert("The Transaction Failed on the Server");
       });
     }
   }
