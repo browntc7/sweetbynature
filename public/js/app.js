@@ -1810,6 +1810,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -36837,8 +36849,8 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.customerName,
-              expression: "fields.customerName"
+              value: _vm.fields.customer_name,
+              expression: "fields.customer_name"
             }
           ],
           staticClass: "form-control",
@@ -36848,20 +36860,86 @@ var render = function() {
             id: "customerName",
             placeholder: "Customer Name"
           },
-          domProps: { value: _vm.fields.customerName },
+          domProps: { value: _vm.fields.customer_name },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "customerName", $event.target.value)
+              _vm.$set(_vm.fields, "customer_name", $event.target.value)
             }
           }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "shippingStreet" } }, [
+        _c("label", { attrs: { for: "customerEmail" } }, [
+          _vm._v("Customer Email")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.email,
+              expression: "fields.email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "customerEmail",
+            id: "customerEmail",
+            placeholder: "Customer Email"
+          },
+          domProps: { value: _vm.fields.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "email", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "customerPhone" } }, [
+          _vm._v("Customer Phone")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.phone,
+              expression: "fields.phone"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "customerPhone",
+            id: "customerPhone",
+            placeholder: "Customer Phone"
+          },
+          domProps: { value: _vm.fields.phone },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "phone", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "billingStreet" } }, [
           _vm._v("Street - Billing Address")
         ]),
         _vm._v(" "),
@@ -36870,31 +36948,31 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.shippingStreet,
-              expression: "fields.shippingStreet"
+              value: _vm.fields.billing_address,
+              expression: "fields.billing_address"
             }
           ],
           staticClass: "form-control",
           attrs: {
             type: "int",
-            name: "shippingStreet",
-            id: "shippingStreet",
+            name: "billingStreet",
+            id: "billingStreet",
             placeholder: "Street"
           },
-          domProps: { value: _vm.fields.shippingStreet },
+          domProps: { value: _vm.fields.billing_address },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "shippingStreet", $event.target.value)
+              _vm.$set(_vm.fields, "billing_address", $event.target.value)
             }
           }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "shippingCity" } }, [
+        _c("label", { attrs: { for: "billingCity" } }, [
           _vm._v("City - Billing Address")
         ]),
         _vm._v(" "),
@@ -36903,31 +36981,64 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.shippingCity,
-              expression: "fields.shippingCity"
+              value: _vm.fields.billing_city,
+              expression: "fields.billing_city"
             }
           ],
           staticClass: "form-control",
           attrs: {
             type: "int",
-            name: "shippingCity",
-            id: "shippingCity",
+            name: "billingCity",
+            id: "billingCity",
             placeholder: "City"
           },
-          domProps: { value: _vm.fields.shippingCity },
+          domProps: { value: _vm.fields.billing_city },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "shippingCity", $event.target.value)
+              _vm.$set(_vm.fields, "billing_city", $event.target.value)
             }
           }
         })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "shippingZip" } }, [
+        _c("label", { attrs: { for: "billingState" } }, [
+          _vm._v("State - Billing Address")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.billing_state,
+              expression: "fields.billing_state"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "int",
+            name: "billingState",
+            id: "billingState",
+            placeholder: "State"
+          },
+          domProps: { value: _vm.fields.billing_state },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "billing_state", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "billingZip" } }, [
           _vm._v("Zip - Billing Address")
         ]),
         _vm._v(" "),
@@ -36936,24 +37047,24 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.shippingZip,
-              expression: "fields.shippingZip"
+              value: _vm.fields.billing_zip,
+              expression: "fields.billing_zip"
             }
           ],
           staticClass: "form-control",
           attrs: {
             type: "int",
-            name: "shippingZip",
-            id: "shippingZip",
+            name: "billingZip",
+            id: "billingZip",
             placeholder: "Zip"
           },
-          domProps: { value: _vm.fields.shippingZip },
+          domProps: { value: _vm.fields.billing_zip },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "shippingZip", $event.target.value)
+              _vm.$set(_vm.fields, "billing_zip", $event.target.value)
             }
           }
         })
@@ -36965,8 +37076,8 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.copyShipping,
-              expression: "fields.copyShipping"
+              value: _vm.fields.copy_shipping,
+              expression: "fields.copy_shipping"
             }
           ],
           staticClass: "form-check-input",
@@ -36977,13 +37088,13 @@ var render = function() {
             checked: ""
           },
           domProps: {
-            checked: Array.isArray(_vm.fields.copyShipping)
-              ? _vm._i(_vm.fields.copyShipping, null) > -1
-              : _vm.fields.copyShipping
+            checked: Array.isArray(_vm.fields.copy_shipping)
+              ? _vm._i(_vm.fields.copy_shipping, null) > -1
+              : _vm.fields.copy_shipping
           },
           on: {
             change: function($event) {
-              var $$a = _vm.fields.copyShipping,
+              var $$a = _vm.fields.copy_shipping,
                 $$el = $event.target,
                 $$c = $$el.checked ? true : false
               if (Array.isArray($$a)) {
@@ -36991,17 +37102,17 @@ var render = function() {
                   $$i = _vm._i($$a, $$v)
                 if ($$el.checked) {
                   $$i < 0 &&
-                    _vm.$set(_vm.fields, "copyShipping", $$a.concat([$$v]))
+                    _vm.$set(_vm.fields, "copy_shipping", $$a.concat([$$v]))
                 } else {
                   $$i > -1 &&
                     _vm.$set(
                       _vm.fields,
-                      "copyShipping",
+                      "copy_shipping",
                       $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                     )
                 }
               } else {
-                _vm.$set(_vm.fields, "copyShipping", $$c)
+                _vm.$set(_vm.fields, "copy_shipping", $$c)
               }
             }
           }
@@ -49748,8 +49859,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\routetest\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\routetest\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
