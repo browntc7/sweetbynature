@@ -36863,7 +36863,8 @@ var render = function() {
             type: "text",
             name: "customerName",
             id: "customerName",
-            placeholder: "Customer Name"
+            placeholder: "Customer Name",
+            required: ""
           },
           domProps: { value: _vm.fields.customer_name },
           on: {
@@ -36894,9 +36895,11 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "text",
+            pattern: "",
             name: "customerEmail",
             id: "customerEmail",
-            placeholder: "Customer Email"
+            placeholder: "Customer Email",
+            required: ""
           },
           domProps: { value: _vm.fields.email },
           on: {
@@ -36960,6 +36963,7 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "int",
+            max: "30",
             name: "billingStreet",
             id: "billingStreet",
             placeholder: "Street"
@@ -37059,6 +37063,7 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "int",
+            pattern: "\\d{5}",
             name: "billingZip",
             id: "billingZip",
             placeholder: "Zip"
@@ -49766,15 +49771,14 @@ if (token) {
 /*!*******************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CustomerComponent_vue_vue_type_template_id_9097e738___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=template&id=9097e738& */ "./resources/js/components/CustomerComponent.vue?vue&type=template&id=9097e738&");
 /* harmony import */ var _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -49804,7 +49808,7 @@ component.options.__file = "resources/js/components/CustomerComponent.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

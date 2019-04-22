@@ -2,127 +2,124 @@
 
 @section('content')
 <div class="container">
-  <h1>Invoice Edit</h1>
-  <b><p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p><b>
-  <button class="btn btn-primary"type="submit">Release To Production</button><br><br>
-  <form> 	
-  <div class="form-group row">
-    <label for="invoiceNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Invoice Number</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="invoiceNumber" placeholder="123456">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="createDate" class="col-sm-offset-2 col-sm-2 col-form-label">Date Created</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="createDate" placeholder="MMDDYYYY">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="productionOrderNum" class="col-sm-offset-2 col-sm-2 col-form-label">Purchase Order #</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="productionOrderNum" placeholder="123456">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="dueDate" class="col-sm-offset-2 col-sm-2 col-form-label">Due Date</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="dueDate" placeholder="MMDDYYYY">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="amountDue" class="col-sm-offset-2 col-sm-2 col-form-label">Amount Due $</label>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="amountDue" placeholder="0.00">
-    </div>
-  </div>
-  <p>BILL TO: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**************&nbsp;&nbsp;&nbsp;&nbsp;SHIP TO: <p>
-  <!--Customer Name -->
-  <div class="form-group row">
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
-    </div>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
-    </div>
-  </div> 
-  <!--Address-->
-  <div class="form-group row">
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="billingAddress" placeholder="Billing Street">
-    </div>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="shippingAddress" placeholder="Shipping Street">
-    </div>
-  </div> 
-  <!--City-->
-  <div class="form-group row">
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="city" placeholder="City">
-    </div>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="city" placeholder="City">
-    </div>
-  </div>  
-  <!--State-->
-  <div class="form-group row">
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="state" placeholder="State">
-    </div>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="state" placeholder="State">
-    </div>
-  </div> 
-   <!--Zip Code-->
-   <div class="form-group row">
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="zip" placeholder="Zip Code">
-    </div>
-    <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="zip" placeholder="Zip Code">
-    </div>
-  </div> 
-<!--popover-->
-<footer class="footer">
-      <div class="container">
-        <span class="text-muted" style="float:right;">      
-        <a href="#" data-toggle="help" title="Need Help?" data-content="Use the 'Search' Bar to search the customer database.
-        Click 'View/Edit' to change an invoice."> 
-        <i class="fa fa-question-circle" style="font-size:24px;color:red;" aria-hidden="true"></i></a>
-       </span>
-      </div>
-    </footer>
-<!--invoice table-->
-    <div class="container">
-     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <table id="myTable" class="table table-striped" style="width:100%">
-                <thead>
-                <tr>
-                        <th>Description</th>
-                        <th>Qty</th>
-                        <th>Price</th>  
-                        <th>Amount</th>                       
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Description</th>
-                        <th>Qty</th>
-                        <th>Price</th>  
-                        <th>Amount</th>
-                    </tr>
-                </tfoot>
-            </table>
+    <h1>Invoice Edit</h1>
+    <b>
+        <p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p>
+    </b>
+    <button class="btn btn-primary" type="submit">Release To Production</button><br><br>
+    <form>
+        <div class="form-group row">
+            <label for="invoiceNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Invoice Number</label>
+            <div class="col\-sm\-6">
+                <input type="text" class="form-control" id="invoiceNumber" placeholder="123456">
+            </div>
         </div>
-    </div>
-</div>
-</div>
-@endsection
+        <div class="form-group row">
+            <label for="createDate" class="col-sm-offset-2 col-sm-2 col-form-label">Date Created</label>
+            <div class="col\-sm\-6">
+                <input type="text" class="form-control" id="createDate" placeholder="MMDDYYYY">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="productionOrderNum" class="col-sm-offset-2 col-sm-2 col-form-label">Purchase Order
+                #</label>
+            <div class="col\-sm\-6">
+                <input type="text" class="form-control" id="productionOrderNum" placeholder="123456">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="dueDate" class="col-sm-offset-2 col-sm-2 col-form-label">Due Date</label>
+            <div class="col\-sm\-6">
+                <input type="text" class="form-control" id="dueDate" placeholder="MMDDYYYY">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="amountDue" class="col-sm-offset-2 col-sm-2 col-form-label">Amount Due $</label>
+            <div class="col\-sm\-6">
+                <input type="text" class="form-control" id="amountDue" placeholder="0.00">
+            </div>
+        </div>
+        <p>BILL TO: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**************&nbsp;&nbsp;&nbsp;&nbsp;SHIP TO: <p>
+                <!--Customer Name -->
+                <div class="form-group row">
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
+                    </div>
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="customerName" placeholder="Customer Name">
+                    </div>
+                </div>
+                <!--Address-->
+                <div class="form-group row">
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="billingAddress" placeholder="Billing Street">
+                    </div>
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="shippingAddress" placeholder="Shipping Street">
+                    </div>
+                </div>
+                <!--City-->
+                <div class="form-group row">
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                </div>
+                <!--State-->
+                <div class="form-group row">
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="state" placeholder="State">
+                    </div>
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="state" placeholder="State">
+                    </div>
+                </div>
+                <!--Zip Code-->
+                <div class="form-group row">
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="zip" placeholder="Zip Code">
+                    </div>
+                    <div class="col\-sm\-6">
+                        <input type="text" class="form-control" id="zip" placeholder="Zip Code">
+                    </div>
+                </div>
 
-<!-- javascript
-    //popover 
-     $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
-    });
--->
+                <!--invoice table-->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <table id="myTable" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </form>
+</div>
+
+@endsection
+@section('footScripts')
+
+
+<script>
+    //load info message html
+    $('#infoMessage').load('info/invoicePrint.html');
+</script>
+@endsection

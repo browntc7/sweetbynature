@@ -135,18 +135,18 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
             targets: 6
         }
     ],
-    dom: 'Bfrtip',
-    buttons: [{
-        text: 'Create PO',
-        attr:  {
-                id: 'purchaseButton'
-            },
-        action: function (e, dt, node, config) {
-            $("#purchaseOrderModal").modal("show");
-            // reset modal vue data
-            app.$refs.poRef.resetWindow();
-        }
-    }],
+    // dom: 'Bfrtip',
+    // buttons: [{
+    //     text: 'Create PO',
+    //     attr:  {
+    //             id: 'purchaseButton'
+    //         },
+    //     action: function (e, dt, node, config) {
+    //         $("#purchaseOrderModal").modal("show");
+    //         // reset modal vue data
+    //         app.$refs.poRef.resetWindow();
+    //     }
+    // }],
     responsive: true,
     colReorder: true
 });
