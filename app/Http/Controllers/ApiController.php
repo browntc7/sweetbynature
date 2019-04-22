@@ -18,14 +18,6 @@ class ApiController extends Controller
     //get customers
     public function getCustomers(){
         $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
-
-        // #tyler learning stuff
-
-        // $things = App\Customer::with(['purchaseOrder' => function($query){
-        //     $query->select('customer_id', 'purchase_order_id', 'status');
-        // }])->select('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone')->get();
-
-
         $things = array('data' => $things);
         return $things;
     }
@@ -34,20 +26,14 @@ class ApiController extends Controller
         $things = App\PurchaseOrder::with([
         'customer' => function($query){
             $query->select('customer_id', 'customer_name', 'billing_address');
-        } //, 
-        // 'purchaseOrderItems' => function($query){
-        //     $query->select('purchase_order_id', 'inventory_id', 'qty');
-        // },
-        // 'purchaseOrderItems.inventory',
-        // 'purchaseOrderItems.inventory.product'
-        ])
+        }])
         ->select('purchase_order_id', 'customer_id','status','created_at')->get();
         $things = array('data' => $things);
         return $things;
     }
 
     public function getInvoices(){
-        #$things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+
         $things = App\Invoice::with(['purchaseOrder' => function($query){
             $query->select('purchase_order_id', 'customer_id');
         }, 'purchaseOrder.customer' => function($query){
@@ -58,7 +44,6 @@ class ApiController extends Controller
     }
 
     public function getProductionOrders(){
-        #$things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
         $things = App\ProductionOrder::with(['invoice' => function($query){
             $query->select('invoice_id', 'purchase_order_id');
         }, 'invoice.purchaseOrder' => function($query){
@@ -118,7 +103,6 @@ class ApiController extends Controller
     }
 
     public function getInvoiceDetail($id){
-        #$things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
         $things = App\Invoice::with(['purchaseOrder', 'purchaseOrder.purchaseOrderItems', 'purchaseOrder.customer', 'purchaseOrder.purchaseOrderItems.inventory.product'])->find($id);
         $things = array('data' => $things);
         return $things;
