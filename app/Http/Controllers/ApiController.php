@@ -78,30 +78,23 @@ class ApiController extends Controller
     }
 
     public function addCustomer(Request $request){
-        // $customer = App\Customer::create($request->all());
-        // return response()->json($customer, 201);
-
+        //set request data to customer
+        $customer = $request->all();
 
         //if good send 201 update if bad send 400
         try{
-            if ($request->copy_address){ ##copy shipping address into billing address.
-                $customer = new App\Customer;
-                $customer->customer_name = $request->customer_name;
-                $customer->billing_address = $request->billing_address;
-                $customer->billing_city = $request->billing_city;
-                $customer->billing_state = $request->billing_state;
-                $customer->billing_zip = $request->billing_zip;
-                $customer->shipping_address = $request->billing_address;
-                $customer->shipping_city = $request->billing_city;
-                $customer->shipping_state = $request->billing_state;
-                $customer->shipping_zip = $request->billing_zip;
-                $customer->email = $request->email;
-                $customer->phone = $request->phone;
-                $customer->save();
-            } else {
-                $customer = App\Customer::create($request->all());
-            }
-            return response()->json($customer, 201);
+            if ($customer['copy_shipping']){ //copy shipping address into billing address.
+                $customer['shipping_street'] = $customer['billing_street'];
+                $customer['shipping_city'] = $customer['billing_city'];
+                $customer['shipping_state'] = $customer['billing_state'];
+                $customer['shipping_zip'] = $customer['billing_zip'];
+                unset($customer['copy_shipping']);
+                } 
+            //submit customer
+            $res = App\Customer::create($customer);
+            //return good response
+            return response()->json($res, 201);
+
         }catch(\Exception $e){
             // send 400 / abort(code,string)
             return abort(400);
