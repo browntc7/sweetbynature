@@ -85,11 +85,31 @@ class ApiController extends Controller
     }
 
     public function addCustomer(Request $request){
-        $customer = App\Customer::create($request->all());
+        // $customer = App\Customer::create($request->all());
+        // return response()->json($customer, 201);
+
+        if ($request->copy_address){ ##copy shipping address into billing address.
+            $customer = new App\Customer;
+            $customer->customer_name = $request->customer_name;
+            $customer->billing_address = $request->billing_address;
+            $customer->billing_city = $request->billing_city;
+            $customer->billing_state = $request->billing_state;
+            $customer->billing_zip = $request->billing_zip;
+            $customer->shipping_address = $request->billing_address;
+            $customer->shipping_city = $request->billing_city;
+            $customer->shipping_state = $request->billing_state;
+            $customer->shipping_zip = $request->billing_zip;
+            $customer->email = $request->email;
+            $customer->phone = $request->phone;
+            $customer->save();
+        } else {
+            $customer = App\Customer::create($request->all());
+        }
         return response()->json($customer, 201);
     }
 
-    public function customerName(){
-        
+    public function customerName(Request $request){
+
+
     }
 }
