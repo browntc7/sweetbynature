@@ -110,6 +110,12 @@ class ApiController extends Controller
 
     public function customerName(Request $request){
 
+    }
 
+    public function getInvoiceDetail($id){
+        #$things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = App\Invoice::with(['purchaseOrder', 'purchaseOrder.purchaseOrderItems', 'purchaseOrder.customer', 'purchaseOrder.purchaseOrderItems.inventory.product'])->find($id);
+        $things = array('data' => $things);
+        return $things;
     }
 }
