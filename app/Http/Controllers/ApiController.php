@@ -79,7 +79,7 @@ class ApiController extends Controller
     }
 
     public function getProducts(){
-        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = App\Product::all();
         $things = array('data' => $things);
         return $things;
     }
