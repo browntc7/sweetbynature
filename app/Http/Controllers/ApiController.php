@@ -29,13 +29,6 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
-    //set customer
-    public function setCustomer(Request $request){
-        $test = $request->all();
-        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
-        $things = array('data' => $things);
-        return $things;
-    }
 
     public function getPurchaseOrders(){
         $things = App\PurchaseOrder::with([
@@ -88,24 +81,31 @@ class ApiController extends Controller
         // $customer = App\Customer::create($request->all());
         // return response()->json($customer, 201);
 
-        if ($request->copy_address){ ##copy shipping address into billing address.
-            $customer = new App\Customer;
-            $customer->customer_name = $request->customer_name;
-            $customer->billing_address = $request->billing_address;
-            $customer->billing_city = $request->billing_city;
-            $customer->billing_state = $request->billing_state;
-            $customer->billing_zip = $request->billing_zip;
-            $customer->shipping_address = $request->billing_address;
-            $customer->shipping_city = $request->billing_city;
-            $customer->shipping_state = $request->billing_state;
-            $customer->shipping_zip = $request->billing_zip;
-            $customer->email = $request->email;
-            $customer->phone = $request->phone;
-            $customer->save();
-        } else {
-            $customer = App\Customer::create($request->all());
+
+        //if good send 201 update if bad send 400
+        try{
+            if ($request->copy_address){ ##copy shipping address into billing address.
+                $customer = new App\Customer;
+                $customer->customer_name = $request->customer_name;
+                $customer->billing_address = $request->billing_address;
+                $customer->billing_city = $request->billing_city;
+                $customer->billing_state = $request->billing_state;
+                $customer->billing_zip = $request->billing_zip;
+                $customer->shipping_address = $request->billing_address;
+                $customer->shipping_city = $request->billing_city;
+                $customer->shipping_state = $request->billing_state;
+                $customer->shipping_zip = $request->billing_zip;
+                $customer->email = $request->email;
+                $customer->phone = $request->phone;
+                $customer->save();
+            } else {
+                $customer = App\Customer::create($request->all());
+            }
+            return response()->json($customer, 201);
+        }catch(\Exception $e){
+            // send 400 / abort(code,string)
+            return abort(400);
         }
-        return response()->json($customer, 201);
     }
 
     public function customerName(Request $request){
