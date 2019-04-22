@@ -61,6 +61,7 @@
 </template>
 <script>
 export default {
+  //data for the vue instance 
   data() {
     return {
       fields: {copy_shipping:true},
