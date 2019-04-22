@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <label for="customerEmail">Customer Email</label>
-            <input type="text" pattern="" class="form-control" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email" required>
+            <input type="text"  class="form-control" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email" required>
         </div>
         <div class="form-group">
             <label for="customerPhone">Customer Phone</label>
@@ -72,7 +72,8 @@ export default {
     submit() {
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(response => {
-        alert('Message sent!');
+      $("#purchaseOrderModal").modal("hide");
+       customerTable.ajax.reload().order([0,"desc"]);
       }).catch(error => {
         if (error.response.status === 422) {
           this.errors = error.response.data.errors || {};

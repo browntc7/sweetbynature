@@ -1840,7 +1840,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(function (response) {
-        alert('Message sent!');
+        $("#purchaseOrderModal").modal("hide");
+        customerTable.ajax.reload().order([0, "desc"]);
       }).catch(function (error) {
         if (error.response.status === 422) {
           _this.errors = error.response.data.errors || {};
@@ -36895,7 +36896,6 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "text",
-            pattern: "",
             name: "customerEmail",
             id: "customerEmail",
             placeholder: "Customer Email",
