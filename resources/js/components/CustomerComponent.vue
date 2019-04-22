@@ -2,11 +2,11 @@
     <form @submit.prevent="submit">
         <div class="form-group">
             <label for="customerName">Customer Name</label>
-            <input type="text" class="form-control" name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name">
+            <input type="text" class="form-control" name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
         </div>
         <div class="form-group">
             <label for="customerEmail">Customer Email</label>
-            <input type="text" class="form-control" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email">
+            <input type="text" pattern="" class="form-control" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email" required>
         </div>
         <div class="form-group">
             <label for="customerPhone">Customer Phone</label>
@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label for="billingStreet">Street - Billing Address</label>
-            <input type="int" class="form-control" name="billingStreet" id="billingStreet" v-model="fields.billing_address" placeholder="Street">
+            <input type="int" class="form-control" max="30" name="billingStreet" id="billingStreet" v-model="fields.billing_address" placeholder="Street">
         </div>
         <div class="form-group">
             <label for="billingCity">City - Billing Address</label>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="billingZip">Zip - Billing Address</label>
-            <input type="int" class="form-control" name="billingZip" id="billingZip" v-model="fields.billing_zip" placeholder="Zip">
+            <input type="int" pattern="\d{5}" class="form-control" name="billingZip" id="billingZip" v-model="fields.billing_zip" placeholder="Zip">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copy_shipping">

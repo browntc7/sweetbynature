@@ -134,7 +134,12 @@ var customerTable = $('#customerTable').DataTable({
 //edit the row
 $('#customerTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
     var data = customerTable.row($(this).parents('tr')).data();
-    alert('You clicked on id ' + data['customer_id'] + '\'s edit button');
+    $("#purchaseOrderModal").modal("show");
+    $("#customerName").val(data.customer_name);
+    $("#customerEmail").val(data.customer_email);
+    $("#customerName").val(data.customer_name);
+    $("#customerName").val(data.customer_name);
+    $("#customerName").val(data.customer_name);
 });
 //link to purchase order
 $('#customerTable tbody').on('click', 'i.fa.fa-file-text', function () {
