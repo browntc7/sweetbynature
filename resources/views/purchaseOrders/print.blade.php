@@ -60,6 +60,8 @@
 
 <script>
     
+    $('#infoMessage').load('info/purchaseOrderPrint.html');
+    
     $('#myTable').DataTable({
         ajax: {
         url:"api/raw/json",//change to appropriate data call
@@ -76,10 +78,7 @@
                 ]
     
     });
-     //popover 
-     $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
-    });
+  
 
 </script>
 @endsection

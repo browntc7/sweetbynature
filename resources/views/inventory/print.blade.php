@@ -53,6 +53,9 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
 
 <script>
+
+  //load info message html
+$('#infoMessage').load('info/inventoryPrint.html');
     
     $('#myTable').DataTable({
         ajax: {
@@ -70,10 +73,7 @@
                 ]
     
     });
-     //popover 
-     $(document).ready(function(){
-        $('[data-toggle="help"]').popover();
-    });
+  
 
 </script>
 @endsection
