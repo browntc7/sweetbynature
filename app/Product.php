@@ -12,6 +12,6 @@ class Product extends Model
     protected $primaryKey = 'product_id';
 
     public function inventory(){
-        return $this->hasMany('App\Inventory', 'product_id', 'product_id');
+        return $this->hasOne('App\Inventory', 'product_id', 'product_id');
     }
 }
