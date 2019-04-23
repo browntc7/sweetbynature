@@ -43,15 +43,35 @@ class ApiController extends Controller
         return $things;
     }
 
+    // public function getProductionOrders(){
+    //     $things = App\ProductionOrder::with(['invoice' => function($query){
+    //         $query->select('invoice_id', 'purchase_order_id');
+    //     }, 'invoice.purchaseOrder' => function($query){
+    //         $query->select('purchase_order_id', 'customer_id');
+    //     }, 'invoice.purchaseOrder.customer' => function($query){
+    //         $query->select('customer_id', 'customer_name');
+    //     }, 'productionOrderItems' => function($query){
+    //         $query->select('production_order_id', 'inventory_id', 'input_quantity');
+    //     }])
+    //     ->select('production_order_id', 'invoice_id', 'status', 'quantity', 'created_at')->get();
+    //     $things = array('data' => $things);
+    //     return $things;
+    // }
+
     public function getProductionOrders(){
-        $things = App\ProductionOrder::with(['invoice' => function($query){
-            $query->select('invoice_id', 'purchase_order_id');
-        }, 'invoice.purchaseOrder' => function($query){
-            $query->select('purchase_order_id', 'customer_id');
-        }, 'invoice.purchaseOrder.customer' => function($query){
-            $query->select('customer_id', 'customer_name');
-        }])->
-        select('production_order_id', 'invoice_id', 'status', 'quantity', 'created_at')->get();
+        $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
+            $query->select('production_order_id', 'inventory_id', 'input_quantity');
+        }])
+        ->select('production_order_id', 'status', 'created_at')->get();
+        $things = array('data' => $things);
+        return $things;
+    }
+
+    public function updateProductionOrder($id, Request $request){
+        $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
+            $query->select('production_order_id', 'inventory_id', 'input_quantity');
+        }])
+        ->select('production_order_id', 'status', 'created_at')->get();
         $things = array('data' => $things);
         return $things;
     }

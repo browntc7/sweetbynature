@@ -20,6 +20,6 @@ class Inventory extends Model
     }
 
     public function product(){
-        return $this->belongsTo('App\Product', 'product_id', 'product_id');
+        return $this->hasOne('App\Product', 'product_id', 'product_id');
     }
 }
