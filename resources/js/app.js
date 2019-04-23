@@ -27,6 +27,8 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 // Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
 // create production order form component
 // Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
+// create purchase order edit component for modal
+// Vue.component('purchase-edit-component', require('./components/PurchaseEditComponent.vue').default)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
