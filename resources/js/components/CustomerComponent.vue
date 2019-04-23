@@ -2,32 +2,52 @@
     <form @submit.prevent="submit">
         <div class="form-group">
             <label for="customerName">Customer Name</label>
-            <input type="text" class="form-control" name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
+            <input type="text" class="form-control" max=30 name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
+            <div class="invalid-feedback">
+            Please provide a customer name.
+            </div>
         </div>
         <div class="form-group">
             <label for="customerEmail">Customer Email</label>
-            <input type="text"  class="form-control" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email" required>
+            <input type="email"  class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="customerEmail" id="customerEmail" v-model="fields.email" placeholder="Customer Email" required>
+            <div class="invalid-feedback">
+            Please provide a valid email.
+            </div>
         </div>
         <div class="form-group">
             <label for="customerPhone">Customer Phone</label>
             <input type="text" class="form-control" name="customerPhone" id="customerPhone" v-model="fields.phone" placeholder="Customer Phone">
+            <div class="invalid-feedback">
+            Please provide a valid phone number.
+            </div>
         </div>
-
         <div class="form-group">
             <label for="billingStreet">Street - Billing Address</label>
             <input type="int" class="form-control" max="30" name="billingStreet" id="billingStreet" v-model="fields.billing_address" placeholder="Street">
+            <div class="invalid-feedback">
+            Please provide a valid billing street.
+            </div>
         </div>
         <div class="form-group">
             <label for="billingCity">City - Billing Address</label>
             <input type="int" class="form-control" name="billingCity" id="billingCity" v-model="fields.billing_city" placeholder="City">
+            <div class="invalid-feedback">
+            Please provide a valid billing city.
+            </div>
         </div>
         <div class="form-group">
             <label for="billingState">State - Billing Address</label>
             <input type="int" class="form-control" name="billingState" id="billingState" v-model="fields.billing_state" placeholder="State">
+            <div class="invalid-feedback">
+            Please provide a valid billing state.
+            </div>
         </div>
         <div class="form-group">
             <label for="billingZip">Zip - Billing Address</label>
             <input type="int" pattern="\d{5}" class="form-control" name="billingZip" id="billingZip" v-model="fields.billing_zip" placeholder="Zip">
+            <div class="invalid-feedback">
+            Please provide a valid billing zip code.
+            </div>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="copyShipping" id="copyShipping" v-model="fields.copy_shipping">
