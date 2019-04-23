@@ -32,7 +32,7 @@
 
 
 <script>
-//fuction to set click count for vue component
+//function to set click count for vue component
 function initialClick() {
     return {
         clicks:1
