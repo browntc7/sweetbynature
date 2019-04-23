@@ -107,4 +107,33 @@ class ApiController extends Controller
         $things = array('data' => $things);
         return $things;
     }
+
+    public function editCustomer($id, Request $request){
+
+        //this will not check for blank string and could be overwritten if passed a blank string
+        //$data = Input::all();
+        $customer = App\Customer::findOrFail($id);
+
+        $input = $request->all();
+        // try {
+            if ($input['copy_shipping']){ //copy shipping address into billing address.
+            $customer['shipping_address'] = $input['billing_address'];
+            $customer['shipping_city'] = $input['billing_city'];
+            $customer['shipping_state'] = $input['billing_state'];
+            $customer['shipping_zip'] = $input['billing_zip'];
+            unset($input['copy_shipping']);
+            } 
+
+            
+            $customer->fill($input);
+            $customer->save();
+
+            return response()->json($input, 201);
+
+        // }catch(\Exception $e){
+        //     return abort(400);
+
+        // }
+    
+    }
 }
