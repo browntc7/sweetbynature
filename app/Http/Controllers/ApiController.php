@@ -17,7 +17,7 @@ class ApiController extends Controller
 
     //get customers
     public function getCustomers(){
-        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'billing_city', 'billing_state', 'billing_zip', 'shipping_address', 'shipping_city', 'shipping_state', 'shipping_zip', 'email', 'phone');
         $things = array('data' => $things);
         return $things;
     }
