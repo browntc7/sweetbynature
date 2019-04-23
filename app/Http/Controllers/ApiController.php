@@ -23,10 +23,10 @@ class ApiController extends Controller
     }
 
     public function getPurchaseOrders(){
-        $things = App\PurchaseOrder::with([
-        'customer' => function($query){
+        $things = App\PurchaseOrder::with(['customer' => function($query){
             $query->select('customer_id', 'customer_name', 'billing_address');
-        }])
+        },
+        'purchaseOrderItems'])
         ->select('purchase_order_id', 'customer_id','status','created_at')->get();
         $things = array('data' => $things);
         return $things;
