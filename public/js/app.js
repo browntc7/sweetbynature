@@ -2269,6 +2269,10 @@ function initialClick() {
     addToLoop: function addToLoop(number) {
       this.clicks += number;
     },
+    showPOModal: function showPOModal(customerName, customerID) {
+      this.fields.customer_name = customerName;
+      this.fields.customer_number = customerID;
+    },
     resetWindow: function resetWindow() {
       Object.assign(this.$data, initialClick());
     }
@@ -38318,10 +38322,11 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.fields.product_ud,
-                    expression: "fields.product_ud"
+                    value: _vm.fields.product_id,
+                    expression: "fields.product_id"
                   }
                 ],
+                staticClass: "form-control",
                 attrs: { name: "products", id: "products" },
                 on: {
                   change: function($event) {
@@ -38335,7 +38340,7 @@ var render = function() {
                       })
                     _vm.$set(
                       _vm.fields,
-                      "product_ud",
+                      "product_id",
                       $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                     )
                   }

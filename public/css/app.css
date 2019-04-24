@@ -13593,3 +13593,7 @@ a.text-dark:focus {
   background-color: white;
 }
 
+.contentPadding {
+  padding-top: 20px;
+}
+

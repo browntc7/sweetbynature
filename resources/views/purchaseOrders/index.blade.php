@@ -78,8 +78,8 @@ var customerID = getURLParameter('custID');
 //show modal if params and fill in input
 if(customerName && customerID){
 $("#purchaseOrderModal").modal("show");
-$("#customerName").val(decodeURIComponent(customerName));
-$("#customerNum").val(decodeURIComponent(customerID));
+app.$refs.poRef.showPOModal(decodeURIComponent(customerName),decodeURIComponent(customerID));
+
 }
 
 //load info message html

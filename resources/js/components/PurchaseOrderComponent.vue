@@ -11,7 +11,7 @@
   <div v-for="item in clicks">
     <div class="form-group">
       <label for="item">Item</label>
-      <select name="products" id="products" v-model="fields.product_ud">
+      <select name="products" class="form-control" id="products" v-model="fields.product_id">
         <option value="1">Seedling</option>
         <option value="2">Extract</option>
         <option value="3">Raw Honeybush</option>
@@ -56,6 +56,10 @@ function initialClick() {
         methods: {
             addToLoop: function (number) {
                 this.clicks += number
+            },
+            showPOModal: function(customerName,customerID){
+              this.fields.customer_name = customerName;
+              this.fields.customer_number = customerID;
             },
             resetWindow: function () {
                 Object.assign(this.$data, initialClick());
