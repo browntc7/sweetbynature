@@ -25,8 +25,11 @@ Route::get('/user', function (Request $request) {
 Route::get('/raw/json','ApiController@getThings');
 Route::post('/addCustomer','ApiController@addCustomer');
 Route::get('/customers', 'ApiController@getCustomers');
-Route::put('/customer/edit/{id}', 'ApiController@editCustomer');
+Route::put('/customer/{id}/edit', 'ApiController@editCustomer');
 Route::get('/purchaseOrders', 'ApiController@getPurchaseOrders');
+Route::get('/purchaseOrders/{id}', 'ApiController@getPurchaseOrderDetail');
+Route::put('/purchaseOrders/{id}/edit', 'ApiController@editPurchaseOrder');
+Route::post('/addPurchaseOrder', 'ApiController@addPurchaseOrder');
 Route::get('/invoices', 'ApiController@getInvoices');
 Route::get('/invoices/{id}', 'ApiController@getInvoiceDetail');
 Route::get('/inventory', 'ApiController@getInventory');

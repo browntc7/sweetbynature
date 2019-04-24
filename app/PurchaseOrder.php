@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseOrder extends Model
 {
         // explictly defining table name
-        protected $table = 'purchase_orders';
+    protected $table = 'purchase_orders';
 
-        protected $primaryKey = 'purchase_order_id';
-
+    protected $primaryKey = 'purchase_order_id';
+    protected $fillable = ['status'];
         
     public function customer(){
         return $this->belongsTo('App\Customer', 'customer_id', 'customer_id');
