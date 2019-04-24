@@ -16,7 +16,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-                        <th>Edit</th>
+                          <!--<th>Edit</th>-->
                     </tr>
                 </thead>
                 <tfoot>
@@ -29,7 +29,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-                        <th>Edit</th>
+                          <!--<th>Edit</th>-->
                     </tr>
                 </tfoot>
             </table>
@@ -133,11 +133,11 @@ $('#infoMessage').load('info/productionOrder.html');
         colReorder: true
     });
 
-    //edit the row
-    $('#productionOrdersTable tbody').on('click', 'i', function () {
-        var data = productionOrdersTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
-    });
+    // //edit the row
+    // $('#productionOrdersTable tbody').on('click', 'i', function () {
+    //     var data = productionOrdersTable.row($(this).parents('tr')).data();
+    //     alert('You clicked on id ' + data['id'] + '\'s edit button');
+    // });
 
 </script>
 @endsection
