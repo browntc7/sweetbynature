@@ -70,9 +70,9 @@
     
     });
 
-     //popover 
+     /* popover 
      $(document).ready(function(){
         $('[data-toggle="help"]').popover();
-    });
+    }); */
 </script>
 @endsection

@@ -7,19 +7,19 @@
   <div class="form-group row">
     <label for="Date" class="col-sm-offset-2 col-sm-2 col-form-label">Date</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="Date" placeholder="Date">
+      <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$" class="form-control" id="Date" placeholder="MM-DD-YYYY">
     </div>
   </div>
   <div class="form-group row">
     <label for="purchaseOrder" class="col-sm-offset-2 col-sm-2 col-form-label">Purchase Order #</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="purchaseOrder" placeholder="purchaseOrder">
+      <input type="int" class="form-control" id="purchaseOrder" placeholder="123456">
     </div>
   </div>
   <div class="form-group row">
     <label for="customerNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Customer #</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="customerNumber" placeholder="customerNumber">
+      <input type="int" class="form-control" id="customerNumber" placeholder="Customer Number">
     </div>
   </div>
   <div class="form-group row">
@@ -37,7 +37,7 @@
   <div class="form-group row">
     <label for="Qty" class="col-sm-offset-2 col-sm-2 col-form-label">Qty</label>
     <div class="col\-sm\-6">
-      <input type="text" class="form-control" id="Qty" placeholder="Qty">
+      <input type="int" class="form-control" id="Qty" placeholder="Qty">
     </div>
   </div>
 </form>
