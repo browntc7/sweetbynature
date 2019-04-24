@@ -188,6 +188,24 @@ class ApiController extends Controller
         return $things;
     }
 
+    public function editInventory($id, Request $request){
+        $inventory = $request->all();
+
+        $inventoryRecord = App\Inventory::findOrFail($id);
+        $productId = DB::table('products')->where('product_id', '=', $inventoryRecord->product_id)->first();
+        $productRecord = App\Product::findOrFail($productId->product_id);
+   
+        $inventoryRecord->quantity = $inventory['quantity'];
+        $inventoryRecord->save();
+        
+        $productRecord->unit_cost = $inventory['unit_cost'];
+        $productRecord->location = $inventory['location'];
+        $productRecord->save();
+
+        $response = App\Inventory::with('product')->findOrFail($id);
+        return response()->json($response, 201);
+    }
+
     public function getProducts(){
         $things = App\Product::all();
         $things = array('data' => $things);
