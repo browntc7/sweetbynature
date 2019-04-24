@@ -11,6 +11,6 @@ class ProductionOrderSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ProductionOrder::class, 50)->create();
+        //factory(App\ProductionOrder::class, 50)->create();
     }
 }

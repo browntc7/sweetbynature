@@ -108,7 +108,7 @@ class ApiController extends Controller
         $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
             $query->select('production_order_id', 'inventory_id', 'input_quantity');
         }])
-        ->select('production_order_id', 'status', 'created_at')->get();
+        ->select('production_order_id', 'status', 'created_at', 'quantity')->get();
         $things = array('data' => $things);
         return $things;
     }
@@ -128,19 +128,49 @@ class ApiController extends Controller
         return $things;
     }
 
+    public function addProductionOrder(Request $request){
+        $productionOrder = $request->all();
+        $productionOrderItems = $purchaseOrder['production_order_items'];
+
+        $newProductionOrder = ['status' => 'Open', 'output_quantity' => $productionOrder['output_quantity'], 'customer_id' => $productionOrder['customer_id'], 'updated_at' => \Carbon\Carbon::now(), 'created_at' => \Carbon\Carbon::now()];
+
+        $response = DB::table('production_orders')->insertGetId($newProductionOrder);
+
+        foreach($productionOrderItems as $item){
+            ##App\PurchaseOrderItem::create
+            DB::table('productionOrderItems')->insert(['production_order_id' => $response, 
+            'inventory_id' => $item['inventory_id'],
+            'input_quantity' => '0' ]);
+        }
+
+        return $response;
+    }
+
     public function editProductionOrder($id, Request $request){
         $production = $request->except('production_order_id');
         $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
 
         $response = $productionOrder->fill($production);
-        if($production['status'] == 'Closed'){ //status closed increment inventory
-            foreach ($productionOrder->productionOrderItems as $item) {
-                $inventory = App\Inventory::find($item['inventory_id']);
-                $inventory->quantity += $item['input_quantity'];
-                $response = $inventory->save();
+
+        if($production['status'] == 'Closed'){ 
+
+            //status closed increment extract inventory level
+            $productIdExtract = DB::table('products')->where('item_description', '=', 'Extract')->first();
+            $extract = App\Inventory::findOrFail($productIdExtract->product_id);
+            $extract->quantity += $production['quantity'];
+            $extract->save();
+
+            //status closed decrement honeybush inventory level
+            $productIdHoneybush = DB::table('products')->where('item_description', '=', 'Raw Honeybush')->first();
+            $honeybush = App\Inventory::findOrFail($productIdHoneybush->product_id);
+            $honeybush->quantity -= $productionOrder->productionOrderItems['input_quantity'];
+            $honeybush->save();
             }
-        } 
+
+        
+
         $productionOrder->status = $production['status'];
+        $productionOrder->quantity = $production['quantity'];
         $productionOrder->save();
         
         return response()->json($response, 201);

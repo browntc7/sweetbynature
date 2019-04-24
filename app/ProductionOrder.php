@@ -14,7 +14,7 @@ class ProductionOrder extends Model
     protected $fillable = ['status'];
 
     public function productionOrderItems(){
-        return $this->hasMany('App\ProductionOrderItem', 'production_order_id', 'production_order_id');
+        return $this->hasOne('App\ProductionOrderItem', 'production_order_id', 'production_order_id');
     }
 
     public function invoice(){

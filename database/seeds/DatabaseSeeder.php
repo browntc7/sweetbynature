@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(InventorySeeder::class);
         $this->call(InvoiceSeeder::class);
         $this->call(PurchaseOrderItemsSeeder::class);
-        $this->call(ProductionOrderSeeder::class);
-        $this->call(ProductionOrderItemSeeder::class);
+        //$this->call(ProductionOrderSeeder::class);
+        $this->call(ProductionOrderItemSeeder::class); //seeds both production_order and production_order_items
         $this->call(UsersTableSeeder::class);
 
         
