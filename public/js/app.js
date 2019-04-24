@@ -1824,6 +1824,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //data for the vue instance 
   data: function data() {
@@ -1832,15 +1853,49 @@ __webpack_require__.r(__webpack_exports__);
       fields: {
         copy_shipping: true
       },
-      errors: {}
+      errors: {},
+      showSubmit: {}
     };
   },
   methods: {
-    submit: function submit() {
+    showSubmitButton: function showSubmitButton() {
+      // clear fields
+      this.fields = {}; //set shipping bool to true
+
+      this.fields.copy_shipping = true; //show submit button
+
+      this.showSubmit = true;
+    },
+    showEditButton: function showEditButton(data) {
+      // clear fields
+      this.fields = data; // hide submit button
+
+      this.showSubmit = false;
+    },
+    submitCustomer: function submitCustomer() {
+      var _this = this;
+
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(function (response) {
         //hide the modal on the view
-        $("#purchaseOrderModal").modal("hide"); //reload table data and sort using the table name variable
+        $("#customerModal").modal("hide"); // clear form
+
+        _this.fields = {}; //reload table data and sort using the table name variable
+
+        customerTable.ajax.reload().order([0, "desc"]);
+      }).catch(function (error) {
+        alert("The Transaction Failed on the Server");
+      });
+    },
+    editCustomer: function editCustomer() {
+      var _this2 = this;
+
+      this.errors = {};
+      axios.post('/api/customer/edit/' + this.fields.customer_id, this.fields).then(function (response) {
+        //hide the modal on the view
+        $("#customerModal").modal("hide"); // clearform
+
+        _this2.fields = {}; //reload table data and sort using the table name variable
 
         customerTable.ajax.reload().order([0, "desc"]);
       }).catch(function (error) {
@@ -1921,6 +1976,87 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  //data for the vue instance
+  data: function data() {
+    return {
+      //set copy_shipping to true so its checked other views need only fields:{}
+      fields: {
+        copy_shipping: true
+      },
+      errors: {}
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.errors = {};
+      axios.post("/api/addCustomer", this.fields).then(function (response) {
+        //hide the modal on the view
+        $("#purchaseOrderModal").modal("hide"); //reload table data and sort using the table name variable
+
+        customerTable.ajax.reload().order([0, "desc"]);
+      }).catch(function (error) {
+        alert("The Transaction Failed on the Server");
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PurchaseOrderComponent.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PurchaseOrderComponent.vue?vue&type=script&lang=js& ***!
@@ -1963,7 +2099,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//fuction to set click count for vue component
+//function to set click count for vue component
 function initialClick() {
   return {
     clicks: 1
@@ -36861,6 +36997,7 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "text",
+            max: "30",
             name: "customerName",
             id: "customerName",
             placeholder: "Customer Name",
@@ -36875,7 +37012,11 @@ var render = function() {
               _vm.$set(_vm.fields, "customer_name", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a customer name.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -36894,7 +37035,8 @@ var render = function() {
           ],
           staticClass: "form-control",
           attrs: {
-            type: "text",
+            type: "email",
+            pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$",
             name: "customerEmail",
             id: "customerEmail",
             placeholder: "Customer Email",
@@ -36909,7 +37051,11 @@ var render = function() {
               _vm.$set(_vm.fields, "email", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid email.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -36928,10 +37074,12 @@ var render = function() {
           ],
           staticClass: "form-control",
           attrs: {
-            type: "text",
+            type: "phone",
+            pattern: "\\d{10}",
             name: "customerPhone",
             id: "customerPhone",
-            placeholder: "Customer Phone"
+            placeholder: "Customer Phone",
+            required: ""
           },
           domProps: { value: _vm.fields.phone },
           on: {
@@ -36942,7 +37090,11 @@ var render = function() {
               _vm.$set(_vm.fields, "phone", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid phone number.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -36961,11 +37113,12 @@ var render = function() {
           ],
           staticClass: "form-control",
           attrs: {
-            type: "int",
+            type: "text",
             max: "30",
             name: "billingStreet",
             id: "billingStreet",
-            placeholder: "Street"
+            placeholder: "Street",
+            required: ""
           },
           domProps: { value: _vm.fields.billing_address },
           on: {
@@ -36976,7 +37129,11 @@ var render = function() {
               _vm.$set(_vm.fields, "billing_address", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid billing street.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -36995,10 +37152,11 @@ var render = function() {
           ],
           staticClass: "form-control",
           attrs: {
-            type: "int",
+            type: "text",
             name: "billingCity",
             id: "billingCity",
-            placeholder: "City"
+            placeholder: "City",
+            required: ""
           },
           domProps: { value: _vm.fields.billing_city },
           on: {
@@ -37009,7 +37167,11 @@ var render = function() {
               _vm.$set(_vm.fields, "billing_city", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid billing city.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -37028,10 +37190,12 @@ var render = function() {
           ],
           staticClass: "form-control",
           attrs: {
-            type: "int",
+            type: "text",
+            max: "2",
             name: "billingState",
             id: "billingState",
-            placeholder: "State"
+            placeholder: "State",
+            required: ""
           },
           domProps: { value: _vm.fields.billing_state },
           on: {
@@ -37042,7 +37206,11 @@ var render = function() {
               _vm.$set(_vm.fields, "billing_state", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid billing state.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -37065,7 +37233,8 @@ var render = function() {
             pattern: "\\d{5}",
             name: "billingZip",
             id: "billingZip",
-            placeholder: "Zip"
+            placeholder: "Zip",
+            required: ""
           },
           domProps: { value: _vm.fields.billing_zip },
           on: {
@@ -37076,7 +37245,11 @@ var render = function() {
               _vm.$set(_vm.fields, "billing_zip", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n        Please provide a valid billing zip code.\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group form-check" }, [
@@ -37257,33 +37430,52 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "modal-footer" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _vm.showSubmit
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.submitCustomer()
+                  }
+                }
+              },
+              [_vm._v("Submit")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.showSubmit
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.editCustomer()
+                  }
+                }
+              },
+              [_vm._v("Update")]
+            )
+          : _vm._e()
+      ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save changes")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37371,6 +37563,225 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" }
       })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.submit($event)
+        }
+      }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _vm._m(5),
+      _vm._v(" "),
+      _vm._m(6)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "Date" }
+        },
+        [_vm._v("Date")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "date",
+            pattern:
+              "^(0[1-9]|1[012])[- \\.](0[1-9]|[12][0-9]|3[01])[- \\.](19|20)\\d\\d$",
+            id: "Date",
+            placeholder: "MM-DD-YYYY"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "purchaseOrder" }
+        },
+        [_vm._v("Purchase Order #")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "int",
+            id: "purchaseOrder",
+            placeholder: "purchaseOrder",
+            required: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "customerNumber" }
+        },
+        [_vm._v("Customer #")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "int",
+            id: "customerNumber",
+            placeholder: "customerNumber",
+            required: ""
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "status" }
+        },
+        [_vm._v("Status")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "status", placeholder: "status" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "item" }
+        },
+        [_vm._v("Item")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "item", placeholder: "item" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+          attrs: { for: "Qty" }
+        },
+        [_vm._v("Qty")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col\\-sm\\-6" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "int", id: "Qty", placeholder: "Qty", required: "" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save changes")]
+      )
     ])
   }
 ]
@@ -49631,6 +50042,7 @@ module.exports = function(module) {
 var map = {
 	"./components/CustomerComponent.vue": "./resources/js/components/CustomerComponent.vue",
 	"./components/ProductionOrderComponent.vue": "./resources/js/components/ProductionOrderComponent.vue",
+	"./components/PurchaseEditComponent.vue": "./resources/js/components/PurchaseEditComponent.vue",
 	"./components/PurchaseOrderComponent.vue": "./resources/js/components/PurchaseOrderComponent.vue"
 };
 
@@ -49693,6 +50105,8 @@ files.keys().map(function (key) {
 // Vue.component('purchase-order-component', require('./components/PurchaseOrderComponent.vue').default)
 // create production order form component
 // Vue.component('production-order-component', require('./components/ProductionOrderComponent.vue').default)
+// create purchase order edit component for modal
+// Vue.component('purchase-edit-component', require('./components/PurchaseEditComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49770,15 +50184,14 @@ if (token) {
 /*!*******************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CustomerComponent_vue_vue_type_template_id_9097e738___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=template&id=9097e738& */ "./resources/js/components/CustomerComponent.vue?vue&type=template&id=9097e738&");
 /* harmony import */ var _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CustomerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -49808,7 +50221,7 @@ component.options.__file = "resources/js/components/CustomerComponent.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/CustomerComponent.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49905,6 +50318,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PurchaseEditComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/PurchaseEditComponent.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PurchaseEditComponent.vue?vue&type=template&id=27753437& */ "./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437&");
+/* harmony import */ var _PurchaseEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PurchaseEditComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PurchaseEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PurchaseEditComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PurchaseEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PurchaseEditComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PurchaseEditComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PurchaseEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PurchaseEditComponent.vue?vue&type=template&id=27753437& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PurchaseEditComponent.vue?vue&type=template&id=27753437&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PurchaseEditComponent_vue_vue_type_template_id_27753437___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PurchaseOrderComponent.vue":
 /*!************************************************************!*\
   !*** ./resources/js/components/PurchaseOrderComponent.vue ***!
@@ -49992,8 +50474,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\routetest\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\routetest\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

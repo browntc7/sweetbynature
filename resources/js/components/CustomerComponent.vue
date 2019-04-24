@@ -73,7 +73,8 @@
       </div>
         <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" v-if="showSubmit" v-on:click="submitCustomer()" class="btn btn-primary">Submit</button>
+                <button type="button" v-if="!showSubmit" v-on:click="editCustomer()" class="btn btn-primary">Update</button>
             </div>
         
     </form>
@@ -87,20 +88,51 @@ export default {
       //set copy_shipping to true so its checked other views need only fields:{}
       fields: {copy_shipping:true},
       errors: {},
+      showSubmit: {},
     }
   },
   methods: {
-    submit() {
+    showSubmitButton: function () {
+                // clear fields
+                this.fields = {};
+                //set shipping bool to true
+                this.fields.copy_shipping = true;
+                //show submit button
+                this.showSubmit = true;
+            },
+    showEditButton: function (data) {
+                // clear fields
+                 this.fields = data;
+                // hide submit button
+                this.showSubmit = false;
+            },
+    submitCustomer: function() {
       this.errors = {};
       axios.post('/api/addCustomer', this.fields).then(response => {
         //hide the modal on the view
-      $("#purchaseOrderModal").modal("hide");
+      $("#customerModal").modal("hide");
+      // clear form
+      this.fields = {};
       //reload table data and sort using the table name variable
        customerTable.ajax.reload().order([0,"desc"]);
       }).catch(error => {
         alert("The Transaction Failed on the Server")
       });
-    },
+    }, 
+    editCustomer: function() {
+      this.errors = {};
+      axios.post('/api/customer/edit/' + this.fields.customer_id, this.fields).then(response => {
+        //hide the modal on the view
+      $("#customerModal").modal("hide");
+      // clearform
+       this.fields = {};
+      //reload table data and sort using the table name variable
+       customerTable.ajax.reload().order([0,"desc"]);
+      }).catch(error => {
+        alert("The Transaction Failed on the Server")
+      });
+    }, 
+    
   },
 }
 </script>

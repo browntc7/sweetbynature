@@ -35,17 +35,17 @@
     </div>
 </div>
 <!-- modal -->
-<div class="modal fade" id="purchaseOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create New Customer</h5>
+                <h5 class="modal-title" id="modalTitle">Create New Customer</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <customer-component></customer-component>
+            <customer-component ref="customer"></customer-component>
             </div>
         </div>
     </div>
@@ -124,7 +124,11 @@ var customerTable = $('#customerTable').DataTable({
     buttons: [{
         text: 'Create Customer',
         action: function (e, dt, node, config) {
-            $("#purchaseOrderModal").modal("show");
+            //reset the form
+            app.$refs.customer.showSubmitButton();
+            //show the modal
+            $("#customerModal").modal("show");
+            $("#modalTitle").html("Create Customer");
         }
     }],
     responsive: true,
@@ -133,14 +137,13 @@ var customerTable = $('#customerTable').DataTable({
 
 //edit the row
 $('#customerTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
+    //get table row data
     var data = customerTable.row($(this).parents('tr')).data();
-    $("#purchaseOrderModal").modal("show"); 
-    $("#customerNumber").val(data.customer_id);
-    $("#customerName").val(data.customer_name);
-    $("#billingAddress").val(data.billing_address);
-    $("#shippingAddress").val(data.shipping_address);
-    $("#customerEmail").val(data.email);       
-    $("#customerPhone").val(data.phone);
+    //show modal and set data to form
+    app.$refs.customer.showEditButton(data);
+    $("#modalTitle").html("Edit Customer");
+    $("#customerModal").modal("show"); 
+  
 });
 //link to purchase order
 $('#customerTable tbody').on('click', 'i.fa.fa-file-text', function () {
