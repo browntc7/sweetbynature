@@ -29,6 +29,7 @@ Route::put('/customer/{id}/edit', 'ApiController@editCustomer');
 Route::get('/purchaseOrders', 'ApiController@getPurchaseOrders');
 Route::get('/purchaseOrders/{id}', 'ApiController@getPurchaseOrderDetail');
 Route::put('/purchaseOrders/{id}/edit', 'ApiController@editPurchaseOrder');
+Route::post('/addPurchaseOrder', 'ApiController@addPurchaseOrder');
 Route::get('/invoices', 'ApiController@getInvoices');
 Route::get('/invoices/{id}', 'ApiController@getInvoiceDetail');
 Route::get('/inventory', 'ApiController@getInventory');

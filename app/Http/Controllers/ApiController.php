@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use DB;
 
 class ApiController extends Controller
 {
@@ -38,6 +39,25 @@ class ApiController extends Controller
         return $things;
     }
 
+    public function addPurchaseOrder(Request $request){
+        $purchaseOrder = $request->all();
+        $purchaseOrderItems = $purchaseOrder['purchase_order_items'];
+
+        $newPurchaseOrder = ['status' => 'Open', 'customer_id' => $purchaseOrder['customer_id']];
+
+        $response = DB::table('purchase_orders')->insertGetId($newPurchaseOrder);
+
+        foreach($purchaseOrderItems as $item){
+            ##App\PurchaseOrderItem::create
+            DB::table('purchase_order_items')->insert(['purchase_order_id' => $response, 
+            'inventory_id' => $item['inventory_id'],
+            'qty' => $item['qty'] ]);
+        }
+
+        return $response;
+    }
+
+
     public function editPurchaseOrder($id, Request $request){
         $purchase = $request->except('purchase_order_id');
         $purchaseOrder = App\PurchaseOrder::with('purchaseOrderItems')->find($id);
@@ -45,7 +65,6 @@ class ApiController extends Controller
         $response = $purchaseOrder->fill($purchase);
         if($purchase['status'] == 'Closed'){ //status closed decrement inventory
             foreach ($purchaseOrder->purchaseOrderItems as $item) {
-                error_log('in if');
                 $inventory = App\Inventory::find($item['inventory_id']);
                 $inventory->quantity -= $item['qty'];
                 $inventory->save();
@@ -113,7 +132,7 @@ class ApiController extends Controller
         $production = $request->except('production_order_id');
         $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
 
-        $productionOrder->fill($production);
+        $response = $productionOrder->fill($production);
         if($production['status'] == 'Closed'){ //status closed increment inventory
             foreach ($productionOrder->productionOrderItems as $item) {
                 $inventory = App\Inventory::find($item['inventory_id']);
@@ -124,8 +143,6 @@ class ApiController extends Controller
         $productionOrder->status = $production['status'];
         $productionOrder->save();
         
-        //return updated production order
-        $response = $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
         return response()->json($response, 201);
     }
 
