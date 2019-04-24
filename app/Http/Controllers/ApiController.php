@@ -67,13 +67,38 @@ class ApiController extends Controller
         return $things;
     }
 
-    public function updateProductionOrder($id, Request $request){
-        $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
-            $query->select('production_order_id', 'inventory_id', 'input_quantity');
-        }])
-        ->select('production_order_id', 'status', 'created_at')->get();
+    // public function updateProductionOrder($id, Request $request){
+    //     $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
+    //         $query->select('production_order_id', 'inventory_id', 'input_quantity');
+    //     }])
+    //     ->select('production_order_id', 'status', 'created_at')->get();
+    //     $things = array('data' => $things);
+    //     return $things;
+    // }
+
+    public function getProductionOrderDetail($id){
+        $things = App\ProductionOrder::with(['productionOrderItems'])->find($id);
         $things = array('data' => $things);
         return $things;
+    }
+
+    public function editProductionOrder($id, Request $request){
+        $production = $request->all();
+
+        if($production['status'] == 'Closed'){
+            $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
+            $productionOrder->status = $production['status'];
+            $productionOrder->save();
+            foreach ($productionOrder->productionOrderItems as $item) {
+                $inventory = App\Inventory::find($item['inventory_id']);
+                $inventory->quantity += $item['input_quantity'];
+                $response = $inventory->save();
+            }
+        } else {
+            $inventory->fill($production);
+            $repsonse = $inventory->save();
+        }
+        return response()->json($response, 201);
     }
 
     public function getInventory(){

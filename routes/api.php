@@ -32,4 +32,6 @@ Route::get('/invoices/{id}', 'ApiController@getInvoiceDetail');
 Route::get('/inventory', 'ApiController@getInventory');
 Route::get('/inventory/{id}', 'ApiController@getInventoryDetail');
 Route::get('/productionOrders', 'ApiController@getProductionOrders');
+Route::get('/productionOrders/{id}', 'ApiController@getProductionOrderDetail');
+Route::put('/productionOrders/{id}/edit', 'ApiController@editProductionOrder');
 Route::get('/products', 'ApiController@getProducts');
