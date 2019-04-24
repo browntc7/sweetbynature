@@ -17,16 +17,16 @@ class ApiController extends Controller
 
     //get customers
     public function getCustomers(){
-        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'shipping_address', 'email', 'phone');
+        $things = App\Customer::all('customer_id', 'customer_name', 'billing_address', 'billing_city', 'billing_state', 'billing_zip', 'shipping_address', 'shipping_city', 'shipping_state', 'shipping_zip', 'email', 'phone');
         $things = array('data' => $things);
         return $things;
     }
 
     public function getPurchaseOrders(){
-        $things = App\PurchaseOrder::with([
-        'customer' => function($query){
+        $things = App\PurchaseOrder::with(['customer' => function($query){
             $query->select('customer_id', 'customer_name', 'billing_address');
-        }])
+        },
+        'purchaseOrderItems'])
         ->select('purchase_order_id', 'customer_id','status','created_at')->get();
         $things = array('data' => $things);
         return $things;
