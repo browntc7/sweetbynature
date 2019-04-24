@@ -16,7 +16,11 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
+<<<<<<< HEAD
                           <!--<th>Edit</th>-->
+=======
+                        <!-- <th>Edit</th> -->
+>>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </thead>
                 <tfoot>
@@ -29,7 +33,11 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
+<<<<<<< HEAD
                           <!--<th>Edit</th>-->
+=======
+                        <!-- <th>Edit</th> -->
+>>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </tfoot>
             </table>
@@ -67,16 +75,16 @@ $('#infoMessage').load('info/productionOrder.html');
 
     var productionOrdersTable = $('#productionOrdersTable').DataTable({
         ajax: {
-            url: "js/tempData.json", //change to appropriate data call
+            url: "api/productionOrders", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
             {
-                'data': 'id',
+                'data': 'created_at',
                 "defaultContent": ""
             },
             {
-                'data': 'Value1',
+                'data': 'production_order_id',
                 "defaultContent": ""
             },
             {
@@ -102,20 +110,22 @@ $('#infoMessage').load('info/productionOrder.html');
             {
                 'data': 'updated_at',
                 "defaultContent": ""
-            },
-            null
+            }
+            // ,
+            // null
         ],
-        "columnDefs": [{
-            // The `data` parameter refers to the data for the cell (defined by the
-            // `data` option, which defaults to the column being worked with, in
-            // this case `data: 0`.
-            "render": function (data, type, row) {
-                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
-            },
-            "targets": 8
-        },
+        "columnDefs": [
+        //     {
+        //     // The `data` parameter refers to the data for the cell (defined by the
+        //     // `data` option, which defaults to the column being worked with, in
+        //     // this case `data: 0`.
+        //     "render": function (data, type, row) {
+        //         return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+        //     },
+        //     "targets": 8
+        // },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 8 }
+        { responsivePriority: 2, targets: 7 }
     ],
         // dom: 'Bfrtip',
         // buttons: [
@@ -133,7 +143,11 @@ $('#infoMessage').load('info/productionOrder.html');
         colReorder: true
     });
 
+<<<<<<< HEAD
     // //edit the row
+=======
+    //edit the row
+>>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
     // $('#productionOrdersTable tbody').on('click', 'i', function () {
     //     var data = productionOrdersTable.row($(this).parents('tr')).data();
     //     alert('You clicked on id ' + data['id'] + '\'s edit button');

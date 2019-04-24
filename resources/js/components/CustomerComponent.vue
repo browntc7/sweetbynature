@@ -121,13 +121,13 @@ export default {
     }, 
     editCustomer: function() {
       this.errors = {};
-      axios.post('/api/customer/edit/' + this.fields.customer_id, this.fields).then(response => {
+      axios.put('/api/customer/' + this.fields.customer_id + '/edit/', this.fields).then(response => {
         //hide the modal on the view
       $("#customerModal").modal("hide");
       // clearform
        this.fields = {};
       //reload table data and sort using the table name variable
-       customerTable.ajax.reload().order([0,"desc"]);
+       customerTable.ajax.reload( null, false );
       }).catch(error => {
         alert("The Transaction Failed on the Server")
       });
