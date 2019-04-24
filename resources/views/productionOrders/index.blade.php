@@ -84,23 +84,23 @@ $('#infoMessage').load('info/productionOrder.html');
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'production_order_id',
                 "defaultContent": ""
             },
             {
-                'data': 'Value4',
+                'data': 'status',
                 "defaultContent": ""
             },
             {
-                'data': 'created_at',
+                'data': 'production_order_items.inventory_id',
                 "defaultContent": ""
             },
             {
-                'data': 'updated_at',
+                'data': 'production_order_items.input_quantity',
                 "defaultContent": ""
             },
             {
-                'data': 'updated_at',
+                'data': 'quantity',
                 "defaultContent": ""
             }
             // ,
