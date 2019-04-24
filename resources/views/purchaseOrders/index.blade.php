@@ -15,7 +15,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-                        <th>Edit</th>
+                        <!-- <th>Edit</th> -->
                     </tr>
                 </thead>
                 <tfoot>
@@ -26,7 +26,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-                        <th>Edit</th>
+                        <!-- <th>Edit</th> -->
                     </tr>
                 </tfoot>
             </table>
@@ -114,25 +114,27 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
         {
             'data': 'status',
             "defaultContent": ""
-        },
-        null
+        }
+        // ,
+        // null
     ],
-    "columnDefs": [{
-            // The `data` parameter refers to the data for the cell (defined by the
-            // `data` option, which defaults to the column being worked with, in
-            // this case `data: 0`.
-            "render": function (data, type, row) {
-                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
-            },
-            "targets": 6
-        },
+    "columnDefs": [
+        // {
+        //     // The `data` parameter refers to the data for the cell (defined by the
+        //     // `data` option, which defaults to the column being worked with, in
+        //     // this case `data: 0`.
+        //     "render": function (data, type, row) {
+        //         return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+        //     },
+        //     "targets": 6
+        // },
         {
             responsivePriority: 1,
             targets: 0
         },
         {
             responsivePriority: 2,
-            targets: 6
+            targets: 5
         }
     ],
     // dom: 'Bfrtip',
@@ -152,16 +154,16 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
 });
 
 //edit the row
-$('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
-    var data = purchaseOrderTable.row($(this).parents('tr')).data();
-    $("#purchaseOrderModal").modal("show"); 
-    $("#Date").val(data.created_at);
-    $("#purchaseOrder").val(data.purchase_order_id);
-    $("#customerNumber").val(data.customer_id);
-    $("#customerName").val(data.customer_name);
-    $("#billingAddress").val(data.billing_address);
-    $("#status").val(data.status);
+// $('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
+//     var data = purchaseOrderTable.row($(this).parents('tr')).data();
+//     $("#purchaseOrderModal").modal("show"); 
+//     $("#Date").val(data.created_at);
+//     $("#purchaseOrder").val(data.purchase_order_id);
+//     $("#customerNumber").val(data.customer_id);
+//     $("#customerName").val(data.customer_name);
+//     $("#billingAddress").val(data.billing_address);
+//     $("#status").val(data.status);
    
-});
+// });
 </script>
 @endsection
