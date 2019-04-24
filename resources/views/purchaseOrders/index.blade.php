@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="container">
 <h1>Purchase Orders</h1>
 <div class="row justify-content-center">

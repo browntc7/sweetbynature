@@ -100,7 +100,7 @@ $('#infoMessage').load('info/productionOrder.html');
                 "defaultContent": ""
             },
             {
-                'data': 'quantity',
+                'data': 'output_quantity',
                 "defaultContent": ""
             }
             // ,
