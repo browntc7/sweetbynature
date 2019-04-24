@@ -17,7 +17,7 @@ class CreateProductionOrder extends Migration
             $table->increments('production_order_id');
             $table->integer('invoice_id')->unsigned(); #fk 
             $table->string('status');
-            $table->double('quantity');
+            $table->double('output_quantity');
             $table->timestamps();
 
             $table->foreign('invoice_id')->references('invoice_id')->on('invoices');

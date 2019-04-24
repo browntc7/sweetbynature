@@ -19,6 +19,8 @@ class InventorySeeder extends Seeder
         DB::table('inventory')->insert([
             'product_id' => $faker->randomElement(array_diff($products, $inventory)),
             'quantity' => $faker->numberBetween($min = 10, $max = 400),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
 
         $inventory = App\Inventory::all()->pluck('product_id')->toArray();
@@ -26,6 +28,8 @@ class InventorySeeder extends Seeder
         DB::table('inventory')->insert([
             'product_id' => $faker->randomElement(array_diff($products, $inventory)),
             'quantity' => $faker->numberBetween($min = 10, $max = 400),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
 
         $inventory = App\Inventory::all()->pluck('product_id')->toArray();
@@ -33,6 +37,8 @@ class InventorySeeder extends Seeder
         DB::table('inventory')->insert([
             'product_id' => $faker->randomElement(array_diff($products, $inventory)),
             'quantity' => $faker->numberBetween($min = 10, $max = 400),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
     }
 }

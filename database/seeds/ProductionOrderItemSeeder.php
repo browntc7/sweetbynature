@@ -24,7 +24,9 @@ class ProductionOrderItemSeeder extends Seeder
         foreach ($invoices as $invoice) {
             $id = DB::table('production_orders')->insertGetId(['invoice_id' => $faker->randomElement(array_diff($invoices, $usedInvoices)),
             'status' => $faker->randomElement(['Open', 'Closed', 'Pending']),
-            'quantity' => $faker->numberBetween($min = 10, $max = 50)]); #output quantity
+            'output_quantity' => $faker->numberBetween($min = 10, $max = 50),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()]); #output quantity
    
             DB::table('production_order_items')->insert([
                 'production_order_id' => $id,

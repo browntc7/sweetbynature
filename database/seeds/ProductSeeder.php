@@ -17,18 +17,24 @@ class ProductSeeder extends Seeder
             'location' => 'Farm',
             'quantity' => '0',
             'unit_cost' => '19.00',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
         DB::table('products')->insert([
             'item_description' => 'Extract',
             'location' => 'Storeroom',
             'quantity' => '0',
             'unit_cost' => '29.00',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
         DB::table('products')->insert([
             'item_description' => 'Raw Honeybush',
             'location' => 'Production',
             'quantity' => '0',
             'unit_cost' => '9.00',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
     }
 }

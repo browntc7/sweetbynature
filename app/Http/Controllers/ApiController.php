@@ -108,7 +108,7 @@ class ApiController extends Controller
         $things = App\ProductionOrder::with(['productionOrderItems' => function($query){
             $query->select('production_order_id', 'inventory_id', 'input_quantity');
         }])
-        ->select('production_order_id', 'status', 'created_at', 'quantity')->get();
+        ->select('production_order_id', 'status', 'created_at', 'output_quantity')->get();
         $things = array('data' => $things);
         return $things;
     }
@@ -157,7 +157,7 @@ class ApiController extends Controller
             //status closed increment extract inventory level
             $productIdExtract = DB::table('products')->where('item_description', '=', 'Extract')->first();
             $extract = App\Inventory::findOrFail($productIdExtract->product_id);
-            $extract->quantity += $production['quantity'];
+            $extract->quantity += $production['output_quantity'];
             $extract->save();
 
             //status closed decrement honeybush inventory level
@@ -170,7 +170,7 @@ class ApiController extends Controller
         
 
         $productionOrder->status = $production['status'];
-        $productionOrder->quantity = $production['quantity'];
+        $productionOrder->output_quantity = $production['output_quantity'];
         $productionOrder->save();
         
         return response()->json($response, 201);
