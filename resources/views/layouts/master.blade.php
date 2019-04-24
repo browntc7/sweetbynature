@@ -54,22 +54,22 @@
                             @endif
                         @else
                         <li>
-                            <a href="home" class="nav-link">Home</a>
+                            <a href="/home" class="nav-link">Home</a>
                         </li>
                         <li>
-                            <a href="customers" class="nav-link">Customers</a>
+                            <a href="/customers" class="nav-link">Customers</a>
                         </li>
                         <li>
-                            <a href="purchaseOrders" class="nav-link">Purchase Orders</a>
+                            <a href="/purchaseOrders" class="nav-link">Purchase Orders</a>
                         </li>
                         <li>
-                            <a href="invoices" class="nav-link">Invoices</a>
+                            <a href="/invoices" class="nav-link">Invoices</a>
                         </li>  
                         <li>
-                            <a href="productionOrders" class="nav-link">Production Orders</a>
+                            <a href="/productionOrders" class="nav-link">Production Orders</a>
                         </li>                 
                         <li>
-                            <a href="inventory" class="nav-link">Inventory</a>
+                            <a href="/inventory" class="nav-link">Inventory</a>
                         </li>                                 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
