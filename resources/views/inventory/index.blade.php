@@ -66,36 +66,36 @@ $('#infoMessage').load('info/inventory.html');
 
     var inventoryTable = $('#inventoryTable').DataTable({
         ajax: {
-            url: "js/tempData.json", //change to appropriate data call
+            url: "api/inventory", //change to appropriate data call
             dataSrc: "data"
         },
         columns: [ //change to data model
             {
-                'data': 'id',
+                'data': 'inventory_id',
                 "defaultContent": ""
             },
             {
-                'data': 'Value1',
+                'data': 'product.item_description',
                 "defaultContent": ""
             },
             {
-                'data': 'Value2',
+                'data': 'product.location',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'quantity',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'product.unit_cost',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'created_at',
                 "defaultContent": ""
             },
             {
-                'data': 'Value3',
+                'data': 'updated_at',
                 "defaultContent": ""
             },
             null
