@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Production Order Number</th>
+                        <th>Purchase Order Number</th>
                         <th>Customer Number</th>
                         <th>Customer Name</th>
                         <th>Billing Address</th>
@@ -21,7 +21,7 @@
                 <tfoot>
                     <tr>
                         <th>Date</th>
-                        <th>Production Order Number</th>
+                        <th>Purchase Order Number</th>
                         <th>Customer Number</th>
                         <th>Customer Name</th>
                         <th>Billing Address</th>
@@ -152,9 +152,16 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
 });
 
 //edit the row
-$('#purchaseOrderTable tbody').on('click', 'i', function () {
+$('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
     var data = purchaseOrderTable.row($(this).parents('tr')).data();
-    alert('You clicked on id ' + data['purchase_order_id'] + '\'s edit button');
+    $("#purchaseOrderModal").modal("show"); 
+    $("#Date").val(data.created_at);
+    $("#purchaseOrder").val(data.purchase_order_id);
+    $("#customerNumber").val(data.customer_id);
+    $("#customerName").val(data.customer_name);
+    $("#billingAddress").val(data.billing_address);
+    $("#status").val(data.status);
+   
 });
 </script>
 @endsection

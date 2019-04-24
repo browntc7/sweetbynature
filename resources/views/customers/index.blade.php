@@ -134,12 +134,13 @@ var customerTable = $('#customerTable').DataTable({
 //edit the row
 $('#customerTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
     var data = customerTable.row($(this).parents('tr')).data();
-    $("#purchaseOrderModal").modal("show");
+    $("#purchaseOrderModal").modal("show"); 
+    $("#customerNumber").val(data.customer_id);
     $("#customerName").val(data.customer_name);
-    $("#customerEmail").val(data.customer_email);
-    $("#customerName").val(data.customer_name);
-    $("#customerName").val(data.customer_name);
-    $("#customerName").val(data.customer_name);
+    $("#billingAddress").val(data.billing_address);
+    $("#shippingAddress").val(data.shipping_address);
+    $("#customerEmail").val(data.email);       
+    $("#customerPhone").val(data.phone);
 });
 //link to purchase order
 $('#customerTable tbody').on('click', 'i.fa.fa-file-text', function () {

@@ -17,26 +17,26 @@
         <div class="form-group row">
             <label for="createDate" class="col-sm-offset-2 col-sm-2 col-form-label">Date Created</label>
             <div class="col\-sm\-6">
-                <input type="text" class="form-control" id="createDate" placeholder="MMDDYYYY">
+                <input type="date"  pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$" class="form-control" id="createDate" placeholder="MM-DD-YYYY">
             </div>
         </div>
         <div class="form-group row">
             <label for="productionOrderNum" class="col-sm-offset-2 col-sm-2 col-form-label">Purchase Order
                 #</label>
             <div class="col\-sm\-6">
-                <input type="text" class="form-control" id="productionOrderNum" placeholder="123456">
+                <input type="int" class="form-control" id="productionOrderNum" placeholder="123456">
             </div>
         </div>
         <div class="form-group row">
             <label for="dueDate" class="col-sm-offset-2 col-sm-2 col-form-label">Due Date</label>
             <div class="col\-sm\-6">
-                <input type="text" class="form-control" id="dueDate" placeholder="MMDDYYYY">
+                <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$" class="form-control" id="dueDate" placeholder="MM-DD-YYYY">
             </div>
         </div>
         <div class="form-group row">
             <label for="amountDue" class="col-sm-offset-2 col-sm-2 col-form-label">Amount Due $</label>
             <div class="col\-sm\-6">
-                <input type="text" class="form-control" id="amountDue" placeholder="0.00">
+                <input type="int" class="form-control" id="amountDue" placeholder="0.00">
             </div>
         </div>
         <p>BILL TO: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**************&nbsp;&nbsp;&nbsp;&nbsp;SHIP TO: <p>
