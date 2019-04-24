@@ -16,7 +16,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-                        <!-- <th>Edit</th> -->
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -27,7 +27,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-                        <!-- <th>Edit</th> -->
+                        <th>Edit</th>
                     </tr>
                 </tfoot>
             </table>
@@ -116,19 +116,19 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
             'data': 'status',
             "defaultContent": ""
         }
-        // ,
-        // null
+        ,
+        null
     ],
     "columnDefs": [
-        // {
-        //     // The `data` parameter refers to the data for the cell (defined by the
-        //     // `data` option, which defaults to the column being worked with, in
-        //     // this case `data: 0`.
-        //     "render": function (data, type, row) {
-        //         return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
-        //     },
-        //     "targets": 6
-        // },
+        {
+            // The `data` parameter refers to the data for the cell (defined by the
+            // `data` option, which defaults to the column being worked with, in
+            // this case `data: 0`.
+            "render": function (data, type, row) {
+                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+            },
+            "targets": 6
+        },
         {
             responsivePriority: 1,
             targets: 0
