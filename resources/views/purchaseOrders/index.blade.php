@@ -15,11 +15,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-<<<<<<< HEAD
-                          <!--<th>Edit</th>-->
-=======
                         <!-- <th>Edit</th> -->
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </thead>
                 <tfoot>
@@ -30,11 +26,7 @@
                         <th>Customer Name</th>
                         <th>Billing Address</th>
                         <th>Status</th>
-<<<<<<< HEAD
-                        <!--<th>Edit</th>-->
-=======
                         <!-- <th>Edit</th> -->
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </tfoot>
             </table>
@@ -161,11 +153,7 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
     colReorder: true
 });
 
-<<<<<<< HEAD
-// //edit the row
-=======
 //edit the row
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
 // $('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
 //     var data = purchaseOrderTable.row($(this).parents('tr')).data();
 //     $("#purchaseOrderModal").modal("show"); 

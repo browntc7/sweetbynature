@@ -16,11 +16,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-<<<<<<< HEAD
-                          <!--<th>Edit</th>-->
-=======
                         <!-- <th>Edit</th> -->
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </thead>
                 <tfoot>
@@ -33,11 +29,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-<<<<<<< HEAD
-                          <!--<th>Edit</th>-->
-=======
                         <!-- <th>Edit</th> -->
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
                     </tr>
                 </tfoot>
             </table>
@@ -143,11 +135,7 @@ $('#infoMessage').load('info/productionOrder.html');
         colReorder: true
     });
 
-<<<<<<< HEAD
-    // //edit the row
-=======
     //edit the row
->>>>>>> a4544b8ce9d985f756970ef31dc5d70d9aa77e48
     // $('#productionOrdersTable tbody').on('click', 'i', function () {
     //     var data = productionOrdersTable.row($(this).parents('tr')).data();
     //     alert('You clicked on id ' + data['id'] + '\'s edit button');
