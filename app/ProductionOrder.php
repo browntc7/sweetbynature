@@ -11,6 +11,7 @@ class ProductionOrder extends Model
 
     protected $primaryKey = 'production_order_id';
 
+    protected $fillable = ['status'];
 
     public function productionOrderItems(){
         return $this->hasMany('App\ProductionOrderItem', 'production_order_id', 'production_order_id');

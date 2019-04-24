@@ -32,6 +32,33 @@ class ApiController extends Controller
         return $things;
     }
 
+    public function getPurchaseOrderDetail($id){
+        $things = App\PurchaseOrder::with(['purchaseOrderItems'])->find($id);
+        $things = array('data' => $things);
+        return $things;
+    }
+
+    public function editPurchaseOrder($id, Request $request){
+        $purchase = $request->except('purchase_order_id');
+        $purchaseOrder = App\PurchaseOrder::with('purchaseOrderItems')->find($id);
+
+        $response = $purchaseOrder->fill($purchase);
+        if($purchase['status'] == 'Closed'){ //status closed decrement inventory
+            foreach ($purchaseOrder->purchaseOrderItems as $item) {
+                error_log('in if');
+                $inventory = App\Inventory::find($item['inventory_id']);
+                $inventory->quantity -= $item['qty'];
+                $inventory->save();
+            }
+        } 
+        //$purchaseOrder->status = $purchase['status'];
+        $purchaseOrder->save();
+        
+        //return updated production order
+        //$response = $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
+        return response()->json($response, 201);
+    }
+
     public function getInvoices(){
 
         $things = App\Invoice::with(['purchaseOrder' => function($query){
@@ -83,21 +110,22 @@ class ApiController extends Controller
     }
 
     public function editProductionOrder($id, Request $request){
-        $production = $request->all();
+        $production = $request->except('production_order_id');
+        $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
 
-        if($production['status'] == 'Closed'){
-            $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
-            $productionOrder->status = $production['status'];
-            $productionOrder->save();
+        $productionOrder->fill($production);
+        if($production['status'] == 'Closed'){ //status closed increment inventory
             foreach ($productionOrder->productionOrderItems as $item) {
                 $inventory = App\Inventory::find($item['inventory_id']);
                 $inventory->quantity += $item['input_quantity'];
                 $response = $inventory->save();
             }
-        } else {
-            $inventory->fill($production);
-            $repsonse = $inventory->save();
-        }
+        } 
+        $productionOrder->status = $production['status'];
+        $productionOrder->save();
+        
+        //return updated production order
+        $response = $productionOrder = App\ProductionOrder::with('productionOrderItems')->find($id);
         return response()->json($response, 201);
     }
 
