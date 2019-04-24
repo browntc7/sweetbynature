@@ -198,7 +198,7 @@ class ApiController extends Controller
         return $things;
     }
 
-    public function editCustomer($id, Request $request){
+    public function editCustomer(Request $request, $id){
 
         //this will not check for blank string and could be overwritten if passed a blank string
         //$data = Input::all();
@@ -206,7 +206,7 @@ class ApiController extends Controller
 
         $input = $request->all();
         // try {
-            if ($input['copy_shipping']){ //copy shipping address into billing address.
+            if (isset($input['copy_shipping'])){ //copy shipping address into billing address.
             $customer['shipping_address'] = $input['billing_address'];
             $customer['shipping_city'] = $input['billing_city'];
             $customer['shipping_state'] = $input['billing_state'];

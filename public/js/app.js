@@ -1891,13 +1891,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.errors = {};
-      axios.post('/api/customer/edit/' + this.fields.customer_id, this.fields).then(function (response) {
+      axios.put('/api/customer/' + this.fields.customer_id + '/edit/', this.fields).then(function (response) {
         //hide the modal on the view
         $("#customerModal").modal("hide"); // clearform
 
         _this2.fields = {}; //reload table data and sort using the table name variable
 
-        customerTable.ajax.reload().order([0, "desc"]);
+        customerTable.ajax.reload(null, false);
       }).catch(function (error) {
         alert("The Transaction Failed on the Server");
       });
@@ -50474,8 +50474,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\routetest\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\routetest\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\sweetbynature\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -93,7 +93,8 @@ $('#infoMessage').load('info/invoice.html');
     //edit the row
     $('#invoicesTable tbody').on('click', 'i', function () {
         var data = invoicesTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
+        window.location = "/invoices/print?invoiceID=" + data.invoice_id;
+        // alert('You clicked on id ' + data['id'] + '\'s edit button');
     });
 
 </script>
