@@ -43,7 +43,7 @@ class ApiController extends Controller
         $purchaseOrder = $request->all();
         $purchaseOrderItems = $purchaseOrder['purchase_order_items'];
 
-        $newPurchaseOrder = ['status' => 'Open', 'customer_id' => $purchaseOrder['customer_id']];
+        $newPurchaseOrder = ['status' => 'Open', 'customer_id' => $purchaseOrder['customer_id'], 'updated_at' => \Carbon\Carbon::now(), 'created_at' => \Carbon\Carbon::now()];
 
         $response = DB::table('purchase_orders')->insertGetId($newPurchaseOrder);
 
