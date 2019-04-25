@@ -250,6 +250,7 @@ class ApiController extends Controller
     }
 
     public function editInvoice($id, Request $request){
+        try {
         $invoice = $request->all();
         $productionQty = 0;
         $invoiceRecord = App\Invoice::findOrFail($id);
@@ -264,7 +265,7 @@ class ApiController extends Controller
 
             foreach($purchaseOrderWithItems->purchaseOrderItems as $item){
                 if($item->inventory_id == $inventoryIdHoneybush){
-                    $productionQty += $item->quantity;  
+                    $productionQty += $item->input_quantity;  
 
                     $productionOrderToAdd = ['invoice_id' => $id, 'status' => 'Open', 'output_quantity' => '0', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()];
                     $productionOrderId = DB::table('production_orders')->insertGetId($productionOrderToAdd);
@@ -274,9 +275,11 @@ class ApiController extends Controller
                 }
             }
         }
-        $response = App\ProductionOrder::with('productionOrderItems')->find($productionOrderId);
+        $response = App\Invoice::findOrFail($id);
         return response()->json($response, 201);
-
+        }catch(\Exception $e){
+            return abort(400, $e);
+        }
     }
 
     public function getInvoiceDetail($id){
