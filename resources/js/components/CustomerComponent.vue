@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <label for="billingZip">Zip - Billing Address</label>
-            <input type="int" pattern="\d{5}" class="form-control" name="billingZip" id="billingZip" v-model="fields.billing_zip" placeholder="Zip" required>
+            <input type="int" pattern="\d{5}" class="form-control" name="billingZip" id="billingZip" billing_zip" placeholder="Zip" required>
             <div class="invalid-feedback">
             Please provide a valid billing zip code.
             </div>
