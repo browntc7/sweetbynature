@@ -2172,6 +2172,15 @@ __webpack_require__.r(__webpack_exports__);
         total += element.qty * parseFloat(element.inventory.product.unit_cost);
       });
       return total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    },
+    updateStatus: function updateStatus(invoiceStatus) {
+      var data = {};
+      data.status = invoiceStatus;
+      axios.put('../api/inventory/' + this.fields.invoice_id + '/edit', data).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        alert("The Transaction Failed on the Server");
+      });
     }
   }
 });
@@ -37989,7 +37998,50 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("form", [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-lg-6" }, [
+        _c("h1", [_vm._v("Invoice")]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary no-print",
+            on: {
+              click: function($event) {
+                return _vm.updateStatus("Open")
+              }
+            }
+          },
+          [_vm._v("Open")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-warning no-print",
+            on: {
+              click: function($event) {
+                return _vm.updateStatus("Pending")
+              }
+            }
+          },
+          [_vm._v("Pending")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success no-print",
+            on: {
+              click: function($event) {
+                return _vm.updateStatus("Closed")
+              }
+            }
+          },
+          [_vm._v("Closed")]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-6" }, [
         _c("div", { staticClass: "form-group row" }, [
@@ -38550,39 +38602,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
-      _c("h1", [_vm._v("Invoice")]),
-      _vm._v(" "),
-      _c("b", [
-        _c("p", [
-          _vm._v("Sweet By Nature"),
-          _c("br"),
-          _vm._v("Some Address Ln"),
-          _c("br"),
-          _vm._v("South Africa"),
-          _c("br"),
-          _vm._v("3429348"),
-          _c("br")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary no-print", attrs: { type: "submit" } },
-        [_vm._v("Open")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-warning no-print", attrs: { type: "submit" } },
-        [_vm._v("Pending")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-success no-print", attrs: { type: "submit" } },
-        [_vm._v("Closed")]
-      )
+    return _c("b", [
+      _c("p", [
+        _vm._v("Sweet By Nature"),
+        _c("br"),
+        _vm._v("Some Address Ln"),
+        _c("br"),
+        _vm._v("South Africa"),
+        _c("br"),
+        _vm._v("3429348"),
+        _c("br")
+      ])
     ])
   },
   function() {

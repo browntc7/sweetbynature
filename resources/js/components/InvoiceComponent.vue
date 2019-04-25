@@ -6,9 +6,9 @@
                 <b>
                     <p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p>
                 </b>
-                <button class="btn btn-primary no-print" type="submit">Open</button>
-                <button class="btn btn-warning no-print" type="submit">Pending</button>
-                <button class="btn btn-success no-print" type="submit">Closed</button>
+                <button class="btn btn-primary no-print"  v-on:click="updateStatus('Open')">Open</button>
+                <button class="btn btn-warning no-print" v-on:click="updateStatus('Pending')">Pending</button>
+                <button class="btn btn-success no-print" v-on:click="updateStatus('Closed')">Closed</button>
             </div>
 
             <div class="col-lg-6">
@@ -143,7 +143,7 @@
                         this.fields = response.data.data;
                         // var parseTime = ;
                         this.fields.created_at = this.formatDate(response.data.data.created_at);
-                        this.fields.due_date = this.addDays(this.formatDate(response.data.data.created_at),30);
+                        this.fields.due_date = this.addDays(this.formatDate(response.data.data.created_at), 30);
                         this.fields.ammount_due = "$" + this.getTotal(response.data.data.purchase_order.purchase_order_items);
                     })
                     .catch(error => {
@@ -180,17 +180,27 @@
                 if (month.length < 2) month = '0' + month;
                 if (day.length < 2) day = '0' + day;
 
-                return [month, day,year].join('/');
+                return [month, day, year].join('/');
             },
-            getTotal: function(purchaseOrderItems){
+            getTotal: function (purchaseOrderItems) {
                 var total = 0;
-                    purchaseOrderItems.forEach(element => {
-                        
-                        total += (element.qty * parseFloat(element.inventory.product.unit_cost));
-            
-                    });
-        
-                    return total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                purchaseOrderItems.forEach(element => {
+
+                    total += (element.qty * parseFloat(element.inventory.product.unit_cost));
+
+                });
+
+                return total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            },
+            updateStatus: function (invoiceStatus) {
+                var data = {};
+                data.status=invoiceStatus;
+                axios.put('../api/inventory/'+this.fields.invoice_id+'/edit',data ).then(response => {
+                console.log(response);
+                    
+                }).catch(error => {
+                    alert("The Transaction Failed on the Server")
+                });
             }
         }
     };
