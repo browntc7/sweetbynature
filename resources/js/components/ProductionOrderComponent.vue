@@ -10,7 +10,7 @@
   </div> -->
   <div class="form-group">
     <label for="customerNum">Customer Number</label>
-    <input type="int" class="form-control" id="customerNum" placeholder="Customer Number">
+    <input type="int" class="form-control" id="customerNum" v-model="fields.customer_name" placeholder="Customer Number">
   </div>
   <!-- <div class="form-group">
     <label for="lotNumID">Lot Number ID</label>
@@ -22,17 +22,17 @@
   </div> -->
     <div class="form-group">
       <label for="item">Item</label>
-      <input type="int" class="form-control" id="item" placeholder="Item<">
+      <input type="int" class="form-control" id="item" v-model="fields.production_order_items.inventory_id" placeholder="Item<">
     </div>
     <div class="form-group">
       <label for="inputQty">Qty</label>
-      <input type="int" class="form-control" id="inputQty" placeholder="Input Qty">
+      <input type="int" class="form-control" id="inputQty" v-model="production_order_items.input_quantity" placeholder="Input Qty">
     </div>
  
 
   <!-- <div class="form-group">
     <label for="outputQty">Output Qty</label>
-    <input type="int" class="form-control" id="outputQty" placeholder="outputQty">
+    <input type="int" class="form-control" id="outputQty" v-model="output_quantity" placeholder="outputQty">
   </div> -->
      <!-- <button class="btn btn-secondary" type="reset">Cancel</button>
      <button class="btn btn-primary" type="submit">Submit</button> -->
