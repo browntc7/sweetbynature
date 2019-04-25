@@ -173,7 +173,7 @@ class ApiController extends Controller
         $productionOrder->output_quantity = $production['output_quantity'];
         $productionOrder->save();
         
-        return response()->json($response, 201);
+        return response(201);
     }
 
     public function getInventory(){

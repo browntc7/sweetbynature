@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent>
         <div v-if="showSubmit">
             <div class="form-group">
                 <label for="customerName">Customer Name</label>

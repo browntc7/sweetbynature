@@ -2182,8 +2182,8 @@ __webpack_require__.r(__webpack_exports__);
     updateStatus: function updateStatus(invoiceStatus) {
       var data = {};
       data.status = invoiceStatus;
-      axios.put('../api/inventory/' + this.fields.invoice_id + '/edit', data).then(function (response) {
-        console.log(response);
+      axios.put('../api/invoice/' + this.fields.invoice_id + '/edit', data).then(function (response) {
+        window.location = "../";
       }).catch(function (error) {
         alert("The Transaction Failed on the Server");
       });
@@ -2229,34 +2229,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      clicks: 1
+      //set copy_shipping to true so its checked other views need only fields:{}
+      fields: {
+        production_order_items: {}
+      },
+      errors: {}
     };
   },
   methods: {
-    showPOEditModal: function showPOEditModal() {
+    showPOEditModal: function showPOEditModal(data) {
       // this.fields.status = data.status;
       // this.fields.purchase_order_id = data.purchase_order_id;
       // this.showSubmit = false;
+      this.fields = data;
       $("#productionOrderModal").modal("show");
+    },
+    editPurchaseOrder: function editPurchaseOrder() {
+      var _this = this;
+
+      this.errors = {};
+      axios.put('/api/productionOrders/' + this.fields.production_order_id + '/edit/', this.fields).then(function (response) {
+        //hide the modal on the view
+        $("#productionOrderModal").modal("hide"); // clearform
+
+        _this.fields = {}; //reload table data and sort using the table name variable
+
+        productionOrdersTable.ajax.reload(null, false);
+      }).catch(function (error) {
+        alert("The Transaction Failed on the Server");
+      });
     }
   }
 });
@@ -37336,7 +37340,6 @@ var render = function() {
       on: {
         submit: function($event) {
           $event.preventDefault()
-          return _vm.submit($event)
         }
       }
     },
@@ -37995,606 +37998,635 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("h1", [_vm._v("Invoice")]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary no-print",
-            on: {
-              click: function($event) {
-                return _vm.updateStatus("Open")
-              }
-            }
-          },
-          [_vm._v("Open")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-warning no-print",
-            on: {
-              click: function($event) {
-                return _vm.updateStatus("Pending")
-              }
-            }
-          },
-          [_vm._v("Pending")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success no-print",
-            on: {
-              click: function($event) {
-                return _vm.updateStatus("Closed")
-              }
-            }
-          },
-          [_vm._v("Closed")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "form-group row" }, [
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("h1", [_vm._v("Invoice")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
           _c(
-            "label",
+            "button",
             {
-              staticClass: "col-sm-4 col-form-label",
-              attrs: { for: "invoiceNumber" }
+              staticClass: "btn btn-primary no-print",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.updateStatus("Open")
+                }
+              }
             },
-            [_vm._v("Invoice Number")]
+            [_vm._v("Open")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-8" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.invoice_id,
-                  expression: "fields.invoice_id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "invoiceNumber",
-                placeholder: "123456",
-                disabled: ""
-              },
-              domProps: { value: _vm.fields.invoice_id },
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-warning no-print",
+              attrs: { type: "submit" },
               on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "invoice_id", $event.target.value)
+                click: function($event) {
+                  return _vm.updateStatus("Pending")
                 }
               }
-            })
-          ])
+            },
+            [_vm._v("Pending")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success no-print",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.updateStatus("Closed")
+                }
+              }
+            },
+            [_vm._v("Closed")]
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-4 col-form-label",
-              attrs: { for: "createDate" }
-            },
-            [_vm._v("Date Created")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-8" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.created_at,
-                  expression: "fields.created_at"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "createDate",
-                placeholder: "MM-DD-YYYY",
-                disabled: ""
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-sm-4 col-form-label",
+                attrs: { for: "invoiceNumber" }
               },
-              domProps: { value: _vm.fields.created_at },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              [_vm._v("Invoice Number")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.invoice_id,
+                    expression: "fields.invoice_id"
                   }
-                  _vm.$set(_vm.fields, "created_at", $event.target.value)
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "invoiceNumber",
+                  placeholder: "123456",
+                  disabled: ""
+                },
+                domProps: { value: _vm.fields.invoice_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "invoice_id", $event.target.value)
+                  }
                 }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-4 col-form-label",
-              attrs: { for: "productionOrderNum" }
-            },
-            [_vm._v("Purchase Order\n                    #")]
-          ),
+              })
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-8" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.purchase_order_id,
-                  expression: "fields.purchase_order_id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "int",
-                id: "productionOrderNum",
-                placeholder: "123456",
-                disabled: ""
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-sm-4 col-form-label",
+                attrs: { for: "createDate" }
               },
-              domProps: { value: _vm.fields.purchase_order_id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              [_vm._v("Date Created")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.created_at,
+                    expression: "fields.created_at"
                   }
-                  _vm.$set(_vm.fields, "purchase_order_id", $event.target.value)
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "createDate",
+                  placeholder: "MM-DD-YYYY",
+                  disabled: ""
+                },
+                domProps: { value: _vm.fields.created_at },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "created_at", $event.target.value)
+                  }
                 }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-4 col-form-label",
-              attrs: { for: "dueDate" }
-            },
-            [_vm._v("Due Date")]
-          ),
+              })
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-8" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.due_date,
-                  expression: "fields.due_date"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "dueDate",
-                placeholder: "MM-DD-YYYY",
-                disabled: ""
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-sm-4 col-form-label",
+                attrs: { for: "productionOrderNum" }
               },
-              domProps: { value: _vm.fields.due_date },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              [_vm._v("Purchase Order\n                    #")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.purchase_order_id,
+                    expression: "fields.purchase_order_id"
                   }
-                  _vm.$set(_vm.fields, "due_date", $event.target.value)
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "int",
+                  id: "productionOrderNum",
+                  placeholder: "123456",
+                  disabled: ""
+                },
+                domProps: { value: _vm.fields.purchase_order_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields,
+                      "purchase_order_id",
+                      $event.target.value
+                    )
+                  }
                 }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-4 col-form-label",
-              attrs: { for: "amountDue" }
-            },
-            [_vm._v("Amount Due $")]
-          ),
+              })
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-8" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.ammount_due,
-                  expression: "fields.ammount_due"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "int",
-                id: "amountDue",
-                placeholder: "0.00",
-                disabled: ""
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-sm-4 col-form-label",
+                attrs: { for: "dueDate" }
               },
-              domProps: { value: _vm.fields.ammount_due },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              [_vm._v("Due Date")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.due_date,
+                    expression: "fields.due_date"
                   }
-                  _vm.$set(_vm.fields, "ammount_due", $event.target.value)
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "dueDate",
+                  placeholder: "MM-DD-YYYY",
+                  disabled: ""
+                },
+                domProps: { value: _vm.fields.due_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "due_date", $event.target.value)
+                  }
                 }
-              }
-            })
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-sm-4 col-form-label",
+                attrs: { for: "amountDue" }
+              },
+              [_vm._v("Amount Due $")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.ammount_due,
+                    expression: "fields.ammount_due"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "int",
+                  id: "amountDue",
+                  placeholder: "0.00",
+                  disabled: ""
+                },
+                domProps: { value: _vm.fields.ammount_due },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "ammount_due", $event.target.value)
+                  }
+                }
+              })
+            ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.customer_name,
-              expression: "fields.purchase_order.customer.customer_name"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "customerName",
-            placeholder: "Customer Name",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.customer_name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "customer_name",
-                $event.target.value
-              )
-            }
-          }
-        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.customer_name,
-              expression: "fields.purchase_order.customer.customer_name"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "customerName",
-            placeholder: "Customer Name",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.customer_name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.customer_name,
+                expression: "fields.purchase_order.customer.customer_name"
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "customer_name",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.billing_address,
-              expression: "fields.purchase_order.customer.billing_address"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "billingAddress",
-            placeholder: "Billing Street",
-            disabled: ""
-          },
-          domProps: {
-            value: _vm.fields.purchase_order.customer.billing_address
-          },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "customerName",
+              placeholder: "Customer Name",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.customer_name
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "customer_name",
+                  $event.target.value
+                )
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "billing_address",
-                $event.target.value
-              )
             }
-          }
-        })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.customer_name,
+                expression: "fields.purchase_order.customer.customer_name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "customerName",
+              placeholder: "Customer Name",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.customer_name
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "customer_name",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.shipping_address,
-              expression: "fields.purchase_order.customer.shipping_address"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "shippingAddress",
-            placeholder: "Shipping Street",
-            disabled: ""
-          },
-          domProps: {
-            value: _vm.fields.purchase_order.customer.shipping_address
-          },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.billing_address,
+                expression: "fields.purchase_order.customer.billing_address"
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "shipping_address",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.billing_city,
-              expression: "fields.purchase_order.customer.billing_city"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "city",
-            placeholder: "City",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.billing_city },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "billingAddress",
+              placeholder: "Billing Street",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.billing_address
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "billing_address",
+                  $event.target.value
+                )
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "billing_city",
-                $event.target.value
-              )
             }
-          }
-        })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.shipping_address,
+                expression: "fields.purchase_order.customer.shipping_address"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "shippingAddress",
+              placeholder: "Shipping Street",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.shipping_address
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "shipping_address",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.shipping_city,
-              expression: "fields.purchase_order.customer.shipping_city"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "city",
-            placeholder: "City",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.shipping_city },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.billing_city,
+                expression: "fields.purchase_order.customer.billing_city"
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "shipping_city",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.billing_state,
-              expression: "fields.purchase_order.customer.billing_state"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "state",
-            placeholder: "State",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.billing_state },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "city",
+              placeholder: "City",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.billing_city
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "billing_city",
+                  $event.target.value
+                )
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "billing_state",
-                $event.target.value
-              )
             }
-          }
-        })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.shipping_city,
+                expression: "fields.purchase_order.customer.shipping_city"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "city",
+              placeholder: "City",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.shipping_city
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "shipping_city",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.shipping_state,
-              expression: "fields.purchase_order.customer.shipping_state"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "state",
-            placeholder: "State",
-            disabled: ""
-          },
-          domProps: {
-            value: _vm.fields.purchase_order.customer.shipping_state
-          },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.billing_state,
+                expression: "fields.purchase_order.customer.billing_state"
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "shipping_state",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.billing_state,
-              expression: "fields.purchase_order.customer.billing_state"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "zip",
-            placeholder: "Zip Code",
-            disabled: ""
-          },
-          domProps: { value: _vm.fields.purchase_order.customer.billing_state },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "state",
+              placeholder: "State",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.billing_state
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "billing_state",
+                  $event.target.value
+                )
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "billing_state",
-                $event.target.value
-              )
             }
-          }
-        })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.shipping_state,
+                expression: "fields.purchase_order.customer.shipping_state"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "state",
+              placeholder: "State",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.shipping_state
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "shipping_state",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.shipping_state,
-              expression: "fields.purchase_order.customer.shipping_state"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "zip",
-            placeholder: "Zip Code",
-            disabled: ""
-          },
-          domProps: {
-            value: _vm.fields.purchase_order.customer.shipping_state
-          },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.billing_state,
+                expression: "fields.purchase_order.customer.billing_state"
               }
-              _vm.$set(
-                _vm.fields.purchase_order.customer,
-                "shipping_state",
-                $event.target.value
-              )
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "zip",
+              placeholder: "Zip Code",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.billing_state
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "billing_state",
+                  $event.target.value
+                )
+              }
             }
-          }
-        })
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.purchase_order.customer.shipping_state,
+                expression: "fields.purchase_order.customer.shipping_state"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "zip",
+              placeholder: "Zip Code",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.fields.purchase_order.customer.shipping_state
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields.purchase_order.customer,
+                  "shipping_state",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -38646,99 +38678,112 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "customerNum" } }, [
-        _vm._v("Customer Number")
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "status" } }, [_vm._v("Status")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.status,
+                expression: "fields.status"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "status", id: "status" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.fields,
+                  "status",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "Open" } }, [_vm._v("Open")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Closed" } }, [_vm._v("Closed")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Pending" } }, [_vm._v("Pending")])
+          ]
+        )
       ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.fields.customer_name,
-            expression: "fields.customer_name"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "int",
-          id: "customerNum",
-          placeholder: "Customer Number"
-        },
-        domProps: { value: _vm.fields.customer_name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "outputQty" } }, [_vm._v("Output Qty")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields.output_quantity,
+              expression: "fields.output_quantity"
             }
-            _vm.$set(_vm.fields, "customer_name", $event.target.value)
+          ],
+          staticClass: "form-control",
+          attrs: { type: "int", id: "outputQty", placeholder: "Output Qty" },
+          domProps: { value: _vm.fields.output_quantity },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "output_quantity", $event.target.value)
+            }
           }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
+      _c("div", { staticClass: "modal-footer" }, [
+        _c(
+          "button",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.fields.production_order_items.inventory_id,
-            expression: "fields.production_order_items.inventory_id"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "int", id: "item", placeholder: "Item<" },
-        domProps: { value: _vm.fields.production_order_items.inventory_id },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.fields.production_order_items,
-              "inventory_id",
-              $event.target.value
-            )
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.production_order_items.input_quantity,
-            expression: "production_order_items.input_quantity"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" },
-        domProps: { value: _vm.production_order_items.input_quantity },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+            staticClass: "btn btn-primary",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                return _vm.editPurchaseOrder()
+              }
             }
-            _vm.$set(
-              _vm.production_order_items,
-              "input_quantity",
-              $event.target.value
-            )
-          }
-        }
-      })
-    ])
-  ])
+          },
+          [_vm._v("Submit")]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38987,7 +39032,6 @@ var render = function() {
       on: {
         submit: function($event) {
           $event.preventDefault()
-          return _vm.submit($event)
         }
       }
     },

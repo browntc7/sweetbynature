@@ -36,6 +36,6 @@ Route::get('/inventory', 'ApiController@getInventory');
 Route::get('/inventory/{id}', 'ApiController@getInventoryDetail');
 Route::put('/inventory/{id}/edit', 'ApiController@editInventory');
 Route::get('/productionOrders', 'ApiController@getProductionOrders');
-Route::get('/productionOrders/{id}', 'ApiController@getProductionOrderDetail');
 Route::put('/productionOrders/{id}/edit', 'ApiController@editProductionOrder');
+Route::get('/productionOrders/{id}', 'ApiController@getProductionOrderDetail');
 Route::get('/products', 'ApiController@getProducts');

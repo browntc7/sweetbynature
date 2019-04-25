@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent>
         <div class="form-group">
             <label for="customerName">Customer Name</label>
             <input type="text" class="form-control" max=30 name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
