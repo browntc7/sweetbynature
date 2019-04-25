@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
+<div class="modal" id="productionOrderModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -47,7 +47,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <production-order-component></production-order-component>
+            <production-order-component ref="productionComponent"></production-order-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -138,7 +138,9 @@ $('#infoMessage').load('info/productionOrder.html');
     // edit the row
     $('#productionOrdersTable tbody').on('click', 'i', function () {
         var data = productionOrdersTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
+        app.$refs.productionComponent.showPOEditModal();
+
+        
     });
 
 </script>

@@ -2239,8 +2239,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2248,8 +2246,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    addToLoop: function addToLoop(number) {
-      this.clicks += number;
+    showPOEditModal: function showPOEditModal() {
+      // this.fields.status = data.status;
+      // this.fields.purchase_order_id = data.purchase_order_id;
+      // this.showSubmit = false;
+      $("#productionOrderModal").modal("show");
     }
   }
 });
@@ -2412,7 +2413,9 @@ function initialClick() {
       //set copy_shipping to true so its checked other views need only fields:{}
       clicks: 1,
       fields: {
-        copy_shipping: true
+        copy_shipping: true,
+        product_id: [],
+        input_quantity: []
       },
       errors: {},
       showSubmit: {}
@@ -38647,72 +38650,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._l(_vm.clicks, function(item) {
-        return _c("div", [_vm._m(1, true), _vm._v(" "), _vm._m(2, true)])
-      }),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-plus-square-o addIcon",
-        attrs: { "aria-hidden": "true" },
-        on: {
-          click: function($event) {
-            return _vm.addToLoop(1)
-          }
-        }
-      })
-    ],
-    2
-  )
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "customerNum" } }, [
-        _vm._v("Customer Number")
+    return _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "customerNum" } }, [
+          _vm._v("Customer Number")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "int",
+            id: "customerNum",
+            placeholder: "Customer Number"
+          }
+        })
       ]),
       _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "int",
-          id: "customerNum",
-          placeholder: "Customer Number"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "int", id: "item", placeholder: "Item<" }
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "int", id: "item", placeholder: "Item<" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" }
-      })
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" }
+        })
+      ])
     ])
   }
 ]
@@ -39037,8 +39014,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.fields.product_id,
-                          expression: "fields.product_id"
+                          value: _vm.fields.product_id[_vm.clicks],
+                          expression: "fields.product_id[clicks]"
                         }
                       ],
                       staticClass: "form-control",
@@ -39054,8 +39031,8 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.fields,
-                            "product_id",
+                            _vm.fields.product_id,
+                            _vm.clicks,
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -39087,21 +39064,21 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.fields.input_quantity,
-                        expression: "fields.input_quantity"
+                        value: _vm.fields.input_quantity[_vm.clicks],
+                        expression: "fields.input_quantity[clicks]"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "int", id: "inputQty", placeholder: "Qty" },
-                    domProps: { value: _vm.fields.input_quantity },
+                    domProps: { value: _vm.fields.input_quantity[_vm.clicks] },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.fields,
-                          "input_quantity",
+                          _vm.fields.input_quantity,
+                          _vm.clicks,
                           $event.target.value
                         )
                       }
@@ -51659,15 +51636,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/InvoiceComponent.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InvoiceComponent_vue_vue_type_template_id_2d1526bb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvoiceComponent.vue?vue&type=template&id=2d1526bb& */ "./resources/js/components/InvoiceComponent.vue?vue&type=template&id=2d1526bb&");
 /* harmony import */ var _InvoiceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvoiceComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/InvoiceComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _InvoiceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _InvoiceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -51697,7 +51673,7 @@ component.options.__file = "resources/js/components/InvoiceComponent.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/InvoiceComponent.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

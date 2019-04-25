@@ -20,7 +20,6 @@
     <label for="status">Status</label>
     <input type="int" class="form-control" id="status" placeholder="status">
   </div> -->
- <div v-for="item in clicks">
     <div class="form-group">
       <label for="item">Item</label>
       <input type="int" class="form-control" id="item" placeholder="Item<">
@@ -29,8 +28,7 @@
       <label for="inputQty">Qty</label>
       <input type="int" class="form-control" id="inputQty" placeholder="Input Qty">
     </div>
- </div>
-  <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true"></i>
+ 
 
   <!-- <div class="form-group">
     <label for="outputQty">Output Qty</label>
@@ -49,9 +47,12 @@
             return {clicks: 1}
         },
         methods: {
-            addToLoop: function (number) {
-                this.clicks += number
-            }
+            showPOEditModal: function () {
+            // this.fields.status = data.status;
+            // this.fields.purchase_order_id = data.purchase_order_id;
+            // this.showSubmit = false;
+            $("#productionOrderModal").modal("show");
+        },
         }
     }
 

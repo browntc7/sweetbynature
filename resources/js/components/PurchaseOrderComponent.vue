@@ -14,7 +14,7 @@
             <div v-for="item in clicks">
                 <div class="form-group">
                     <label for="item">Item</label>
-                    <select name="products" class="form-control" id="products" v-model="fields.product_id">
+                    <select name="products" class="form-control" id="products" v-model="fields.product_id[clicks]">
                         <option value="1">Seedling</option>
                         <option value="2">Extract</option>
                         <option value="3">Raw Honeybush</option>
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="inputQty">Qty</label>
                     <input type="int" class="form-control" id="inputQty" placeholder="Qty"
-                        v-model="fields.input_quantity">
+                        v-model="fields.input_quantity[clicks]">
                 </div>
             </div>
             <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true" v-model="fields.item"></i>
@@ -65,7 +65,9 @@ export default {
             //set copy_shipping to true so its checked other views need only fields:{}
             clicks: 1,
             fields: {
-                copy_shipping: true
+                copy_shipping: true,
+                product_id:[],
+                input_quantity:[]
             },
             errors: {},
             showSubmit: {},
