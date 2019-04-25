@@ -39,7 +39,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create Purchase Order</h5>
+                <h5 class="modal-title" id="purchaseOrderTitle">Create Purchase Order</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -47,10 +47,7 @@
             <div class="modal-body">
             <purchase-order-component ref="poRef"></purchase-order-component>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -77,8 +74,7 @@ var customerName = getURLParameter('custName');
 var customerID = getURLParameter('custID');
 //show modal if params and fill in input
 if(customerName && customerID){
-$("#purchaseOrderModal").modal("show");
-app.$refs.poRef.showPOModal(decodeURIComponent(customerName),decodeURIComponent(customerID));
+app.$refs.poRef.showPOSubmitModal(decodeURIComponent(customerName),decodeURIComponent(customerID));
 
 }
 
@@ -155,16 +151,12 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
 });
 
 //edit the row
-// $('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
-//     var data = purchaseOrderTable.row($(this).parents('tr')).data();
-//     $("#purchaseOrderModal").modal("show"); 
-//     $("#Date").val(data.created_at);
-//     $("#purchaseOrder").val(data.purchase_order_id);
-//     $("#customerNumber").val(data.customer_id);
-//     $("#customerName").val(data.customer_name);
-//     $("#billingAddress").val(data.billing_address);
-//     $("#status").val(data.status);
+$('#purchaseOrderTable tbody').on('click', 'i.fa.fa-pencil-square-o', function () {
+    var data = purchaseOrderTable.row($(this).parents('tr')).data();
+    app.$refs.poRef.showPOEditModal(data);
+
    
-// });
+   
+});
 </script>
 @endsection

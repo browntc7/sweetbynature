@@ -16,7 +16,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-                        <!-- <th>Edit</th> -->
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -29,7 +29,7 @@
                         <th>Item</th>
                         <th>Input Qty</th>
                         <th>Output Qty</th>
-                        <!-- <th>Edit</th> -->
+                        <th>Edit</th>
                     </tr>
                 </tfoot>
             </table>
@@ -103,21 +103,21 @@ $('#infoMessage').load('info/productionOrder.html');
                 'data': 'output_quantity',
                 "defaultContent": ""
             }
-            // ,
-            // null
+            ,
+            null
         ],
         "columnDefs": [
-        //     {
-        //     // The `data` parameter refers to the data for the cell (defined by the
-        //     // `data` option, which defaults to the column being worked with, in
-        //     // this case `data: 0`.
-        //     "render": function (data, type, row) {
-        //         return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
-        //     },
-        //     "targets": 8
-        // },
+            {
+            // The `data` parameter refers to the data for the cell (defined by the
+            // `data` option, which defaults to the column being worked with, in
+            // this case `data: 0`.
+            "render": function (data, type, row) {
+                return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+            },
+            "targets": 8
+        },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 7 }
+        { responsivePriority: 2, targets: 8 }
     ],
         // dom: 'Bfrtip',
         // buttons: [
@@ -135,11 +135,11 @@ $('#infoMessage').load('info/productionOrder.html');
         colReorder: true
     });
 
-    //edit the row
-    // $('#productionOrdersTable tbody').on('click', 'i', function () {
-    //     var data = productionOrdersTable.row($(this).parents('tr')).data();
-    //     alert('You clicked on id ' + data['id'] + '\'s edit button');
-    // });
+    // edit the row
+    $('#productionOrdersTable tbody').on('click', 'i', function () {
+        var data = productionOrdersTable.row($(this).parents('tr')).data();
+        alert('You clicked on id ' + data['id'] + '\'s edit button');
+    });
 
 </script>
 @endsection

@@ -2,134 +2,32 @@
 
 @section('content')
 <div class="container">
-    <form>
-        <div class="row">
-            <div class="col-lg-6">
-                <h1>Invoice</h1>
-                <b>
-                    <p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p>
-                </b>
-                <button class="btn btn-primary" type="submit">Close Invoice</button>
-            </div>
+    <invoice-component></invoice-component>
 
-            <div class="col-lg-6">
-                <div class="form-group row">
-                    <label for="invoiceNumber" class="col-sm-4 col-form-label">Invoice Number</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="invoiceNumber" placeholder="123456" disabled>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="createDate" class="col-sm-4 col-form-label">Date Created</label>
-                    <div class="col-sm-8">
-                        <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$"
-                            class="form-control" id="createDate" placeholder="MM-DD-YYYY" disabled>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="productionOrderNum" class="col-sm-4 col-form-label">Purchase Order
-                        #</label>
-                    <div class="col-sm-8">
-                        <input type="int" class="form-control" id="productionOrderNum" placeholder="123456" disabled>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="dueDate" class="col-sm-4 col-form-label">Due Date</label>
-                    <div class="col-sm-8">
-                        <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$"
-                            class="form-control" id="dueDate" placeholder="MM-DD-YYYY" disabled>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="amountDue" class="col-sm-4 col-form-label">Amount Due $</label>
-                    <div class="col-sm-8">
-                        <input type="int" class="form-control" id="amountDue" placeholder="0.00" disabled>
-                    </div>
-                </div>
-            </div>
+    <!--invoice table-->
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <table id="invoiceTable" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-        <div class="row contentPadding">
+    </div>
 
-            <div class="col-lg-6">
-                <p>BILL TO: </p>
-            </div>
-            <div class="col-lg-6">
-                <p>SHIP TO: </p>
-            </div>
-
-        </div>
-        <!--Customer Name -->
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="customerName" placeholder="Customer Name" disabled>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="customerName" placeholder="Customer Name" disabled>
-            </div>
-        </div>
-        <!--Address-->
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="billingAddress" placeholder="Billing Street" disabled>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="shippingAddress" placeholder="Shipping Street" disabled>
-            </div>
-        </div>
-        <!--City-->
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="city" placeholder="City" disabled>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="city" placeholder="City" disabled>
-            </div>
-        </div>
-        <!--State-->
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="state" placeholder="State" disabled>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="state" placeholder="State" disabled>
-            </div>
-        </div>
-        <!--Zip Code-->
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="zip" placeholder="Zip Code" disabled>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="zip" placeholder="Zip Code" disabled>
-            </div>
-        </div>
-
-        <!--invoice table-->
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <table id="myTable" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Description</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Description</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th>Amount</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
 
 @endsection
@@ -137,8 +35,84 @@
 
 
 <script>
+    //function to get URL parameters
+    function getURLParameter(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam) {
+                return sParameterName[1];
+            }
+        }
+    }
+    var invoiceID = getURLParameter('invoiceID');
+    invoiceID = decodeURIComponent(invoiceID);
     //load info message html
     $('#infoMessage').load('{{asset('info/invoicePrint.html')}}');
+
+    //create customer table
+    var invoiceTable = $('#invoiceTable').DataTable({
+        ajax: {
+            url: "{{url('api/invoices/')}}/" + invoiceID, //change to appropriate data call
+            dataSrc: "data.purchase_order.purchase_order_items"
+        },
+        columns: [ //change to data model
+            {
+                'data': 'inventory.product.item_description',
+                "defaultContent": ""
+            },
+            {
+                'data': 'inventory.quantity',
+                "defaultContent": ""
+            },
+            {
+                'data': 'inventory.product.unit_cost',
+                "defaultContent": ""
+            },
+            null
+        ],
+        "columnDefs": [{
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function (data, type, row) {
+                    return "$" + (row.inventory.quantity * row.inventory.product.unit_cost).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                },
+                "targets": 3
+            },
+            // {
+            //     // The `data` parameter refers to the data for the cell (defined by the
+            //     // `data` option, which defaults to the column being worked with, in
+            //     // this case `data: 0`.
+            //     "render": function (data, type, row) {
+            //         return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
+            //     },
+            //     "targets": 7
+            // },
+            {
+                responsivePriority: 1,
+                targets: 0
+            },
+            {
+                responsivePriority: 2,
+                targets: 3
+            }
+        ],
+         dom: 't',
+        // buttons: [{
+        //     text: 'Create Customer',
+        //     action: function (e, dt, node, config) {
+        //         //reset the form
+        //         app.$refs.customer.showSubmitButton();
+        //         //show the modal
+        //         $("#customerModal").modal("show");
+        //         $("#modalTitle").html("Create Customer");
+        //     }
+        // }],
+        responsive: true,
+        colReorder: true
+    });
 
 </script>
 @endsection
