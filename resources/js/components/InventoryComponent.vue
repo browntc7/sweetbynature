@@ -2,31 +2,31 @@
  <form> 	
   <div class="form-group row">
     <label for="itemNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Item #</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="int" class="form-control" id="itemNumber" placeholder="Item #" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="itemDescription" class="col-sm-offset-2 col-sm-2 col-form-label">Item Description</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="itemDescription" placeholder="Item Description" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="location" class="col-sm-offset-2 col-sm-2 col-form-label">Location</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="location" placeholder="Location" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="qty" class="col-sm-offset-2 col-sm-2 col-form-label">Qty</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="int" max="4" class="form-control" id="qty" placeholder="Qty" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="unitCost" class="col-sm-offset-2 col-sm-2 col-form-label">Unit Cost</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="int" class="form-control" id="unitCost" placeholder="Unit Cost" required>
     </div>
   </div>
@@ -56,7 +56,13 @@ export default {
         .catch(error => {
           alert("The Transaction Failed on the Server");
         });
-    }
+    },
+    showInventoryEditModal: function () {
+            // this.fields.status = data.status;
+            // this.fields.purchase_order_id = data.purchase_order_id;
+            // this.showSubmit = false;
+            $("#inventoryModal").modal("show");
+        },
   }
 };
 </script>

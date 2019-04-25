@@ -45,7 +45,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <purchase-order-component ref="poRef"></purchase-order-component>
+            <inventory-component ref="inventoryComponent"></inventory-component>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -128,7 +128,7 @@ $('#infoMessage').load('info/inventory.html');
     //edit the row
     $('#inventoryTable tbody').on('click', 'i', function () {
         var data = inventoryTable.row($(this).parents('tr')).data();
-        alert('You clicked on id ' + data['id'] + '\'s edit button');
+        app.$refs.inventoryComponent.showInventoryEditModal();
     });
 
 </script>
