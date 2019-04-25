@@ -79,7 +79,7 @@
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function (data, type, row) {
-                    return "$" + (row.inventory.quantity * row.inventory.product.unit_cost).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                    return "$" + (row.qty * row.inventory.product.unit_cost).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
                 },
                 "targets": 3
             },

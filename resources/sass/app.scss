@@ -59,3 +59,10 @@
   padding-top:20px; 
 }
 
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
