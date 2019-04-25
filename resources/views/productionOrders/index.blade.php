@@ -41,17 +41,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Production Order Edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
             <production-order-component ref="productionComponent"></production-order-component>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -138,7 +134,7 @@ $('#infoMessage').load('info/productionOrder.html');
     // edit the row
     $('#productionOrdersTable tbody').on('click', 'i', function () {
         var data = productionOrdersTable.row($(this).parents('tr')).data();
-        app.$refs.productionComponent.showPOEditModal();
+        app.$refs.productionComponent.showPOEditModal(data);
 
         
     });
