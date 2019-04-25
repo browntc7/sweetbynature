@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="submit">
         <div v-if="showSubmit">
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
@@ -28,22 +28,22 @@
             </div>
             <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true" v-model="fields.item"></i>
 
-            </p>
+
         </div>
         <div class="form-group" v-if="!showSubmit">
             <label for="status">Status</label>
             <select name="status" class="form-control" id="status" v-model="fields.status">
-                        <option value="Open">Open</option>
-                        <option value="Closed">Closed</option>
-                        <option value="Pending">Pending</option>
-                    </select>
-                
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+                <option value="Pending">Pending</option>
+            </select>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" v-if="showSubmit" v-on:click="submitPurchaseOrder()"
+            <button type="submit" v-if="showSubmit" v-on:click="submitPurchaseOrder()"
                 class="btn btn-primary">Submit</button>
-            <button type="button" v-if="!showSubmit" v-on:click="editPurchaseOrder()"
+            <button type="submit" v-if="!showSubmit" v-on:click="editPurchaseOrder()"
                 class="btn btn-primary">Update</button>
         </div>
     </form>
