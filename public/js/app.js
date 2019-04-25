@@ -38656,49 +38656,101 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "customerNum" } }, [
-          _vm._v("Customer Number")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "int",
-            id: "customerNum",
-            placeholder: "Customer Number"
+  return _c("form", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "customerNum" } }, [
+        _vm._v("Customer Number")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.fields.customer_name,
+            expression: "fields.customer_name"
           }
-        })
-      ]),
+        ],
+        staticClass: "form-control",
+        attrs: {
+          type: "int",
+          id: "customerNum",
+          placeholder: "Customer Number"
+        },
+        domProps: { value: _vm.fields.customer_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.fields, "customer_name", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "item" } }, [_vm._v("Item")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "item", placeholder: "Item<" }
-        })
-      ]),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.fields.production_order_items.inventory_id,
+            expression: "fields.production_order_items.inventory_id"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "int", id: "item", placeholder: "Item<" },
+        domProps: { value: _vm.fields.production_order_items.inventory_id },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(
+              _vm.fields.production_order_items,
+              "inventory_id",
+              $event.target.value
+            )
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "inputQty" } }, [_vm._v("Qty")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" }
-        })
-      ])
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.production_order_items.input_quantity,
+            expression: "production_order_items.input_quantity"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "int", id: "inputQty", placeholder: "Input Qty" },
+        domProps: { value: _vm.production_order_items.input_quantity },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(
+              _vm.production_order_items,
+              "input_quantity",
+              $event.target.value
+            )
+          }
+        }
+      })
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
