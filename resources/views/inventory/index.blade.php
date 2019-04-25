@@ -39,17 +39,13 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create New Lot</h5>
+                <h5 class="modal-title" id="modalTitle">Create New Lot</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
             <inventory-component ref="inventoryComponent"></inventory-component>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -117,7 +113,9 @@ $('#infoMessage').load('info/inventory.html');
             {
                 text: 'Create Lot',
                 action: function ( e, dt, node, config ) {
+                    app.$refs.inventoryComponent.showSubmitButton();
                     $("#inventoryModal").modal("show");
+                    $("#modalTitle").html("Create Inventory");
                 }
             }
         ],
@@ -128,7 +126,9 @@ $('#infoMessage').load('info/inventory.html');
     //edit the row
     $('#inventoryTable tbody').on('click', 'i', function () {
         var data = inventoryTable.row($(this).parents('tr')).data();
-        app.$refs.inventoryComponent.showInventoryEditModal();
+        app.$refs.inventoryComponent.showEditButton(data);
+        $("#modalTitle").html("Edit Inventory");
+        $("#inventoryModal").modal("show"); 
     });
 
 </script>

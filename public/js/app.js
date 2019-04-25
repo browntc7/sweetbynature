@@ -1950,15 +1950,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //data for the vue instance
   data: function data() {
     return {
       //set copy_shipping to true so its checked other views need only fields:{}
       fields: {
-        copy_shipping: true
+        product: {}
       },
-      errors: {}
+      errors: {},
+      showSubmit: true
     };
   },
   methods: {
@@ -1973,11 +1981,18 @@ __webpack_require__.r(__webpack_exports__);
         alert("The Transaction Failed on the Server");
       });
     },
-    showInventoryEditModal: function showInventoryEditModal() {
-      // this.fields.status = data.status;
-      // this.fields.purchase_order_id = data.purchase_order_id;
-      // this.showSubmit = false;
-      $("#inventoryModal").modal("show");
+    showSubmitButton: function showSubmitButton() {
+      // clear fields
+      this.fields = {};
+      this.fields.product = {}; //show submit button
+
+      this.showSubmit = true;
+    },
+    showEditButton: function showEditButton(data) {
+      // clear fields
+      this.fields = data; // hide submit button
+
+      this.showSubmit = false;
     }
   }
 });
@@ -37851,59 +37866,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group row" }, [
-        _c(
-          "label",
-          {
-            staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
-            attrs: { for: "itemNumber" }
-          },
-          [_vm._v("Item #")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "int",
-              id: "itemNumber",
-              placeholder: "Item #",
-              required: ""
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group row" }, [
-        _c(
-          "label",
-          {
-            staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
-            attrs: { for: "itemDescription" }
-          },
-          [_vm._v("Item Description")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "itemDescription",
-              placeholder: "Item Description",
-              required: ""
-            }
-          })
-        ])
-      ]),
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+        }
+      }
+    },
+    [
+      _vm.showSubmit
+        ? _c("div", [
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+                  attrs: { for: "itemNumber" }
+                },
+                [_vm._v("Item #")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.inventory_id,
+                      expression: "fields.inventory_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "int",
+                    id: "itemNumber",
+                    placeholder: "Item #",
+                    required: ""
+                  },
+                  domProps: { value: _vm.fields.inventory_id },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.fields, "inventory_id", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-offset-2 col-sm-2 col-form-label",
+                  attrs: { for: "itemDescription" }
+                },
+                [_vm._v("Item Description")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.product.item_description,
+                      expression: "fields.product.item_description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "itemDescription",
+                    placeholder: "Item Description",
+                    required: ""
+                  },
+                  domProps: { value: _vm.fields.product.item_description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields.product,
+                        "item_description",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "form-group row" }, [
         _c(
@@ -37917,12 +37976,29 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-6" }, [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.product.location,
+                expression: "fields.product.location"
+              }
+            ],
             staticClass: "form-control",
             attrs: {
               type: "text",
               id: "location",
               placeholder: "Location",
               required: ""
+            },
+            domProps: { value: _vm.fields.product.location },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields.product, "location", $event.target.value)
+              }
             }
           })
         ])
@@ -37940,6 +38016,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-6" }, [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.quantity,
+                expression: "fields.quantity"
+              }
+            ],
             staticClass: "form-control",
             attrs: {
               type: "int",
@@ -37947,6 +38031,15 @@ var staticRenderFns = [
               id: "qty",
               placeholder: "Qty",
               required: ""
+            },
+            domProps: { value: _vm.fields.quantity },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "quantity", $event.target.value)
+              }
             }
           })
         ])
@@ -37964,19 +38057,80 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-6" }, [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.product.unit_cost,
+                expression: "fields.product.unit_cost"
+              }
+            ],
             staticClass: "form-control",
             attrs: {
               type: "int",
               id: "unitCost",
               placeholder: "Unit Cost",
               required: ""
+            },
+            domProps: { value: _vm.fields.product.unit_cost },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields.product, "unit_cost", $event.target.value)
+              }
             }
           })
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-footer" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _vm.showSubmit
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.submit()
+                  }
+                }
+              },
+              [_vm._v("Submit")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.showSubmit
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.submit()
+                  }
+                }
+              },
+              [_vm._v("Update")]
+            )
+          : _vm._e()
       ])
-    ])
-  }
-]
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
