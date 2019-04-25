@@ -6,43 +6,43 @@
 <form> 	
   <div class="form-group row">
     <label for="productionOrder" class="col-sm-offset-2 col-sm-2 col-form-label">Production Order</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="productionOrder" placeholder="Production Order">
     </div>
   </div>
   <div class="form-group row">
     <label for="customerNumber" class="col-sm-offset-2 col-sm-2 col-form-label">Customer Number</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="customerNumber" placeholder="Customer Number">
     </div>
   </div>
   <div class="form-group row">
     <label for="lotNumID" class="col-sm-offset-2 col-sm-2 col-form-label">Lot Number ID</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="lotNumID" placeholder="Lot # ID">
     </div>
   </div>
   <div class="form-group row">
     <label for="status" class="col-sm-offset-2 col-sm-2 col-form-label">Status</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="status" placeholder="Status">
     </div>
   </div>
   <div class="form-group row">
     <label for="item" class="col-sm-offset-2 col-sm-2 col-form-label">Item</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="item" placeholder="Item">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Input Qty</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="inputQty" placeholder="Input Qty">
     </div>
   </div>
   <div class="form-group row">
     <label for="outputQty" class="col-sm-offset-2 col-sm-2 col-form-label">Output Qty</label>
-    <div class="col\-sm\-6">
+    <div class="col-sm-6">
       <input type="text" class="form-control" id="outputQty" placeholder="Output Qty">
     </div>
   </div>
