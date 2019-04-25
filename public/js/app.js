@@ -2198,7 +2198,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {};
       data.status = invoiceStatus;
       axios.put('../api/invoice/' + this.fields.invoice_id + '/edit', data).then(function (response) {
-        window.location = "../invoice";
+        window.location = "../invoices";
       }).catch(function (error) {
         alert("The Transaction Failed on the Server");
       });
