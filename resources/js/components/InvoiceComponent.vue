@@ -20,7 +20,7 @@
                 <div class="form-group row">
                     <label for="createDate" class="col-sm-4 col-form-label">Date Created</label>
                     <div class="col-sm-8">
-                        <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$"
+                        <input type="text" 
                             class="form-control" id="createDate" placeholder="MM-DD-YYYY" v-model="fields.created_at"
                             disabled>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="form-group row">
                     <label for="dueDate" class="col-sm-4 col-form-label">Due Date</label>
                     <div class="col-sm-8">
-                        <input type="date" pattern="^(0[1-9]|1[012])[- \.](0[1-9]|[12][0-9]|3[01])[- \.](19|20)\d\d$"
+                        <input type="text" 
                             class="form-control" id="dueDate" placeholder="MM-DD-YYYY" v-model="fields.due_date"
                             disabled>
                     </div>
@@ -75,11 +75,11 @@
         <div class="form-group row">
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="billingAddress" placeholder="Billing Street"
-                    v-model="fields.purchase_order.customer.billing_street" disabled>
+                    v-model="fields.purchase_order.customer.billing_address" disabled>
             </div>
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="shippingAddress" placeholder="Shipping Street"
-                    v-model="fields.purchase_order.customer.shipping_street" disabled>
+                    v-model="fields.purchase_order.customer.shipping_address" disabled>
             </div>
         </div>
         <!--City-->
@@ -124,27 +124,60 @@
             return {
                 //set copy_shipping to true so its checked other views need only fields:{}
                 fields: {
-                   purchase_order:{
-                       customer:{}
-                   }
+                    purchase_order: {
+                        customer: {}
+                    }
                 },
                 errors: {}
             };
         },
         methods: {
-            submit() {
+            getInvoice(invoiceID) {
                 this.errors = {};
                 axios
-                    .post("/api/addCustomer", this.fields)
+                    .get("../api/invoices/" + invoiceID)
                     .then(response => {
                         //hide the modal on the view
-                        $("#purchaseOrderModal").modal("hide");
-                        //reload table data and sort using the table name variable
-                        customerTable.ajax.reload().order([0, "desc"]);
+                        this.fields = response.data.data;
+                        // var parseTime = ;
+                        this.fields.created_at = this.formatDate(response.data.data.created_at);
+                        this.fields.due_date = this.addDays(this.formatDate(response.data.data.created_at),30);
                     })
                     .catch(error => {
                         alert("The Transaction Failed on the Server");
                     });
+            },
+            // Given a string in m/d/y format, return a Date
+            parseMDY(s) {
+                var b = s.split(/\D/);
+                return new Date(b[2], b[0] - 1, b[1]);
+            },
+
+            // Given a Date, return a string in m/d/y format
+            formatMDY(d) {
+                function z(n) {
+                    return (n < 10 ? '0' : '') + n
+                }
+                if (isNaN(+d)) return d.toString();
+                return z(d.getMonth() + 1) + '/' + z(d.getDate()) + '/' + d.getFullYear();
+            },
+
+            // Given a string in m/d/y format, return a string in the same format with n days added
+            addDays(s, days) {
+                var d = this.parseMDY(s);
+                d.setDate(d.getDate() + Number(days));
+                return this.formatMDY(d);
+            },
+            formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [month, day,year].join('/');
             }
         }
     };

@@ -2120,16 +2120,48 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    submit: function submit() {
-      this.errors = {};
-      axios.post("/api/addCustomer", this.fields).then(function (response) {
-        //hide the modal on the view
-        $("#purchaseOrderModal").modal("hide"); //reload table data and sort using the table name variable
+    getInvoice: function getInvoice(invoiceID) {
+      var _this = this;
 
-        customerTable.ajax.reload().order([0, "desc"]);
+      this.errors = {};
+      axios.get("../api/invoices/" + invoiceID).then(function (response) {
+        //hide the modal on the view
+        _this.fields = response.data.data; // var parseTime = ;
+
+        _this.fields.created_at = _this.formatDate(response.data.data.created_at);
+        _this.fields.due_date = _this.addDays(_this.formatDate(response.data.data.created_at), 30);
       }).catch(function (error) {
         alert("The Transaction Failed on the Server");
       });
+    },
+    // Given a string in m/d/y format, return a Date
+    parseMDY: function parseMDY(s) {
+      var b = s.split(/\D/);
+      return new Date(b[2], b[0] - 1, b[1]);
+    },
+    // Given a Date, return a string in m/d/y format
+    formatMDY: function formatMDY(d) {
+      function z(n) {
+        return (n < 10 ? '0' : '') + n;
+      }
+
+      if (isNaN(+d)) return d.toString();
+      return z(d.getMonth() + 1) + '/' + z(d.getDate()) + '/' + d.getFullYear();
+    },
+    // Given a string in m/d/y format, return a string in the same format with n days added
+    addDays: function addDays(s, days) {
+      var d = this.parseMDY(s);
+      d.setDate(d.getDate() + Number(days));
+      return this.formatMDY(d);
+    },
+    formatDate: function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      return [month, day, year].join('/');
     }
   }
 });
@@ -38012,9 +38044,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                type: "date",
-                pattern:
-                  "^(0[1-9]|1[012])[- \\.](0[1-9]|[12][0-9]|3[01])[- \\.](19|20)\\d\\d$",
+                type: "text",
                 id: "createDate",
                 placeholder: "MM-DD-YYYY",
                 disabled: ""
@@ -38094,9 +38124,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                type: "date",
-                pattern:
-                  "^(0[1-9]|1[012])[- \\.](0[1-9]|[12][0-9]|3[01])[- \\.](19|20)\\d\\d$",
+                type: "text",
                 id: "dueDate",
                 placeholder: "MM-DD-YYYY",
                 disabled: ""
@@ -38233,8 +38261,8 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.billing_street,
-              expression: "fields.purchase_order.customer.billing_street"
+              value: _vm.fields.purchase_order.customer.billing_address,
+              expression: "fields.purchase_order.customer.billing_address"
             }
           ],
           staticClass: "form-control",
@@ -38245,7 +38273,7 @@ var render = function() {
             disabled: ""
           },
           domProps: {
-            value: _vm.fields.purchase_order.customer.billing_street
+            value: _vm.fields.purchase_order.customer.billing_address
           },
           on: {
             input: function($event) {
@@ -38254,7 +38282,7 @@ var render = function() {
               }
               _vm.$set(
                 _vm.fields.purchase_order.customer,
-                "billing_street",
+                "billing_address",
                 $event.target.value
               )
             }
@@ -38268,8 +38296,8 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields.purchase_order.customer.shipping_street,
-              expression: "fields.purchase_order.customer.shipping_street"
+              value: _vm.fields.purchase_order.customer.shipping_address,
+              expression: "fields.purchase_order.customer.shipping_address"
             }
           ],
           staticClass: "form-control",
@@ -38280,7 +38308,7 @@ var render = function() {
             disabled: ""
           },
           domProps: {
-            value: _vm.fields.purchase_order.customer.shipping_street
+            value: _vm.fields.purchase_order.customer.shipping_address
           },
           on: {
             input: function($event) {
@@ -38289,7 +38317,7 @@ var render = function() {
               }
               _vm.$set(
                 _vm.fields.purchase_order.customer,
-                "shipping_street",
+                "shipping_address",
                 $event.target.value
               )
             }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <invoice-component></invoice-component>
+    <invoice-component ref="invoiceComponent"></invoice-component>
 
     <!--invoice table-->
     <div class="row justify-content-center">
@@ -48,6 +48,8 @@
     }
     var invoiceID = getURLParameter('invoiceID');
     invoiceID = decodeURIComponent(invoiceID);
+    //load data for invoice
+    app.$refs.invoiceComponent.getInvoice(invoiceID);
     //load info message html
     $('#infoMessage').load('{{asset('info/invoicePrint.html')}}');
 
