@@ -108,17 +108,17 @@ $('#infoMessage').load('info/inventory.html');
         { responsivePriority: 1, targets: 0 },
         { responsivePriority: 2, targets: 7 }
     ],
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                text: 'Create Lot',
-                action: function ( e, dt, node, config ) {
-                    app.$refs.inventoryComponent.showSubmitButton();
-                    $("#inventoryModal").modal("show");
-                    $("#modalTitle").html("Create Inventory");
-                }
-            }
-        ],
+        // dom: 'Bfrtip',
+        // buttons: [
+        //     {
+        //         text: 'Create Lot',
+        //         action: function ( e, dt, node, config ) {
+        //             app.$refs.inventoryComponent.showSubmitButton();
+        //             $("#inventoryModal").modal("show");
+        //             $("#modalTitle").html("Create Inventory");
+        //         }
+        //     }
+        // ],
         responsive: true,
         colReorder: true
     });

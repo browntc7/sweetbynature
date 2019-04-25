@@ -196,7 +196,7 @@
                 var data = {};
                 data.status=invoiceStatus;
                 axios.put('../api/invoice/'+this.fields.invoice_id+'/edit',data ).then(response => {
-                    window.location = "../";
+                    window.location = "../invoice";
 
                     
                 }).catch(error => {
