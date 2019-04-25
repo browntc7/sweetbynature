@@ -32,6 +32,7 @@ Route::put('/purchaseOrders/{id}/edit', 'ApiController@editPurchaseOrder');
 Route::post('/addPurchaseOrder', 'ApiController@addPurchaseOrder');
 Route::get('/invoices', 'ApiController@getInvoices');
 Route::get('/invoices/{id}', 'ApiController@getInvoiceDetail');
+Route::put('/invoice/{id}/edit', 'ApiController@editInvoice');
 Route::get('/inventory', 'ApiController@getInventory');
 Route::get('/inventory/{id}', 'ApiController@getInventoryDetail');
 Route::put('/inventory/{id}/edit', 'ApiController@editInventory');
@@ -39,3 +40,5 @@ Route::get('/productionOrders', 'ApiController@getProductionOrders');
 Route::put('/productionOrders/{id}/edit', 'ApiController@editProductionOrder');
 Route::get('/productionOrders/{id}', 'ApiController@getProductionOrderDetail');
 Route::get('/products', 'ApiController@getProducts');
+
+Route::get('/test', 'ApiController@test');
