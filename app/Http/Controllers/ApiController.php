@@ -244,9 +244,11 @@ class ApiController extends Controller
     public function test(){
         //$purchaseOrderWithItems = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', 8)->first();
         //$testrt = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', 30)->get()->first();
+        $invoiceRecord = App\Invoice::findOrFail(8);
         $productIdHoneybush = DB::table('products')->where('item_description', '=', 'Raw Honeybush')->first()->product_id;
         $inventoryIdHoneybush = DB::table('inventory')->where('product_id', '=', $productIdHoneybush)->first()->inventory_id;
-        return $inventoryIdHoneybush;
+        $purchaseOrderWithItems = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', $invoiceRecord->purchase_order_id)->get()->first();
+        return $purchaseOrderWithItems;
     }
 
     public function editInvoice($id, Request $request){
@@ -265,7 +267,7 @@ class ApiController extends Controller
 
             foreach($purchaseOrderWithItems->purchaseOrderItems as $item){
                 if($item->inventory_id == $inventoryIdHoneybush){
-                    $productionQty += $item->input_quantity;  
+                    $productionQty += $item->qty;  
 
                     $productionOrderToAdd = ['invoice_id' => $id, 'status' => 'Open', 'output_quantity' => '0', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()];
                     $productionOrderId = DB::table('production_orders')->insertGetId($productionOrderToAdd);
