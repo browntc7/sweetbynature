@@ -10,7 +10,7 @@
                     <tr>
                         <th>Date</th>
                         <th>Production Order Number</th>
-                        <th>Customer Number</th>
+                        <!-- <th>Customer Number</th> -->
                         <th>Lot Number ID</th>
                         <th>Status</th>
                         <th>Item</th>
@@ -23,7 +23,7 @@
                     <tr>
                         <th>Date</th>
                         <th>Production Order Number</th>
-                        <th>Customer Number</th>
+                        <!-- <th>Customer Number</th> -->
                         <th>Lot Number ID</th>
                         <th>Status</th>
                         <th>Item</th>
@@ -75,10 +75,10 @@ $('#infoMessage').load('info/productionOrder.html');
                 'data': 'production_order_id',
                 "defaultContent": ""
             },
-            {
-                'data': 'Value2',
-                "defaultContent": ""
-            },
+            // {
+            //     'data': 'Value2',
+            //     "defaultContent": ""
+            // },
             {
                 'data': 'production_order_id',
                 "defaultContent": ""
@@ -110,10 +110,10 @@ $('#infoMessage').load('info/productionOrder.html');
             "render": function (data, type, row) {
                 return "<i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>";
             },
-            "targets": 8
+            "targets": 7
         },
         { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: 8 }
+        { responsivePriority: 2, targets: 7 }
     ],
         // dom: 'Bfrtip',
         // buttons: [

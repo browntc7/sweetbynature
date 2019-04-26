@@ -188,8 +188,8 @@ class ApiController extends Controller
         $inventoryRecord->quantity = $inventory['quantity'];
         $inventoryRecord->save();
         
-        $productRecord->unit_cost = $inventory['unit_cost'];
-        $productRecord->location = $inventory['location'];
+        $productRecord->unit_cost = $inventory['product']['unit_cost'];
+        $productRecord->location = $inventory['product']['location'];
         $productRecord->save();
 
         $response = App\Inventory::with('product')->findOrFail($id);

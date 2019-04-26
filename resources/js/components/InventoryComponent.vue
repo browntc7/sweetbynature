@@ -56,13 +56,12 @@ export default {
     methods: {
         submit() {
             this.errors = {};
-            axios
-                .post("/api/addCustomer", this.fields)
+            axios.put("/api/inventory/" + this.fields.inventory_id + "/edit", this.fields)
                 .then(response => {
                     //hide the modal on the view
-                    $("#purchaseOrderModal").modal("hide");
+                    $("#inventoryModal").modal("hide");
                     //reload table data and sort using the table name variable
-                    customerTable.ajax.reload().order([0, "desc"]);
+                    inventoryTable.ajax.reload( null, false );
                 })
                 .catch(error => {
                     alert("The Transaction Failed on the Server");
