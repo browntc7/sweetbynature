@@ -1845,6 +1845,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //data for the vue instance 
   data: function data() {
@@ -1861,8 +1873,8 @@ __webpack_require__.r(__webpack_exports__);
     showSubmitButton: function showSubmitButton() {
       // clear fields
       this.fields = {}; //set shipping bool to true
-
-      this.fields.copy_shipping = true; //show submit button
+      // this.fields.copy_shipping = true;
+      //show submit button
 
       this.showSubmit = true;
     },
@@ -37394,7 +37406,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a customer name.\n        ")
+          _vm._v("\n            Please provide a customer name.\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -37433,7 +37445,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a valid email.\n        ")
+          _vm._v("\n            Please provide a valid email.\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -37472,7 +37484,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a valid phone number.\n        ")
+          _vm._v("\n            Please provide a valid phone number.\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -37511,7 +37523,9 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a valid billing street.\n        ")
+          _vm._v(
+            "\n            Please provide a valid billing street.\n        "
+          )
         ])
       ]),
       _vm._v(" "),
@@ -37549,7 +37563,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a valid billing city.\n        ")
+          _vm._v("\n            Please provide a valid billing city.\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -37588,7 +37602,9 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n        Please provide a valid billing state.\n        ")
+          _vm._v(
+            "\n            Please provide a valid billing state.\n        "
+          )
         ])
       ]),
       _vm._v(" "),
@@ -37840,7 +37856,9 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
-        _vm._v("\n        Please provide a valid billing zip code.\n        ")
+        _vm._v(
+          "\n            Please provide a valid billing zip code.\n        "
+        )
       ])
     ])
   }
