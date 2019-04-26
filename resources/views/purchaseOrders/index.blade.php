@@ -141,9 +141,9 @@ var purchaseOrderTable = $('#purchaseOrderTable').DataTable({
                 id: 'purchaseButton'
             },
         action: function (e, dt, node, config) {
-            $("#purchaseOrderModal").modal("show");
+            // $("#purchaseOrderModal").modal("show");
             // reset modal vue data
-            app.$refs.poRef.resetWindow();
+            app.$refs.poRef.showPOSubmitModal();
         }
     }],
     responsive: true,
