@@ -1,8 +1,8 @@
 <template>
-    <form @submit.prevent="submit">
+    <form id="form" @submit.prevent="submit">
         <div class="form-group">
             <label for="customerName">Customer Name</label>
-            <input type="text" class="form-control" max=30 name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
+            <input type="text" class="form-control" data-val="true" max=30 name="customerName" id="customerName" v-model="fields.customer_name" placeholder="Customer Name" required>
             <div class="invalid-feedback">
             Please provide a customer name.
             </div>
@@ -80,6 +80,9 @@
     </form>
 
 </template>
+   //ref for validation   
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script>
 <script>
 export default {
   //data for the vue instance 
@@ -92,6 +95,23 @@ export default {
     }
   },
   methods: {
+     checkForm: function (e) {
+      if (this.fields = data) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.customer_name) {
+        this.errors.push('Customer Name Required.');
+      }
+      // if (!this.age) {
+      //   this.errors.push('Age required.');
+      // }
+
+      e.preventDefault();
+    }
+  }
     showSubmitButton: function () {
                 // clear fields
                 this.fields = {};
@@ -132,7 +152,13 @@ export default {
         alert("The Transaction Failed on the Server")
       });
     }, 
+  //     //prevent form submission if validation fails
+  //   documentReady: function(){
+  //     $("#form").submit(function (e) {
+  //       alert("Unable To Submit - Correct Missing Fields");
+  //       e.preventDefault();
+  //  });
     
-  },
+  // });
 }
 </script>
