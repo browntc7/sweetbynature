@@ -9,6 +9,7 @@ class ProductionOrderItem extends Model
     // explictly defining table name
     protected $table = 'production_order_items';
     public $timestamps = false;
+    protected $fillable = ['production_order_id', 'inventory_id', 'inputy_quantity'];
 
     #protected $primaryKey = null; #removed having an issue with seeding db
 

@@ -1,14 +1,14 @@
 <template>
-    <form>
+    <form @submit.prevent>
         <div class="row">
             <div class="col-lg-6">
                 <h1>Invoice</h1>
                 <b>
                     <p>Sweet By Nature<br>Some Address Ln<br>South Africa<br>3429348<br></p>
                 </b>
-                <button class="btn btn-primary no-print"  v-on:click="updateStatus('Open')">Open</button>
-                <button class="btn btn-warning no-print" v-on:click="updateStatus('Pending')">Pending</button>
-                <button class="btn btn-success no-print" v-on:click="updateStatus('Closed')">Closed</button>
+                <button type="submit" class="btn btn-primary no-print"  v-on:click="updateStatus('Open')">Open</button>
+                <button type="submit" class="btn btn-warning no-print" v-on:click="updateStatus('Pending')">Pending</button>
+                <button type="submit" class="btn btn-success no-print" v-on:click="updateStatus('Closed')">Closed</button>
             </div>
 
             <div class="col-lg-6">
@@ -195,8 +195,9 @@
             updateStatus: function (invoiceStatus) {
                 var data = {};
                 data.status=invoiceStatus;
-                axios.put('../api/inventory/'+this.fields.invoice_id+'/edit',data ).then(response => {
-                console.log(response);
+                axios.put('../api/invoice/'+this.fields.invoice_id+'/edit',data ).then(response => {
+                    window.location = "../invoices";
+
                     
                 }).catch(error => {
                     alert("The Transaction Failed on the Server")

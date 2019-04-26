@@ -54,6 +54,8 @@ class ApiController extends Controller
             'qty' => $item['qty'] ]);
         }
 
+        DB::table('invoices')->insert(['purchase_order_id' => $response, 'status' => 'Open', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()]);
+
         return $response;
     }
 
@@ -78,16 +80,6 @@ class ApiController extends Controller
         return response()->json($response, 201);
     }
 
-    public function getInvoices(){
-
-        $things = App\Invoice::with(['purchaseOrder' => function($query){
-            $query->select('purchase_order_id', 'customer_id');
-        }, 'purchaseOrder.customer' => function($query){
-            $query->select('customer_id', 'customer_name');
-        }])->select('invoice_id', 'purchase_order_id', 'status', 'created_at')->get();
-        $things = array('data' => $things);
-        return $things;
-    }
 
     // public function getProductionOrders(){
     //     $things = App\ProductionOrder::with(['invoice' => function($query){
@@ -173,7 +165,7 @@ class ApiController extends Controller
         $productionOrder->output_quantity = $production['output_quantity'];
         $productionOrder->save();
         
-        return response()->json($response, 201);
+        return response(201);
     }
 
     public function getInventory(){
@@ -198,8 +190,8 @@ class ApiController extends Controller
         $inventoryRecord->quantity = $inventory['quantity'];
         $inventoryRecord->save();
         
-        $productRecord->unit_cost = $inventory['unit_cost'];
-        $productRecord->location = $inventory['location'];
+        $productRecord->unit_cost = $inventory['product']['unit_cost'];
+        $productRecord->location = $inventory['product']['location'];
         $productRecord->save();
 
         $response = App\Inventory::with('product')->findOrFail($id);
@@ -238,6 +230,60 @@ class ApiController extends Controller
 
     public function customerName(Request $request){
 
+    }
+
+    public function getInvoices(){
+
+        $things = App\Invoice::with(['purchaseOrder' => function($query){
+            $query->select('purchase_order_id', 'customer_id');
+        }, 'purchaseOrder.customer' => function($query){
+            $query->select('customer_id', 'customer_name');
+        }])->select('invoice_id', 'purchase_order_id', 'status', 'created_at')->get();
+        $things = array('data' => $things);
+        return $things;
+    }
+
+    public function test(){
+        //$purchaseOrderWithItems = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', 8)->first();
+        //$testrt = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', 30)->get()->first();
+        $invoiceRecord = App\Invoice::findOrFail(8);
+        $productIdHoneybush = DB::table('products')->where('item_description', '=', 'Raw Honeybush')->first()->product_id;
+        $inventoryIdHoneybush = DB::table('inventory')->where('product_id', '=', $productIdHoneybush)->first()->inventory_id;
+        $purchaseOrderWithItems = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', $invoiceRecord->purchase_order_id)->get()->first();
+        return $purchaseOrderWithItems;
+    }
+
+    public function editInvoice($id, Request $request){
+        try {
+        $invoice = $request->all();
+        $productionQty = 0;
+        $invoiceRecord = App\Invoice::findOrFail($id);
+        $invoiceRecord->status = $invoice['status'];
+        $invoiceRecord->save();
+
+        if($invoice['status'] == 'Closed'){
+
+            $productIdHoneybush = DB::table('products')->where('item_description', '=', 'Raw Honeybush')->first()->product_id;
+            $inventoryIdHoneybush = DB::table('inventory')->where('product_id', '=', $productIdHoneybush)->first()->inventory_id;
+            $purchaseOrderWithItems = App\PurchaseOrder::with('purchaseOrderItems')->where('purchase_order_id', '=', $invoiceRecord->purchase_order_id)->get()->first();
+
+            foreach($purchaseOrderWithItems->purchaseOrderItems as $item){
+                if($item->inventory_id == $inventoryIdHoneybush){
+                    $productionQty += $item->qty;  
+
+                    $productionOrderToAdd = ['invoice_id' => $id, 'status' => 'Open', 'output_quantity' => '0', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()];
+                    $productionOrderId = DB::table('production_orders')->insertGetId($productionOrderToAdd);
+        
+                    $itemsToAdd = ['production_order_id' => $productionOrderId, 'inventory_id' => $productIdHoneybush, 'input_quantity' => $productionQty];
+                    DB::table('production_order_items')->insert($itemsToAdd);
+                }
+            }
+        }
+        $response = App\Invoice::findOrFail($id);
+        return response()->json($response, 201);
+        }catch(\Exception $e){
+            return abort(400, $e);
+        }
     }
 
     public function getInvoiceDetail($id){

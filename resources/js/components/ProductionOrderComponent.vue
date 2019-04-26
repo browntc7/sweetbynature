@@ -1,42 +1,26 @@
 <template>
-  <form>
-  <!-- <div class="form-group">
-    <label for="date">Date</label>
-    <input type="text" class="form-control" id="date" placeholder="date">
-  </div> -->
-  <!-- <div class="form-group">
-    <label for="productionOrderNum">Production Order Number</label>
-    <input type="string" class="form-control" id="productionOrderNum" placeholder="productionOrderNum">
-  </div> -->
-  <div class="form-group">
-    <label for="customerNum">Customer Number</label>
-    <input type="int" class="form-control" id="customerNum" v-model="fields.customer_name" placeholder="Customer Number">
-  </div>
-  <!-- <div class="form-group">
-    <label for="lotNumID">Lot Number ID</label>
-    <input type="int" class="form-control" id="lotNumID" placeholder="lotNumID">
-  </div>
-  <div class="form-group">
-    <label for="status">Status</label>
-    <input type="int" class="form-control" id="status" placeholder="status">
-  </div> -->
-    <div class="form-group">
-      <label for="item">Item</label>
-      <input type="int" class="form-control" id="item" v-model="fields.production_order_items.inventory_id" placeholder="Item<">
-    </div>
-    <div class="form-group">
-      <label for="inputQty">Qty</label>
-      <input type="int" class="form-control" id="inputQty" v-model="production_order_items.input_quantity" placeholder="Input Qty">
-    </div>
- 
+  <form @submit.prevent>
+    
+  
+      <div class="form-group">
+           <label for="status">Status</label>
+            <select name="status" class="form-control" id="status" v-model="fields.status">
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+                <option value="Pending">Pending</option>
+            </select>
+      </div>
+      <div class="form-group">
+          <label for="outputQty">Output Qty</label>
+          <input type="int" class="form-control" id="outputQty" v-model="fields.output_quantity"
+              placeholder="Output Qty">
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" v-on:click="editPurchaseOrder()">Submit</button>
+      </div>
 
-  <!-- <div class="form-group">
-    <label for="outputQty">Output Qty</label>
-    <input type="int" class="form-control" id="outputQty" v-model="output_quantity" placeholder="outputQty">
-  </div> -->
-     <!-- <button class="btn btn-secondary" type="reset">Cancel</button>
-     <button class="btn btn-primary" type="submit">Submit</button> -->
-</form>
+  </form>
 
 </template>
 
@@ -44,14 +28,37 @@
 <script>
     export default {
         data: function(){
-            return {clicks: 1}
+            return {
+          //set copy_shipping to true so its checked other views need only fields:{}
+          fields: {
+            production_order_items:{ 
+
+            }
+          },
+          errors: {},
+         
+        }
         },
         methods: {
-            showPOEditModal: function () {
+            showPOEditModal: function (data) {
             // this.fields.status = data.status;
             // this.fields.purchase_order_id = data.purchase_order_id;
             // this.showSubmit = false;
+            this.fields = data;
             $("#productionOrderModal").modal("show");
+        },
+        editPurchaseOrder: function () {
+            this.errors = {};
+            axios.put('/api/productionOrders/' + this.fields.production_order_id + '/edit/', this.fields).then(response => {
+                //hide the modal on the view
+                $("#productionOrderModal").modal("hide");
+                // clearform
+                this.fields = {};
+                //reload table data and sort using the table name variable
+                productionOrdersTable.ajax.reload(null, false);
+            }).catch(error => {
+                alert("The Transaction Failed on the Server")
+            });
         },
         }
     }
