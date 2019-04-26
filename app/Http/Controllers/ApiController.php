@@ -54,6 +54,8 @@ class ApiController extends Controller
             'qty' => $item['qty'] ]);
         }
 
+        DB::table('invoices')->insert(['purchase_order_id' => $response, 'status' => 'Open', 'created_at' => \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()]);
+
         return $response;
     }
 
