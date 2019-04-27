@@ -11,10 +11,10 @@
                 <input type="int" class="form-control" id="customerNum" placeholder="Customer #"
                     v-model="fields.customer_number">
             </div>
-            <!-- <div v-for="item in clicks"> -->
+            <div v-for="item in clicks">
                 <div class="form-group">
                     <label for="item">Item</label>
-                    <select name="products" class="form-control" id="products" v-model="fields.product_id[0]">
+                    <select name="products" class="form-control" id="products" v-model="fields.product_id[clicks]">
                         <option value="1">Seedling</option>
                         <option value="2">Extract</option>
                         <option value="3">Raw Honeybush</option>
@@ -23,36 +23,10 @@
                 <div class="form-group">
                     <label for="inputQty">Qty</label>
                     <input type="int" class="form-control" id="inputQty" placeholder="Qty"
-                        v-model="fields.input_quantity[0]">
+                        v-model="fields.input_quantity[clicks]">
                 </div>
-                <div class="form-group">
-                    <label for="item">Item</label>
-                    <select name="products" class="form-control" id="products" v-model="fields.product_id[1]">
-                        <option value="1">Seedling</option>
-                        <option value="2">Extract</option>
-                        <option value="3">Raw Honeybush</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="inputQty">Qty</label>
-                    <input type="int" class="form-control" id="inputQty" placeholder="Qty"
-                        v-model="fields.input_quantity[1]">
-                </div>
-                <div class="form-group">
-                    <label for="item">Item</label>
-                    <select name="products" class="form-control" id="products" v-model="fields.product_id[2]">
-                        <option value="1">Seedling</option>
-                        <option value="2">Extract</option>
-                        <option value="3">Raw Honeybush</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="inputQty">Qty</label>
-                    <input type="int" class="form-control" id="inputQty" placeholder="Qty"
-                        v-model="fields.input_quantity[2]">
-                </div>
-            <!-- </div> -->
-            <!-- <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true" v-model="fields.item"></i> -->
+            </div>
+            <i @click="addToLoop(1)" class="fa fa-plus-square-o addIcon" aria-hidden="true" v-model="fields.item"></i>
 
 
         </div>
@@ -151,4 +125,3 @@ export default {
 }
 
 </script>
-
