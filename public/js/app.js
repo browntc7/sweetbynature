@@ -2517,7 +2517,8 @@ __webpack_require__.r(__webpack_exports__);
       $("#purchaseOrderModal").modal("show");
       $("#purchaseOrderTitle").html("Create Purchase Order");
       this.fields.customer_name = customerName;
-      this.fields.customer_id = customerID; // this.$forceUpdate();
+      this.fields.customer_id = customerID;
+      this.$forceUpdate();
     },
     showRawPOSubmitModal: function showRawPOSubmitModal() {
       // this.fields.customer_name = customerName;

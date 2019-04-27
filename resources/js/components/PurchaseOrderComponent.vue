@@ -110,7 +110,7 @@ export default {
             $("#purchaseOrderTitle").html("Create Purchase Order");
              this.fields.customer_name = customerName;
             this.fields.customer_id = customerID;
-            // this.$forceUpdate();
+            this.$forceUpdate();
 
         },
         showRawPOSubmitModal: function () {
