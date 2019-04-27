@@ -41,15 +41,18 @@ class ApiController extends Controller
 
     public function addPurchaseOrder(Request $request){
         $purchaseOrder = $request->all();
-        $purchaseOrderItems = array($purchaseOrder['inventory_id'],$purchaseOrder['input_quantity']);
-
+        
+        foreach ($purchaseOrder['inventory_id'] as $key => $value) {
+            $purchaseOrderItems[$key] = array($value,$purchaseOrder['input_quantity'][$key]);  
+        }
+      
         $newPurchaseOrder = ['status' => 'Open', 'customer_id' => $purchaseOrder['customer_id'], 'updated_at' => \Carbon\Carbon::now(), 'created_at' => \Carbon\Carbon::now()];
 
         $response = DB::table('purchase_orders')->insertGetId($newPurchaseOrder);
 
         foreach($purchaseOrderItems as $item){
             ##App\PurchaseOrderItem::create
-            DB::table('purchase_order_items')->insert(['purchase_order_id' => $response, 
+            DB::table('purchase_order_items')->insert(['purchase_order_id' => $response,
             'inventory_id' => $item['0'],
             'qty' => $item['1'] ]);
         }
