@@ -65,7 +65,7 @@
                 "defaultContent": ""
             },
             {
-                'data': 'inventory.quantity',
+                'data': 'qty',
                 "defaultContent": ""
             },
             {
