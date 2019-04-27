@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="customerPhone">Customer Phone</label>
-            <input type="phone" class="form-control" pattern="\d{10}" name="customerPhone" id="customerPhone"
+            <input type="phone" class="form-control" name="customerPhone" id="customerPhone"
                 v-model="fields.phone" placeholder="Customer Phone" required>
             <div class="invalid-feedback">
                 Please provide a valid phone number.
@@ -122,8 +122,8 @@ export default {
       // }
 
       e.preventDefault();
-    }
-  }
+    },
+  
     showSubmitButton: function () {
                 // clear fields
                 this.fields = {};
@@ -172,5 +172,6 @@ export default {
   //  });
     
   // });
+}
 }
 </script>
